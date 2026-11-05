@@ -1,0 +1,99 @@
+:root{--bg:#05080c;--panel:#091018;--text:#f3f0e8;--muted:#9aa9b7;--gold:#f4b73b;--cyan:#38c9e8;--line:#1b2b38}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#0b1823 0,transparent 34%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+a{text-decoration:none;color:inherit}.wrap{width:min(1080px,calc(100% - 36px));margin:auto}
+header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{font-weight:900;letter-spacing:.12em}.logo b{color:var(--gold)} nav a{margin-left:22px;color:var(--muted);font-size:14px}nav a:hover{color:var(--cyan)}
+.hero{min-height:55vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 0 45px}
+.kicker{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+h1{font-size:clamp(45px,8vw,84px);line-height:.98;margin:14px 0 20px;letter-spacing:-.04em}
+.lead{max-width:700px;margin:0 auto 28px;color:var(--muted);font-size:19px;line-height:1.65}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border:1px solid var(--line);border-radius:8px;background:#0b121a;font-weight:800}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:#101010}.btn+.btn{margin-left:8px}
+section{padding:35px 0 70px}.label{font-size:12px;color:var(--cyan);letter-spacing:.17em;text-transform:uppercase;font-weight:800;margin-bottom:15px}
+.card{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(#0c141d,#080d13)}
+.project{display:grid;grid-template-columns:1.2fr .8fr}.project img{width:100%;height:100%;object-fit:cover;display:block}.copy{padding:30px;display:flex;flex-direction:column;justify-content:center}
+.copy h2{font-size:30px;margin:7px 0 12px}.copy p{color:var(--muted);line-height:1.65;margin:0 0 22px}.status{color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.gamehero{padding-top:48px}.banner{width:100%;display:block;border:1px solid rgba(244,183,59,.55);border-radius:14px}
+.gameintro{text-align:center;padding:32px 0 60px}.gameintro h1{font-size:clamp(38px,7vw,68px)}.notice{max-width:650px;margin:18px auto 0;padding:12px 16px;border:1px solid rgba(56,201,232,.28);border-radius:8px;color:var(--cyan);background:rgba(56,201,232,.05);font-size:14px}
+footer{padding:25px 0 35px;border-top:1px solid rgba(255,255,255,.07);color:#71808e;font-size:13px}
+@media(max-width:760px){.project{grid-template-columns:1fr}.hero{min-height:auto}.copy{padding:24px}nav a:first-child{display:none}.btn+.btn{margin:10px 0 0}}
+/* Games hub additions */
+.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.game-card{display:flex;flex-direction:column;min-width:0}.game-card>img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+.game-card .copy{flex:1;align-items:flex-start}.game-card .copy .btn{margin-top:auto}.game-card .copy h2{font-size:clamp(23px,2.7vw,30px)}
+.sea-art{position:relative;overflow:hidden;min-height:240px;background:linear-gradient(#162b47 0 48%,#15778e 48% 60%,#08546f 60% 82%,#04334b 82%);image-rendering:pixelated;isolation:isolate}
+.sea-art:after{content:"";position:absolute;inset:62% 0 0;background:repeating-linear-gradient(0deg,transparent 0 17px,rgba(112,220,229,.18) 17px 20px,transparent 20px 31px);z-index:-1}
+.sea-sun{position:absolute;top:25px;right:21%;width:57px;height:57px;background:#f8c260;box-shadow:0 0 0 9px #f8c26025}
+.island{position:absolute;left:-7%;top:42%;width:42%;height:33%;clip-path:polygon(0 44%,15% 24%,35% 21%,43% 0,57% 16%,71% 17%,85% 43%,100% 59%,100% 100%,0 100%);background:linear-gradient(#3a8058 0 47%,#dfbc80 47% 75%,#a68e67 75%)}
+.pixel-ship{position:absolute;left:49%;top:31%;width:155px;height:153px;filter:drop-shadow(5px 8px 1px #033341)}.pixel-ship .mast{position:absolute;left:73px;top:6px;height:101px;width:7px;background:#533329}.pixel-ship .sail{position:absolute;left:37px;top:13px;width:85px;height:90px;clip-path:polygon(51% 0,96% 86%,12% 86%);background:#f0e1b3;border-bottom:6px solid #b59569}.pixel-ship .hull{position:absolute;left:12px;top:89px;width:132px;height:46px;clip-path:polygon(0 0,100% 0,83% 89%,55% 100%,16% 88%);background:linear-gradient(#ad6d39 0 25%,#5b342a 25% 74%,#2f2524 74%)}
+.sea-art-title{position:absolute;left:20px;bottom:16px;font-weight:900;letter-spacing:.17em;font-size:clamp(18px,3vw,30px);color:#fff4ce;text-shadow:3px 3px #0a3446}
+.sea-project-hero{padding:48px 0 0}.sea-art-large{height:min(48vw,430px);min-height:245px;border-radius:14px;border:1px solid rgba(244,183,59,.5)}.sea-art-large .pixel-ship{transform:scale(1.45);transform-origin:top center;left:calc(50% - 70px);top:24%}.sea-art-large .sea-art-title{font-size:clamp(35px,7vw,76px);left:5%;bottom:7%}
+@media(max-width:760px){.games-grid{grid-template-columns:1fr}.game-card>img{height:auto}.game-card .copy{padding:24px}.sea-art-large .pixel-ship{transform:scale(1.1)}nav a{margin-left:12px}}
+
+.game-card .copy .btn {margin-top:0;}
+.game-card .copy .btn.primary {margin-top:auto;}
+.game-card .copy .btn:not(.primary) {margin-top:8px;}
+@media(max-width:760px){.game-card .copy .btn:not(.primary){margin-top:8px}}
+
+/* Consistent game detail pages — Studio Navarom */
+.detail-page {padding-bottom:28px}
+.detail-banner-section {padding:44px 0 0}
+.detail-banner,.detail-banner-section>.sea-art {
+  display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
+  border:1px solid rgba(244,183,59,.43);border-radius:14px;overflow:hidden;
+}
+.detail-banner-section .sea-art-large {height:auto;min-height:0}
+.detail-banner-section .sea-art-large .pixel-ship {left:calc(50% - 70px);top:26%;transform:scale(1.5)}
+.detail-banner-section .sea-art-large .sea-art-title {font-size:clamp(30px,6vw,68px)}
+.detail-page .gameintro {padding:42px 0 54px}
+.detail-page .gameintro h1 {font-size:clamp(36px,7vw,66px);margin:14px 0 18px}
+.detail-page .lead {max-width:730px}
+.detail-actions {display:flex;flex-direction:column;align-items:center;gap:10px;margin:24px auto 0}
+.detail-actions .btn {margin:0;min-width:222px}
+.detail-actions .btn + .btn {margin:0}
+.detail-section {border-top:1px solid var(--line);padding:46px 0 52px}
+.detail-section h2,.detail-bottom h2 {font-size:clamp(28px,4.4vw,42px);line-height:1.15;letter-spacing:-.025em;margin:8px 0 10px}
+.detail-section-lead {font-size:16px;color:var(--muted);line-height:1.6;margin:0 0 24px}
+.guide-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.guide-card {border:1px solid var(--line);border-radius:12px;padding:24px;background:linear-gradient(155deg,#101c28,#090f16)}
+.guide-number {font-size:12px;letter-spacing:.16em;font-weight:900;color:var(--cyan)}
+.guide-card h3 {font-size:21px;margin:11px 0 9px}
+.guide-card p {font-size:15px;color:var(--muted);line-height:1.7;margin:0}
+.controls-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px}
+.control-row {display:flex;align-items:center;gap:16px;padding:13px 16px;background:#0b131c;border:1px solid var(--line);border-radius:9px;min-height:58px}
+.control-row>span {color:#d2dce6;font-size:14px;line-height:1.4}
+kbd {display:inline-block;flex-shrink:0;background:#172635;border:1px solid #335064;border-bottom-width:3px;border-radius:5px;padding:5px 7px;color:var(--gold);font:700 12px/1.1 Consolas,'Courier New',monospace;white-space:nowrap}
+.guide-card kbd {font-size:12px;padding:2px 5px;border-bottom-width:2px}
+.control-row kbd {min-width:78px;text-align:center}
+.detail-tip {margin-top:22px;border-left:3px solid var(--cyan);background:#0b1722;border-radius:0 7px 7px 0;padding:16px 20px;color:var(--muted);font-size:14px;line-height:1.7}
+.detail-tip strong {color:var(--cyan)}
+.detail-bottom {text-align:center;border-top:1px solid var(--line);padding:50px 0 68px}
+.detail-bottom p {color:var(--muted);line-height:1.6;margin:0}
+.btn:focus-visible,header a:focus-visible {outline:3px solid var(--cyan);outline-offset:3px}
+@media(max-width:760px){
+ .detail-banner-section {padding-top:24px}
+ .detail-page .gameintro {padding:36px 0 42px}
+ .guide-grid,.controls-grid {grid-template-columns:1fr}
+ .guide-card {padding:20px}
+ .detail-section {padding:40px 0}
+ .detail-banner-section .sea-art-large .pixel-ship {transform:scale(.95);left:calc(50% - 70px);top:24%}
+ .detail-actions .btn,.detail-actions .btn + .btn {margin:0}
+}
+
+
+/* Final retro cover art, with illustrated fallback until WebP assets are uploaded. */
+.sea-art-overlay {position:absolute;inset:0;z-index:6;width:100%;height:100%;object-fit:cover;display:block;}
+.game-card img,.detail-banner {object-position:center center;}
+
+/* Keep the complete 16:9 cover illustrations visible in game cards. */
+.game-card > img {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
