@@ -1,4 +1,4 @@
-SeaRiders Exploration Update 2.0 — 03-End-of-the-World
+SeaRiders Exploration Update 2.0 — 04-Edge-Polish-and-Idle-Bob
 This package contains a complete, cumulative public play/seariders folder.
 Upload the contents of the play directory to Studio-Navarom.github.io.
 Apply patches in order 01, 02, 03. Each subsequent patch includes previous features.
