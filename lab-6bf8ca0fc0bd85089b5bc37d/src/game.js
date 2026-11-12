@@ -88,6 +88,21 @@ let aim = null;
 let pendingShot = null;
 let nextForecast = 0;
 let lastFrame = 0;
+// M1-PERF OPT4: frame scheduler. The adaptive allowance responds to the real
+// cost of painting and UI, without changing a single physics/biosphere step.
+// Browser refresh rate (typically 30 or 60 Hz) is inferred from frame timestamps.
+let frameIntervalEstimate = 33.3;
+let frameFixedCostEstimate = 6;
+let frameCpuDuration = 0;
+function simulationFrameBudget() {
+  const target = frameIntervalEstimate < 24 ? 16.67 : 33.33;
+  return Math.max(7.5, Math.min(24, target - frameFixedCostEstimate - 3));
+}
+function accountFrameWork(totalMs, simMs) {
+  const fixed = Math.max(0, Math.min(45, totalMs - simMs));
+  frameFixedCostEstimate = frameFixedCostEstimate * 0.88 + fixed * 0.12;
+  frameCpuDuration = totalMs;
+}
 // A simulation/render error must not permanently lose the animation loop. A
 // rate change can restart a stopped loop without spawning a second one.
 let frameQueued = false;
@@ -1788,8 +1803,11 @@ function galaxyHasStarted() {
 function frame(now) {
   // M1-PERF is read-only and completely inactive until the player opens it.
   const measure = PerformanceHUD.active;
-  const perfStart = measure ? performance.now() : 0;
+  const frameCpuStart = performance.now();
+  const perfStart = measure ? frameCpuStart : 0;
   let perfSteps = 0, perfSimMs = 0, perfUiMs = 0, perfDrawMs = 0, perfBlocked = "";
+  let frameSimMs = 0, frameWorkerBlocked = false, frameBudgetBlocked = false;
+  let frameStepCapBlocked = false, frameBudgetMs = 0, framePendingStepCount = 0;
   const perfFinish = () => {
     if (!measure) return;
     const workers = [...galaxyOthers.values()].map(entry => entry.background);
@@ -1816,6 +1834,8 @@ function frame(now) {
     PerformanceHUD.record({
       now, steps: perfSteps, rate: sim.rate, stepSeconds: Orbit.STEP, simMs: perfSimMs, uiMs: perfUiMs, drawMs: perfDrawMs,
       busyMs: performance.now() - perfStart, reason: perfBlocked,
+      simBudgetMs: frameBudgetMs, workerBlocked: frameWorkerBlocked,
+      budgetBlocked: frameBudgetBlocked, stepCapBlocked: frameStepCapBlocked,
       context: {
         phase: galaxyViewing ? "Galaxie" : surfaceId ? "Povrch" : "Soustava",
         planets: sim.worlds.length,
@@ -1824,7 +1844,11 @@ function frame(now) {
         backgroundMainSystems: mainCount,
         backgroundBusySystems: workers.filter(background => background.waiting).length,
         backgroundWorkerDurations: workers.filter(background => background.threaded && background.workerStepCount > 0)
-          .map(background => ({ steps: background.workerStepCount, ms: Number(background.workerStepMs.toFixed(2)) })),
+          .map(background => ({ steps: background.workerStepCount, ms: Number(background.workerStepMs.toFixed(2)),
+            roundTripMs: Number(background.workerRoundTripMs.toFixed(2)) })),
+        pendingSteps: framePendingStepCount,
+        frameIntervalEstimateMs: Number(frameIntervalEstimate.toFixed(2)),
+        frameFixedCostEstimateMs: Number(frameFixedCostEstimate.toFixed(2)),
         backgroundFallbackReasons: mainCount ? [...new Set(workers.filter(background => !background.threaded)
           .map(background => background.fallbackReason).filter(Boolean))].slice(0, 3) : [],
         ships: sim.ships.length,
@@ -1835,7 +1859,13 @@ function frame(now) {
       }
     });
   };
-  const elapsed = lastFrame ? Math.min(0.28, (now - lastFrame) / 1000) : 0;
+  const frameInterval = lastFrame ? now - lastFrame : 0;
+  const elapsed = frameInterval ? Math.min(0.28, frameInterval / 1000) : 0;
+  // Long pauses are not the display's refresh rate. Ignore them when estimating
+  // how much CPU time a real interactive frame can afford.
+  if (frameInterval >= 12 && frameInterval <= 55) {
+    frameIntervalEstimate = frameIntervalEstimate * 0.9 + frameInterval * 0.1;
+  }
   lastFrame = now;
   const full = sim.mode === "training";
   const galaxyOpen = galaxyViewing;
@@ -1858,18 +1888,23 @@ function frame(now) {
   } else if (galaxyHasStarted() && sim.mission?.phase !== "briefing"
     && !sim.paused && !galaxyBusy && !pointer?.mode && !keyboard && !modalOpen() && !document.hidden
     && !(impactScene?.hit)) {
-    const perfSimulationStart = measure ? performance.now() : 0;
+    const perfSimulationStart = performance.now();
     const surface = viewedPlanet()?.biosphere;
     const rate = impactScene ? (reduceMotion.matches ? 1 : 0.65) : visitorPlaybackRate();
     // Bound catch-up and CPU work separately. Under load time slows down instead
     // of accumulating an ever-growing debt that freezes input for seconds.
-    accumulator = Math.min(accumulator + elapsed * rate, Orbit.STEP * 18);
-    const simulationDeadline = performance.now() + 8;
+    // At 30 FPS the old 18-step cap alone limited 12x to at most 6x.
+    // Keep a bounded backlog to protect controls when a remote worker is slow,
+    // but size it to the requested rate and the observed refresh interval.
+    const frameStepLimit = Math.min(72, Math.max(18, Math.ceil(rate * Math.max(elapsed, 1 / 60) / Orbit.STEP) + 6));
+    accumulator = Math.min(accumulator + elapsed * rate, Orbit.STEP * frameStepLimit);
+    frameBudgetMs = simulationFrameBudget();
+    const simulationDeadline = performance.now() + frameBudgetMs;
     const others = [...galaxyOthers.values()].map(entry => entry.background);
     const ready = others.every(background => !background.waiting);
     const era = others.length ? Math.max(Galaxy.era(sim), ...others.map(background => background.era)) : undefined;
     let simulationSteps = 0;
-    while (accumulator >= Orbit.STEP && simulationSteps < 18 && ready && (simulationSteps === 0 || performance.now() < simulationDeadline) && !sim.over && !sim.paused && sim.mission?.phase !== "briefing") {
+    while (accumulator >= Orbit.STEP && simulationSteps < frameStepLimit && ready && (simulationSteps === 0 || performance.now() < simulationDeadline) && !sim.over && !sim.paused && sim.mission?.phase !== "briefing") {
       if (surface && weatherPointer && !weatherPointer.pan && groundCursor && temperatures[weatherTool]) Biosphere.temper(surface,groundCursor,Orbit.STEP*.92*temperatures[weatherTool],weatherRadius);
       Galaxy.step(sim, era);
       for (const background of others) if (!background.threaded) background.advance(1, era);
@@ -1885,9 +1920,15 @@ function frame(now) {
       }
     }
     if (simulationSteps) for (const background of others) if (background.threaded) background.advance(simulationSteps, era);
+    frameSimMs = performance.now() - perfSimulationStart;
+    framePendingStepCount = Math.max(0, Math.floor(accumulator / Orbit.STEP + 1e-7));
+    frameWorkerBlocked = !ready && framePendingStepCount > 0;
+    frameStepCapBlocked = ready && simulationSteps >= frameStepLimit && framePendingStepCount > 0;
+    frameBudgetBlocked = ready && !frameStepCapBlocked && framePendingStepCount > 0 && simulationSteps > 0
+      && performance.now() >= simulationDeadline;
     if (measure) {
       perfSteps = simulationSteps;
-      perfSimMs = performance.now() - perfSimulationStart;
+      perfSimMs = frameSimMs;
       if (!ready) perfBlocked = "Čeká se na simulační vlákno jiné soustavy.";
       else if (rate < sim.rate) perfBlocked = "Bezpečnostní zpomalení kvůli události nebo srážce.";
     }
@@ -1905,6 +1946,7 @@ function frame(now) {
     const perfDrawStart = measure ? performance.now() : 0;
     if (!sim.paused && !reduceMotion.matches) positionGalaxyStars();
     if (measure) perfDrawMs += performance.now() - perfDrawStart;
+    accountFrameWork(performance.now() - frameCpuStart, frameSimMs);
     perfFinish();
     queueGameFrame();
     return;
@@ -1942,6 +1984,7 @@ function frame(now) {
     }
   }
   if (measure) perfDrawMs += performance.now() - perfDrawStart;
+  accountFrameWork(performance.now() - frameCpuStart, frameSimMs);
   perfFinish();
   queueGameFrame();
 }
@@ -2575,7 +2618,7 @@ function clearGalaxy() {
 }
 
 function startBackground(state) {
-  const workerURL = /^https?:$/.test(location.protocol) ? "./src/galaxy-worker.js?v=m1-perf-opt3" : null;
+  const workerURL = /^https?:$/.test(location.protocol) ? "./src/galaxy-worker.js?v=m1-perf-opt4" : null;
   return Galaxy.background(state, workerURL);
 }
 

@@ -94,7 +94,7 @@ const Galaxy = (() => {
     let worker = null, pending = null, reading = null, disposed = false, reply = null;
     // Execution status is diagnostic metadata, never part of the saved simulation.
     let fallbackReason = workerURL ? "Web Worker není dostupný." : "Hra není spuštěna přes HTTP(S).";
-    let lastWorkerStepMs = 0, lastWorkerStepCount = 0;
+    let lastWorkerStepMs = 0, lastWorkerStepCount = 0, lastWorkerRoundTripMs = 0;
 
     function closeWorker() {
       worker?.terminate();
@@ -103,12 +103,17 @@ const Galaxy = (() => {
 
     function request(message) {
       return new Promise((resolve, reject) => {
+        const sentAt = performance.now();
         const timer = setTimeout(() => {
           reply = null;
           reject(new Error("Vlákno soustavy neodpovídá."));
         }, 8000);
         reply = {
-          resolve(data) { clearTimeout(timer); resolve(data); },
+          resolve(data) {
+            clearTimeout(timer);
+            if (message.type === "advance") lastWorkerRoundTripMs = performance.now() - sentAt;
+            resolve(data);
+          },
           reject(error) { clearTimeout(timer); reject(error); }
         };
         try { worker.postMessage(message); }
@@ -191,6 +196,7 @@ const Galaxy = (() => {
       get fallbackReason() { return worker ? "" : fallbackReason; },
       get workerStepMs() { return worker ? lastWorkerStepMs : null; },
       get workerStepCount() { return worker ? lastWorkerStepCount : null; },
+      get workerRoundTripMs() { return worker ? lastWorkerRoundTripMs : null; },
       get currentInfo() { return worker ? info : summary(state); },
       get era() { return worker ? info.era : era(state); },
       async syncedInfo() {

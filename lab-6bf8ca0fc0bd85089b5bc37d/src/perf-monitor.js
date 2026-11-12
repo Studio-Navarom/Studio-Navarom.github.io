@@ -15,12 +15,14 @@ const PerformanceHUD = (() => {
   let frameCount = 0, stepCount = 0, simulationTime = 0, renderTime = 0, interfaceTime = 0, frameTime = 0;
   let currentRate = 1, lastReason = "", recentError = "", currentContext = {}, currentStepSeconds = 1 / 90;
   let detailTimes = Object.create(null), detailCounts = Object.create(null);
+  let budgets = 0, budgetFrames = 0, workerBlockFrames = 0, budgetBlockFrames = 0, stepCapBlockFrames = 0;
   const format = value => Number.isFinite(value) ? value.toFixed(1).replace(".", ",") : "—";
   const resetWindow = now => {
     windowStart = now;
     frameCount = stepCount = simulationTime = renderTime = interfaceTime = frameTime = 0;
     lastReason = "";
     detailTimes = Object.create(null); detailCounts = Object.create(null);
+    budgets = budgetFrames = workerBlockFrames = budgetBlockFrames = stepCapBlockFrames = 0;
   };
   function updateDisplay(row) {
     if (!row) return;
@@ -45,6 +47,8 @@ const PerformanceHUD = (() => {
     }
     const messages = [];
     if (row.reason) messages.push(row.reason);
+    if (row.workerBlockedFramePercent > 5) messages.push("Vlákna čekají v " + format(row.workerBlockedFramePercent) + " % snímků.");
+    if (row.budgetBlockedFramePercent > 5) messages.push("Simulace využívá časový limit v " + format(row.budgetBlockedFramePercent) + " % snímků.");
     if ((row.context?.backgroundMainSystems || 0) > 0 && (row.context?.otherSystems || 0) > 0) {
       messages.push("Vedlejší soustavy zatěžují hlavní vlákno. Pro hru z disku použij SPUSTIT_COSMOEVOLVE.bat.");
     }
@@ -62,6 +66,11 @@ const PerformanceHUD = (() => {
         (labels[key] || key) + ": " + format(ms) + " ms/s").join(" · ")
         : "Podrobnosti se zaznamenají při běhu simulace.";
     }
+    const scheduler = $("perf-scheduler");
+    if (scheduler) scheduler.textContent = "OPT4 · rozpočet " + format(row.averageSimulationBudgetMs) + " ms/snímek"
+      + " · limit CPU " + format(row.budgetBlockedFramePercent) + " % snímků"
+      + " · čekání na vlákna " + format(row.workerBlockedFramePercent) + " % snímků"
+      + " · limit kroků " + format(row.stepCapBlockedFramePercent) + " % snímků";
   }
   function flush(now) {
     if (!windowStart || !frameCount) { resetWindow(now); return; }
@@ -77,6 +86,10 @@ const PerformanceHUD = (() => {
       renderMsPerSecond: Number((renderTime / duration).toFixed(2)),
       interfaceMsPerSecond: Number((interfaceTime / duration).toFixed(2)),
       busyMsPerFrame: Number((frameTime / frameCount).toFixed(2)),
+      averageSimulationBudgetMs: Number((budgets / Math.max(1, budgetFrames)).toFixed(2)),
+      workerBlockedFramePercent: Number((workerBlockFrames / frameCount * 100).toFixed(2)),
+      budgetBlockedFramePercent: Number((budgetBlockFrames / frameCount * 100).toFixed(2)),
+      stepCapBlockedFramePercent: Number((stepCapBlockFrames / frameCount * 100).toFixed(2)),
       reason: lastReason,
       context: { ...currentContext },
       // Inclusive sub-metrics (nested categories overlap); do not sum these.
@@ -88,7 +101,8 @@ const PerformanceHUD = (() => {
     updateDisplay(row);
     resetWindow(now);
   }
-  function record({ now, steps = 0, rate = 1, stepSeconds = 1 / 90, simMs = 0, drawMs = 0, uiMs = 0, busyMs = 0, reason = "", context = {} }) {
+  function record({ now, steps = 0, rate = 1, stepSeconds = 1 / 90, simMs = 0, drawMs = 0, uiMs = 0, busyMs = 0,
+    simBudgetMs = 0, workerBlocked = false, budgetBlocked = false, stepCapBlocked = false, reason = "", context = {} }) {
     if (!active) return;
     // Separate windows for each selected rate: no mixed 1x / 4x / 12x results.
     if (!windowStart) { resetWindow(now); currentRate = rate; }
@@ -100,6 +114,10 @@ const PerformanceHUD = (() => {
     renderTime += drawMs;
     interfaceTime += uiMs;
     frameTime += busyMs;
+    if (simBudgetMs > 0) { budgets += simBudgetMs; budgetFrames++; }
+    if (workerBlocked) workerBlockFrames++;
+    if (budgetBlocked) budgetBlockFrames++;
+    if (stepCapBlocked) stepCapBlockFrames++;
     if (reason) lastReason = reason;
     currentContext = context;
     if (now - windowStart >= 2000) flush(now);
@@ -115,6 +133,7 @@ const PerformanceHUD = (() => {
     recentError = "";
     if ($("perf-breakdown")) $("perf-breakdown").textContent = "Měření podrobností dosud nezačalo.";
     if ($("perf-worker-status")) $("perf-worker-status").textContent = "Vedlejší soustavy: čekám na měření.";
+    if ($("perf-scheduler")) $("perf-scheduler").textContent = "OPT4: čekám na měření propustnosti a čekání.";
     for (const [name, element] of Object.entries(results)) {
       if (name === "notes") element.textContent = "Nech hru běžet alespoň 2 sekundy, pak porovnej rychlosti.";
       else if (name === "history") element.textContent = "Zatím žádné vzorky";
@@ -135,7 +154,7 @@ const PerformanceHUD = (() => {
       return;
     }
     const report = {
-      application: "CosmoEvolve", version: "M1-PERF OPT3", capturedAt: new Date().toISOString(),
+      application: "CosmoEvolve", version: "M1-PERF OPT4", capturedAt: new Date().toISOString(),
       explanation: "Volitelné měření na tomto počítači. ms/s je čas hlavního vlákna na reálnou sekundu (ne celkové vytížení CPU). Skutečná rychlost je odvozena od provedených simulačních kroků, nikoli od popisku tlačítka. Nezahrnuje dobu výpočtu ve Web Workerech.",
       notes: "Vnořené časy se překrývají. Jednotlivé díly biosféry jsou podmnožinou celkové biosféry, díly HUD podmnožinou původního HUD. Tyto skupiny nesčítejte.",
       diagnostics: { lastError: recentError, sampleCount: samples.length }, samples

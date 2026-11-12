@@ -1,9 +1,9 @@
 "use strict";
 
-importScripts("journal.js?v=m1-perf-opt3", "biosphere.js?v=m1-perf-opt3",
-  "evolution.js?v=m1-perf-opt3", "patronage.js?v=m1-perf-opt3", "orbit.js?v=m1-perf-opt3",
-  "space.js?v=m1-perf-opt3", "warfare.js?v=m1-perf-opt3", "fauna-evolution.js?v=m1-perf-opt3",
-  "life-chronicle.js?v=m1-perf-opt3", "galaxy.js?v=m1-perf-opt3");
+importScripts("journal.js?v=m1-perf-opt4", "biosphere.js?v=m1-perf-opt4",
+  "evolution.js?v=m1-perf-opt4", "patronage.js?v=m1-perf-opt4", "orbit.js?v=m1-perf-opt4",
+  "space.js?v=m1-perf-opt4", "warfare.js?v=m1-perf-opt4", "fauna-evolution.js?v=m1-perf-opt4",
+  "life-chronicle.js?v=m1-perf-opt4", "galaxy.js?v=m1-perf-opt4");
 
 let system;
 self.onmessage = ({ data }) => {
