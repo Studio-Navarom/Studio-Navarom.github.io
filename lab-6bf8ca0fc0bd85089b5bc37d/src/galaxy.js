@@ -95,6 +95,10 @@ const Galaxy = (() => {
     // Execution status is diagnostic metadata, never part of the saved simulation.
     let fallbackReason = workerURL ? "Web Worker není dostupný." : "Hra není spuštěna přes HTTP(S).";
     let lastWorkerStepMs = 0, lastWorkerStepCount = 0, lastWorkerRoundTripMs = 0;
+    let workerMsPerStepEstimate = 0, lastBatchSequence = 0, lastCheckpointSequence = 0;
+    const recentWorkerSteps = [];
+    let checkpointRequested = false, checkpointReceived = 0, lastAckSequence = 0;
+    let lastCheckpointCloneMs = 0, currentWorkerRequestAt = 0, longWorkerBatches = 0;
 
     function closeWorker() {
       worker?.terminate();
@@ -104,6 +108,7 @@ const Galaxy = (() => {
     function request(message) {
       return new Promise((resolve, reject) => {
         const sentAt = performance.now();
+        if (message.type === "advance") currentWorkerRequestAt = sentAt;
         const timer = setTimeout(() => {
           reply = null;
           reject(new Error("Vlákno soustavy neodpovídá."));
@@ -111,7 +116,11 @@ const Galaxy = (() => {
         reply = {
           resolve(data) {
             clearTimeout(timer);
-            if (message.type === "advance") lastWorkerRoundTripMs = performance.now() - sentAt;
+            if (message.type === "advance") {
+              lastWorkerRoundTripMs = performance.now() - sentAt;
+              currentWorkerRequestAt = 0;
+              if (lastWorkerRoundTripMs >= 50) longWorkerBatches++;
+            }
             resolve(data);
           },
           reject(error) { clearTimeout(timer); reject(error); }
@@ -138,6 +147,7 @@ const Galaxy = (() => {
       }
       sinceCheckpoint = 0;
       batches.length = 0;
+      checkpointRequested = false;
       info = summary(state);
     }
 
@@ -153,6 +163,26 @@ const Galaxy = (() => {
         worker = new Worker(workerURL);
         fallbackReason = "";
         worker.onmessage = ({ data }) => {
+          // OPT7: checkpoint is not part of an advance acknowledgement. A heavy
+          // structured clone must never delay reporting completed simulation work.
+          // Retain all uncheckpointed batches until the separate state arrives;
+          // then drop only batches that the checkpoint actually covers.
+          if (data.type === "checkpoint-stat") {
+            if (Number.isFinite(data.cloneMs)) lastCheckpointCloneMs = data.cloneMs;
+            return;
+          }
+          if (data.type === "checkpoint") {
+            const seq = data.sequence;
+            if (Number.isInteger(seq) && seq > lastCheckpointSequence && data.state && !disposed) {
+              state = data.state;
+              lastCheckpointSequence = seq;
+              while (batches.length && batches[0].sequence <= seq) batches.shift();
+              sinceCheckpoint = batches.reduce((sum, batch) => sum + batch.count, 0);
+              checkpointRequested = false;
+              checkpointReceived++;
+            }
+            return;
+          }
           const receiver = reply;
           reply = null;
           if (data.error) receiver?.reject(new Error(data.error));
@@ -182,7 +212,8 @@ const Galaxy = (() => {
       if (disposed) throw new Error("Soustava už byla zavřena.");
       if (worker) {
         const data = await track(request({ type: "snapshot" }).catch(async () => { await recover(); return null; }));
-        if (data) { state = data.state; sinceCheckpoint = 0; batches.length = 0; }
+        if (data) { state = data.state; sinceCheckpoint = 0; batches.length = 0;
+          checkpointRequested = false; lastCheckpointSequence = lastBatchSequence; }
       }
       if (disposed) throw new Error("Soustava už byla zavřena.");
       info = summary(state);
@@ -197,6 +228,13 @@ const Galaxy = (() => {
       get workerStepMs() { return worker ? lastWorkerStepMs : null; },
       get workerStepCount() { return worker ? lastWorkerStepCount : null; },
       get workerRoundTripMs() { return worker ? lastWorkerRoundTripMs : null; },
+      get workerMsPerStepEstimate() { return worker ? workerMsPerStepEstimate : null; },
+      get workerReplyAgeMs() { return worker && pending && currentWorkerRequestAt ? performance.now() - currentWorkerRequestAt : 0; },
+      get workerLongBatches() { return worker ? longWorkerBatches : 0; },
+      get workerCheckpointReceived() { return checkpointReceived; },
+      get workerCheckpointRequested() { return worker && checkpointRequested; },
+      get workerCheckpointCloneMs() { return lastCheckpointCloneMs; },
+      get workerAckSequence() { return lastAckSequence; },
       get currentInfo() { return worker ? info : summary(state); },
       get era() { return worker ? info.era : era(state); },
       async syncedInfo() {
@@ -209,16 +247,27 @@ const Galaxy = (() => {
           stepBackground(state, count, calendarEra);
           return;
         }
-        const batch = { count, era: calendarEra };
-        track(request({ type: "advance", ...batch, checkpoint: sinceCheckpoint + count >= 900 }).then(data => {
+        const batch = { count, era: calendarEra, sequence: ++lastBatchSequence };
+        const checkpoint = !checkpointRequested && sinceCheckpoint + count >= 900;
+        if (checkpoint) checkpointRequested = true;
+        track(request({ type: "advance", ...batch, checkpoint }).then(data => {
           batches.push(batch);
+          lastAckSequence = batch.sequence;
           sinceCheckpoint += count;
           info = data.info;
           if (Number.isFinite(data.stepMilliseconds)) {
             lastWorkerStepMs = data.stepMilliseconds;
             lastWorkerStepCount = data.stepCount || batch.count;
+            const perStep = Math.max(0.001, data.stepMilliseconds / Math.max(1, lastWorkerStepCount));
+            // A rolling median resists GC / browser scheduling spikes. The
+            // scheduler should respond to sustained workload, not a single pause.
+            if (lastWorkerStepCount >= 3) {
+              recentWorkerSteps.push(perStep);
+              if (recentWorkerSteps.length > 11) recentWorkerSteps.shift();
+              const sorted = [...recentWorkerSteps].sort((a, b) => a - b);
+              workerMsPerStepEstimate = sorted[Math.floor(sorted.length / 2)];
+            }
           }
-          if (data.state) { state = data.state; sinceCheckpoint = 0; batches.length = 0; }
         }).catch(() => recover(batch)));
       },
       snapshot() {

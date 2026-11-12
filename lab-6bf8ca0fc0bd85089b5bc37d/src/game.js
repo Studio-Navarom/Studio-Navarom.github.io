@@ -1808,6 +1808,7 @@ function frame(now) {
   let perfSteps = 0, perfSimMs = 0, perfUiMs = 0, perfDrawMs = 0, perfBlocked = "";
   let frameSimMs = 0, frameWorkerBlocked = false, frameBudgetBlocked = false;
   let frameStepCapBlocked = false, frameBudgetMs = 0, framePendingStepCount = 0;
+  let frameWorkerBatchCap = 0, frameWorkerSlowStepMs = 0;
   const perfFinish = () => {
     if (!measure) return;
     const workers = [...galaxyOthers.values()].map(entry => entry.background);
@@ -1833,7 +1834,8 @@ function frame(now) {
     }
     PerformanceHUD.record({
       now, steps: perfSteps, rate: sim.rate, stepSeconds: Orbit.STEP, simMs: perfSimMs, uiMs: perfUiMs, drawMs: perfDrawMs,
-      busyMs: performance.now() - perfStart, reason: perfBlocked,
+      busyMs: performance.now() - perfStart, frameIntervalMs: frameInterval,
+      reason: perfBlocked,
       simBudgetMs: frameBudgetMs, workerBlocked: frameWorkerBlocked,
       budgetBlocked: frameBudgetBlocked, stepCapBlocked: frameStepCapBlocked,
       context: {
@@ -1849,7 +1851,16 @@ function frame(now) {
             steps: entry.background.workerStepCount,
             ms: Number(entry.background.workerStepMs.toFixed(2)),
             roundTripMs: Number(entry.background.workerRoundTripMs.toFixed(2)),
-            msPerStep: Number((entry.background.workerStepMs / entry.background.workerStepCount).toFixed(3)) })),
+            msPerStep: Number((entry.background.workerStepMs / entry.background.workerStepCount).toFixed(3)),
+            estimatedMsPerStep: Number(entry.background.workerMsPerStepEstimate.toFixed(3)),
+            checkpointReceived: entry.background.workerCheckpointReceived,
+            checkpointPending: entry.background.workerCheckpointRequested,
+            slowBatches: entry.background.workerLongBatches,
+            pendingReplyAgeMs: Number(entry.background.workerReplyAgeMs.toFixed(1)),
+            acknowledgedBatch: entry.background.workerAckSequence,
+            checkpointCloneMs: Number(entry.background.workerCheckpointCloneMs.toFixed(1)) })),
+        workerBatchCap: frameWorkerBatchCap,
+        slowestWorkerEstimatedMsPerStep: Number(frameWorkerSlowStepMs.toFixed(3)),
         pendingSteps: framePendingStepCount,
         frameIntervalEstimateMs: Number(frameIntervalEstimate.toFixed(2)),
         frameFixedCostEstimateMs: Number(frameFixedCostEstimate.toFixed(2)),
@@ -1906,9 +1917,19 @@ function frame(now) {
     const simulationDeadline = performance.now() + frameBudgetMs;
     const others = [...galaxyOthers.values()].map(entry => entry.background);
     const ready = others.every(background => !background.waiting);
+    // OPT7: bound the next remote batch using observed worker throughput.
+    // This reduces long, bursty stalls at 12× while retaining every physics step.
+    // The estimate is smoothed to avoid overreacting to occasional GC spikes.
+    frameWorkerSlowStepMs = others.reduce((max, background) =>
+      Math.max(max, background.workerMsPerStepEstimate || 0), 0);
+    const workerTargetMs = Math.max(15, Math.min(28, frameIntervalEstimate * 0.82));
+    frameWorkerBatchCap = frameWorkerSlowStepMs > 0
+      ? Math.min(frameStepLimit, Math.max(24, Math.floor(workerTargetMs / frameWorkerSlowStepMs)))
+      : frameStepLimit;
+    const effectiveStepLimit = Math.min(frameStepLimit, frameWorkerBatchCap);
     const era = others.length ? Math.max(Galaxy.era(sim), ...others.map(background => background.era)) : undefined;
     let simulationSteps = 0;
-    while (accumulator >= Orbit.STEP && simulationSteps < frameStepLimit && ready && (simulationSteps === 0 || performance.now() < simulationDeadline) && !sim.over && !sim.paused && sim.mission?.phase !== "briefing") {
+    while (accumulator >= Orbit.STEP && simulationSteps < effectiveStepLimit && ready && (simulationSteps === 0 || performance.now() < simulationDeadline) && !sim.over && !sim.paused && sim.mission?.phase !== "briefing") {
       if (surface && weatherPointer && !weatherPointer.pan && groundCursor && temperatures[weatherTool]) Biosphere.temper(surface,groundCursor,Orbit.STEP*.92*temperatures[weatherTool],weatherRadius);
       Galaxy.step(sim, era);
       for (const background of others) if (!background.threaded) background.advance(1, era);
@@ -1927,7 +1948,7 @@ function frame(now) {
     frameSimMs = performance.now() - perfSimulationStart;
     framePendingStepCount = Math.max(0, Math.floor(accumulator / Orbit.STEP + 1e-7));
     frameWorkerBlocked = !ready && framePendingStepCount > 0;
-    frameStepCapBlocked = ready && simulationSteps >= frameStepLimit && framePendingStepCount > 0;
+    frameStepCapBlocked = ready && simulationSteps >= effectiveStepLimit && framePendingStepCount > 0;
     frameBudgetBlocked = ready && !frameStepCapBlocked && framePendingStepCount > 0 && simulationSteps > 0
       && performance.now() >= simulationDeadline;
     if (measure) {
@@ -2622,7 +2643,7 @@ function clearGalaxy() {
 }
 
 function startBackground(state) {
-  const workerURL = /^https?:$/.test(location.protocol) ? "./src/galaxy-worker.js?v=m1-perf-opt6" : null;
+  const workerURL = /^https?:$/.test(location.protocol) ? "./src/galaxy-worker.js?v=m1-perf-opt7" : null;
   return Galaxy.background(state, workerURL);
 }
 

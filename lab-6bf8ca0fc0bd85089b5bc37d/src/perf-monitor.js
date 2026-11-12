@@ -16,6 +16,9 @@ const PerformanceHUD = (() => {
   let currentRate = 1, lastReason = "", recentError = "", currentContext = {}, currentStepSeconds = 1 / 90;
   let detailTimes = Object.create(null), detailCounts = Object.create(null);
   let budgets = 0, budgetFrames = 0, workerBlockFrames = 0, budgetBlockFrames = 0, stepCapBlockFrames = 0;
+  let blockedRunMs = 0, longestBlockedRunMs = 0, longestFrameMs = 0;
+  let worstWorkerBatch = null;
+  const seenWorkerBatches = new Map();
   const format = value => Number.isFinite(value) ? value.toFixed(1).replace(".", ",") : "—";
   const resetWindow = now => {
     windowStart = now;
@@ -23,6 +26,8 @@ const PerformanceHUD = (() => {
     lastReason = "";
     detailTimes = Object.create(null); detailCounts = Object.create(null);
     budgets = budgetFrames = workerBlockFrames = budgetBlockFrames = stepCapBlockFrames = 0;
+    blockedRunMs = longestBlockedRunMs = longestFrameMs = 0;
+    worstWorkerBatch = null;
   };
   function updateDisplay(row) {
     if (!row) return;
@@ -48,6 +53,9 @@ const PerformanceHUD = (() => {
     const messages = [];
     if (row.reason) messages.push(row.reason);
     if (row.workerBlockedFramePercent > 5) messages.push("Vlákna čekají v " + format(row.workerBlockedFramePercent) + " % snímků.");
+    if (row.longestWorkerBlockedRunMs > 65) messages.push("Nejdelší souvislé čekání " + format(row.longestWorkerBlockedRunMs) + " ms.");
+    if (row.worstWorkerBatch?.roundTripMs > 50) messages.push("Nejdelší dávka: " + row.worstWorkerBatch.name
+      + " (" + format(row.worstWorkerBatch.roundTripMs) + " ms). ");
     const slower = (row.context?.backgroundWorkerDurations ?? []).reduce((worst, next) =>
       !worst || next.roundTripMs > worst.roundTripMs ? next : worst, null);
     if (slower && row.workerBlockedFramePercent > 10 && slower.roundTripMs > 25) {
@@ -62,6 +70,10 @@ const PerformanceHUD = (() => {
       messages.push("Počítač pravděpodobně nestíhá cílové tempo; porovnej zátěž simulace, mapy a HUD.");
     }
     if (row.requestedRate >= 4 && row.fps < 25 && !row.reason) messages.push("Nízké FPS mohou omezovat dosažitelnou rychlost.");
+    if (row.context?.backgroundWorkerDurations?.length) {
+      const stalled = row.context.backgroundWorkerDurations.filter(w => w.pendingReplyAgeMs > 45);
+      if (stalled.length) messages.push("Probíhá dlouhá dávka: " + stalled.map(w => w.name + " (" + format(w.pendingReplyAgeMs) + " ms)").join(", ") + ".");
+    }
     if (recentError) messages.push("Poslední chyba: " + recentError);
     results.notes.textContent = messages.join(" ") || "Zatím bez zjevného omezení. Porovnej měření při 1×, 4× a 12×.";
     results.history.textContent = samples.length + " vzorků · nejvýše 5 minut historie";
@@ -73,9 +85,11 @@ const PerformanceHUD = (() => {
         : "Podrobnosti se zaznamenají při běhu simulace.";
     }
     const scheduler = $("perf-scheduler");
-    if (scheduler) scheduler.textContent = "OPT6 · rozpočet " + format(row.averageSimulationBudgetMs) + " ms/snímek"
+    if (scheduler) scheduler.textContent = "OPT7 · rozpočet " + format(row.averageSimulationBudgetMs) + " ms/snímek"
       + " · limit CPU " + format(row.budgetBlockedFramePercent) + " % snímků"
       + " · čekání na vlákna " + format(row.workerBlockedFramePercent) + " % snímků"
+      + " · limit dávky " + format(row.context?.workerBatchCap ?? 0) + " kroků"
+      + " · nejdelší čekání " + format(row.longestWorkerBlockedRunMs ?? 0) + " ms"
       + " · limit kroků " + format(row.stepCapBlockedFramePercent) + " % snímků";
   }
   function flush(now) {
@@ -96,6 +110,9 @@ const PerformanceHUD = (() => {
       workerBlockedFramePercent: Number((workerBlockFrames / frameCount * 100).toFixed(2)),
       budgetBlockedFramePercent: Number((budgetBlockFrames / frameCount * 100).toFixed(2)),
       stepCapBlockedFramePercent: Number((stepCapBlockFrames / frameCount * 100).toFixed(2)),
+      longestWorkerBlockedRunMs: Number(Math.max(longestBlockedRunMs, blockedRunMs).toFixed(1)),
+      longestFrameIntervalMs: Number(longestFrameMs.toFixed(1)),
+      worstWorkerBatch: worstWorkerBatch ? { ...worstWorkerBatch } : null,
       reason: lastReason,
       context: { ...currentContext },
       // Inclusive sub-metrics (nested categories overlap); do not sum these.
@@ -108,7 +125,8 @@ const PerformanceHUD = (() => {
     resetWindow(now);
   }
   function record({ now, steps = 0, rate = 1, stepSeconds = 1 / 90, simMs = 0, drawMs = 0, uiMs = 0, busyMs = 0,
-    simBudgetMs = 0, workerBlocked = false, budgetBlocked = false, stepCapBlocked = false, reason = "", context = {} }) {
+    simBudgetMs = 0, workerBlocked = false, budgetBlocked = false, stepCapBlocked = false,
+    frameIntervalMs = 0, reason = "", context = {} }) {
     if (!active) return;
     // Separate windows for each selected rate: no mixed 1x / 4x / 12x results.
     if (!windowStart) { resetWindow(now); currentRate = rate; }
@@ -121,7 +139,23 @@ const PerformanceHUD = (() => {
     interfaceTime += uiMs;
     frameTime += busyMs;
     if (simBudgetMs > 0) { budgets += simBudgetMs; budgetFrames++; }
-    if (workerBlocked) workerBlockFrames++;
+    if (workerBlocked) {
+      workerBlockFrames++;
+      blockedRunMs += Math.max(0, Math.min(1000, frameIntervalMs));
+    } else {
+      longestBlockedRunMs = Math.max(longestBlockedRunMs, blockedRunMs);
+      blockedRunMs = 0;
+    }
+    if (Number.isFinite(frameIntervalMs)) longestFrameMs = Math.max(longestFrameMs, frameIntervalMs);
+    for (const worker of context.backgroundWorkerDurations ?? []) {
+      const known = seenWorkerBatches.get(worker.name);
+      if (worker.acknowledgedBatch && worker.acknowledgedBatch !== known) {
+        seenWorkerBatches.set(worker.name, worker.acknowledgedBatch);
+        if (!worstWorkerBatch || worker.roundTripMs > worstWorkerBatch.roundTripMs)
+          worstWorkerBatch = { name: worker.name, roundTripMs: worker.roundTripMs,
+            steps: worker.steps, checkpointCloneMs: worker.checkpointCloneMs };
+      }
+    }
     if (budgetBlocked) budgetBlockFrames++;
     if (stepCapBlocked) stepCapBlockFrames++;
     if (reason) lastReason = reason;
@@ -137,9 +171,10 @@ const PerformanceHUD = (() => {
     samples = [];
     resetWindow(0);
     recentError = "";
+    seenWorkerBatches.clear();
     if ($("perf-breakdown")) $("perf-breakdown").textContent = "Měření podrobností dosud nezačalo.";
     if ($("perf-worker-status")) $("perf-worker-status").textContent = "Vedlejší soustavy: čekám na měření.";
-    if ($("perf-scheduler")) $("perf-scheduler").textContent = "OPT6: čekám na měření propustnosti a čekání.";
+    if ($("perf-scheduler")) $("perf-scheduler").textContent = "OPT7: čekám na měření propustnosti a čekání.";
     for (const [name, element] of Object.entries(results)) {
       if (name === "notes") element.textContent = "Nech hru běžet alespoň 2 sekundy, pak porovnej rychlosti.";
       else if (name === "history") element.textContent = "Zatím žádné vzorky";
@@ -160,7 +195,7 @@ const PerformanceHUD = (() => {
       return;
     }
     const report = {
-      application: "CosmoEvolve", version: "M1-PERF OPT6", capturedAt: new Date().toISOString(),
+      application: "CosmoEvolve", version: "M1-PERF OPT7", capturedAt: new Date().toISOString(),
       explanation: "Volitelné měření na tomto počítači. ms/s je čas hlavního vlákna na reálnou sekundu (ne celkové vytížení CPU). Skutečná rychlost je odvozena od provedených simulačních kroků, nikoli od popisku tlačítka. Nezahrnuje dobu výpočtu ve Web Workerech.",
       notes: "Vnořené časy se překrývají. Jednotlivé díly biosféry jsou podmnožinou celkové biosféry, díly HUD podmnožinou původního HUD. Tyto skupiny nesčítejte.",
       diagnostics: { lastError: recentError, sampleCount: samples.length }, samples
