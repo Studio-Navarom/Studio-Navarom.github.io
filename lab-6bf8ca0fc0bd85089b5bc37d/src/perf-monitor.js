@@ -48,6 +48,12 @@ const PerformanceHUD = (() => {
     const messages = [];
     if (row.reason) messages.push(row.reason);
     if (row.workerBlockedFramePercent > 5) messages.push("Vlákna čekají v " + format(row.workerBlockedFramePercent) + " % snímků.");
+    const slower = (row.context?.backgroundWorkerDurations ?? []).reduce((worst, next) =>
+      !worst || next.roundTripMs > worst.roundTripMs ? next : worst, null);
+    if (slower && row.workerBlockedFramePercent > 10 && slower.roundTripMs > 25) {
+      messages.push("Nejpomalejší poslední dávka: " + slower.name + " (" + slower.planets
+        + " planet, " + format(slower.roundTripMs) + " ms). ");
+    }
     if (row.budgetBlockedFramePercent > 5) messages.push("Simulace využívá časový limit v " + format(row.budgetBlockedFramePercent) + " % snímků.");
     if ((row.context?.backgroundMainSystems || 0) > 0 && (row.context?.otherSystems || 0) > 0) {
       messages.push("Vedlejší soustavy zatěžují hlavní vlákno. Pro hru z disku použij SPUSTIT_COSMOEVOLVE.bat.");
@@ -67,7 +73,7 @@ const PerformanceHUD = (() => {
         : "Podrobnosti se zaznamenají při běhu simulace.";
     }
     const scheduler = $("perf-scheduler");
-    if (scheduler) scheduler.textContent = "OPT4 · rozpočet " + format(row.averageSimulationBudgetMs) + " ms/snímek"
+    if (scheduler) scheduler.textContent = "OPT5 · rozpočet " + format(row.averageSimulationBudgetMs) + " ms/snímek"
       + " · limit CPU " + format(row.budgetBlockedFramePercent) + " % snímků"
       + " · čekání na vlákna " + format(row.workerBlockedFramePercent) + " % snímků"
       + " · limit kroků " + format(row.stepCapBlockedFramePercent) + " % snímků";
@@ -133,7 +139,7 @@ const PerformanceHUD = (() => {
     recentError = "";
     if ($("perf-breakdown")) $("perf-breakdown").textContent = "Měření podrobností dosud nezačalo.";
     if ($("perf-worker-status")) $("perf-worker-status").textContent = "Vedlejší soustavy: čekám na měření.";
-    if ($("perf-scheduler")) $("perf-scheduler").textContent = "OPT4: čekám na měření propustnosti a čekání.";
+    if ($("perf-scheduler")) $("perf-scheduler").textContent = "OPT5: čekám na měření propustnosti a čekání.";
     for (const [name, element] of Object.entries(results)) {
       if (name === "notes") element.textContent = "Nech hru běžet alespoň 2 sekundy, pak porovnej rychlosti.";
       else if (name === "history") element.textContent = "Zatím žádné vzorky";
@@ -154,7 +160,7 @@ const PerformanceHUD = (() => {
       return;
     }
     const report = {
-      application: "CosmoEvolve", version: "M1-PERF OPT4", capturedAt: new Date().toISOString(),
+      application: "CosmoEvolve", version: "M1-PERF OPT5", capturedAt: new Date().toISOString(),
       explanation: "Volitelné měření na tomto počítači. ms/s je čas hlavního vlákna na reálnou sekundu (ne celkové vytížení CPU). Skutečná rychlost je odvozena od provedených simulačních kroků, nikoli od popisku tlačítka. Nezahrnuje dobu výpočtu ve Web Workerech.",
       notes: "Vnořené časy se překrývají. Jednotlivé díly biosféry jsou podmnožinou celkové biosféry, díly HUD podmnožinou původního HUD. Tyto skupiny nesčítejte.",
       diagnostics: { lastError: recentError, sampleCount: samples.length }, samples

@@ -699,13 +699,30 @@ const Biosphere = (() => {
     classifyGround(s);
     if (s.groundChanged && s.time >= s.regionAt) rebuildRegions(s);
     let wetLand = 0, lakes = 0, sheltered = 0, habitableLand = 0;
+    const profile = s.bioProfile;
+    const knownProfile = profile === "cold" || profile === "warm" || profile === "temperate";
+    const hasEvolution = typeof Evolution !== "undefined";
+    const coldProfile = profile === "cold";
     for (let i = 0; i < SIZE; i++) {
       wet[i] = clamp(soil[i] * 0.85 + water[i] * 1.45, 0, 1);
-      if (typeof Evolution !== "undefined" ? !Evolution.ground(s, i, s.bioProfile) : ocean[i]) continue;
+      // OPT5: fast native footing on the dense climate grid. Rare/legacy
+      // unknown profiles follow the original Evolution.ground path unchanged.
+      const grounded = hasEvolution
+        ? knownProfile
+          ? ((coldProfile
+            ? ((!ocean[i] || s.height[i] >= 0.45) && water[i] < 0.27
+              || ice[i] >= 0.65 && water[i] <= ice[i] * 0.35 + 0.03)
+            : (!ocean[i] && water[i] < 0.27 && ice[i] < 0.24))
+            && s.fire[i] < 0.09 && s.lava[i] < MOLTEN)
+          : Evolution.ground(s, i, profile)
+        : !ocean[i];
+      if (!grounded) continue;
       habitableLand++;
       if (s.climateSupport[i]) sheltered++;
       if (water[i] > 0.23) lakes++;
-      const lifeTemp = typeof Evolution !== "undefined" ? Evolution.lifeTemperature(s, i) : temperature[i];
+      const lifeTemp = hasEvolution
+        ? knownProfile ? Evolution.climateIndex(temperature[i], profile) : Evolution.lifeTemperature(s, i)
+        : temperature[i];
       const watered = s.bioProfile === "warm" || soil[i] > 0.25 || s.bioProfile === "cold" && ice[i] > 0.2;
       if (watered && lifeTemp >= 0.11 && lifeTemp <= 0.87 && s.lava[i] < MOLTEN) wetLand++;
     }
@@ -1011,6 +1028,7 @@ const Biosphere = (() => {
 
   function diversifyWildlife(s) {
     s.marineFood ??= layer();
+    const { marineFood, water, ice, temperature, lava, microbes } = s;
     for (const [list, predator] of [[s.herds, false], [s.packs, true]]) for (const animal of list) {
       if (!FAUNA[animal.species] || Boolean(FAUNA[animal.species].predator) !== predator) {
         const biome = biomeAt(s, at(animal.x, animal.y));
@@ -1021,10 +1039,10 @@ const Biosphere = (() => {
     if (s.era < (typeof FaunaEvolution === "undefined" ? 3 : 2)) return;
     // Aquatic food is an ecosystem stock, not a spendable player resource.
     for (let i = 0; i < SIZE; i++) {
-      const wet = s.water[i] + s.ice[i] > 0.32, temperature = s.temperature[i];
-      const suitable = wet && (s.ice[i] > 0.3 || temperature > -0.22) && (s.bioProfile === "warm" || temperature < 0.97) && s.lava[i] < MOLTEN;
-      const target = suitable ? clamp(0.24 + (s.microbes?.[i] ?? 0) * 0.55 + (s.ice[i] > 0.3 ? 0.22 : 0.10), 0, 1) : 0;
-      s.marineFood[i] += (target - s.marineFood[i]) * (target > s.marineFood[i] ? 0.04 : 0.09);
+      const wet = water[i] + ice[i] > 0.32, temp = temperature[i];
+      const suitable = wet && (ice[i] > 0.3 || temp > -0.22) && (s.bioProfile === "warm" || temp < 0.97) && lava[i] < MOLTEN;
+      const target = suitable ? clamp(0.24 + (microbes?.[i] ?? 0) * 0.55 + (ice[i] > 0.3 ? 0.22 : 0.10), 0, 1) : 0;
+      marineFood[i] += (target - marineFood[i]) * (target > marineFood[i] ? 0.04 : 0.09);
     }
     if (s.era < 3 || s.time < (s.faunaSeedAt ?? 0)) return;
     s.faunaSeedAt = s.time + 8; s.faunaIntroduced ??= {};
@@ -1124,7 +1142,14 @@ const Biosphere = (() => {
   function microbialHabitat(s, i) {
     const dryLife = s.bioProfile === "warm" && !s.ocean[i] && s.ice[i] < 0.24 && s.lava[i] < MOLTEN;
     if (!dryLife && s.water[i] + s.ice[i] < 0.32) return 0;
-    const temp = typeof Evolution !== "undefined" ? Evolution.lifeTemperature(s, i) : s.temperature[i];
+    // OPT5: native life climate uses the planet's own stable profile. Avoid
+    // repeated actor/profile resolution in the per-tile microbial scan.
+    const rawTemp = s.temperature[i];
+    const profile = s.bioProfile;
+    const temp = typeof Evolution !== "undefined"
+      ? (profile === "cold" || profile === "warm" || profile === "temperate"
+        ? Evolution.climateIndex(rawTemp, profile) : Evolution.lifeTemperature(s, i))
+      : rawTemp;
     if (s.fire[i] >= 0.09 || s.lava[i] >= MOLTEN
       || s.temperature[i] < -0.65 || s.temperature[i] > 1.20) return 1;
     const usable = dryLife || (s.bioProfile === "cold" ? s.water[i] + s.ice[i] > 0.32 : s.water[i] > 0.32 && s.ice[i] < 0.18);
@@ -1134,23 +1159,24 @@ const Biosphere = (() => {
   function microbialLife(s) {
     s.microbes ??= new Float32Array(SIZE);
     if (s.era < 1) return;
+    const { microbes, east, west, north, south, water: surfaceWater, ice } = s;
     s.microbialSites = 0;
     let covered = 0, water = 0;
     for (let i = 0; i < SIZE; i++) {
       const habitat = microbialHabitat(s, i);
-      if (!habitat) { s.microbes[i] *= 0.97; continue; }
+      if (!habitat) { microbes[i] *= 0.97; continue; }
       water++;
       if (habitat === 2) {
         s.microbialSites++;
-        const neighboring = Math.max(s.microbes[s.east[i]], s.microbes[s.west[i]], s.microbes[s.north[i]], s.microbes[s.south[i]]);
+        const neighboring = Math.max(microbes[east[i]], microbes[west[i]], microbes[north[i]], microbes[south[i]]);
         const seed = hash(i, 431, s.seed) > 0.995 ? 0.08 : 0;
-        const aquatic = s.water[i] + s.ice[i] >= 0.32;
+        const aquatic = surfaceWater[i] + ice[i] >= 0.32;
         const capacity = s.era < 3 ? 1 : aquatic ? 0.55 : 0.20;
-        const density = s.microbes[i];
+        const density = microbes[i];
         const growth = (0.025 * density + 0.045 * neighboring + seed) * (1 - density / capacity);
-        s.microbes[i] = clamp(density + STEP * (density > capacity ? -0.18 * (density - capacity) : growth), 0, 1);
-      } else s.microbes[i] *= 1 - STEP * (s.ice[i] > 0.18 ? 0.03 : 0.13);
-      if (s.microbes[i] > 0.12) covered++;
+        microbes[i] = clamp(density + STEP * (density > capacity ? -0.18 * (density - capacity) : growth), 0, 1);
+      } else microbes[i] *= 1 - STEP * (ice[i] > 0.18 ? 0.03 : 0.13);
+      if (microbes[i] > 0.12) covered++;
     }
     s.microbeCoverage = water ? covered / water : 0;
   }

@@ -1843,9 +1843,13 @@ function frame(now) {
         backgroundWorkerSystems: workerCount,
         backgroundMainSystems: mainCount,
         backgroundBusySystems: workers.filter(background => background.waiting).length,
-        backgroundWorkerDurations: workers.filter(background => background.threaded && background.workerStepCount > 0)
-          .map(background => ({ steps: background.workerStepCount, ms: Number(background.workerStepMs.toFixed(2)),
-            roundTripMs: Number(background.workerRoundTripMs.toFixed(2)) })),
+        backgroundWorkerDurations: [...galaxyOthers.values()].filter(entry =>
+          entry.background.threaded && entry.background.workerStepCount > 0)
+          .map(entry => ({ name: entry.name, planets: entry.background.currentInfo.worlds,
+            steps: entry.background.workerStepCount,
+            ms: Number(entry.background.workerStepMs.toFixed(2)),
+            roundTripMs: Number(entry.background.workerRoundTripMs.toFixed(2)),
+            msPerStep: Number((entry.background.workerStepMs / entry.background.workerStepCount).toFixed(3)) })),
         pendingSteps: framePendingStepCount,
         frameIntervalEstimateMs: Number(frameIntervalEstimate.toFixed(2)),
         frameFixedCostEstimateMs: Number(frameFixedCostEstimate.toFixed(2)),
@@ -2618,7 +2622,7 @@ function clearGalaxy() {
 }
 
 function startBackground(state) {
-  const workerURL = /^https?:$/.test(location.protocol) ? "./src/galaxy-worker.js?v=m1-perf-opt4" : null;
+  const workerURL = /^https?:$/.test(location.protocol) ? "./src/galaxy-worker.js?v=m1-perf-opt5" : null;
   return Galaxy.background(state, workerURL);
 }
 
