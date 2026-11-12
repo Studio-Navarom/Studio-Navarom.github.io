@@ -165,16 +165,16 @@ const Evolution = (() => {
     state.guideProfile = PROFILES[state.guideProfile] ? state.guideProfile : "temperate";
     state.tutorial ??= { hidden: false, completed: {} }; state.tutorial.completed ??= {};
   }
-  function science(state, id) {
-    init(state); const pool = state.knowledgePools["civil:" + id] ??= { faith: 0 };
+  function science(state, id, prepared = false) {
+    if (!prepared) init(state); const pool = state.knowledgePools["civil:" + id] ??= { faith: 0 };
     pool.science ??= { active: null, progress: {}, funded: {} }; pool.science.progress ??= {}; pool.science.funded ??= {};
     pool.points = Number.isFinite(pool.points) ? Math.max(0, pool.points) : 0;
     pool.discoveries ??= {}; pool.climateKnown ??= {};
     for (const key of Object.keys(TECH)) pool.science.progress[key] ??= 0;
     return pool;
   }
-  function identity(state, world, c, town) {
-    init(state); const s = world.biosphere; s.realmCivilizations ??= {};
+  function identity(state, world, c, town, prepared = false) {
+    if (!prepared) init(state); const s = world.biosphere; s.realmCivilizations ??= {};
     let id = c.civilization || town.civilization || s.realmCivilizations[c.realm];
     if (!id) id = state.nextCivilizationId++;
     state.nextCivilizationId = Math.max(state.nextCivilizationId, id + 1);
@@ -187,7 +187,7 @@ const Evolution = (() => {
     c.profile = town.profile = PROFILES[c.profile] ? c.profile : PROFILES[town.profile] ? town.profile : nation.profile;
     town.civilizationColor = nation.color;
     s.realmCivilizations[c.realm] ??= id;
-    const pool = science(state, id); pool.name = nation.name;
+    const pool = science(state, id, true); pool.name = nation.name;
     return nation;
   }
   function current(state, world) {

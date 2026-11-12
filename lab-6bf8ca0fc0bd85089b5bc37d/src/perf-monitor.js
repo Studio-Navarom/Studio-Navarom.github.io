@@ -66,14 +66,14 @@ const PerformanceHUD = (() => {
     results.notes.textContent = messages.join(" ") || "Zatím bez zjevného omezení. Porovnej měření při 1×, 4× a 12×.";
     results.history.textContent = samples.length + " vzorků · nejvýše 5 minut historie";
     if ($("perf-breakdown")) {
-      const labels = { planets: "Vývoj planet (včetně povrchu)", biosphere: "Klima a biosféra", settlements: "Osady a AI", patronSync: "Synchronizace osad", patronCheck: "Kontrola patronátu", space: "Vesmírný program", hudBase: "Původní HUD", hudManagement: "Rozšířená správa", hudCards: "HUD: přehled planet", hudSurface: "HUD: povrch", hudEconomy: "HUD: ekonomika", hudBuildings: "HUD: budovy", hudPatron: "HUD: patronát", hudCatalogueBuild: "HUD: sestavení osad", hudCatalogueReuse: "HUD: opětovné použití katalogu", hudStatus: "HUD: stav", hudVoyages: "HUD: výpravy", hudLog: "HUD: kronika", bioWeather: "Biosféra: počasí a mikrobi", bioConditions: "Biosféra: podmínky", bioVegetation: "Biosféra: vegetace a krize", bioWildlife: "Biosféra: fauna", bioSettlementGrowth: "Biosféra: růst sídel", bioEnergy: "Biosféra: energetika", bioSocieties: "Biosféra: život společnosti" };
+      const labels = { planets: "Vývoj planet (včetně povrchu)", biosphere: "Klima a biosféra", settlements: "Osady a AI", patronSync: "Synchronizace osad (celkem)", patronSyncIdentity: "Synchronizace: identity a centra osad", patronSyncPopulation: "Synchronizace: populace a migrace", patronSyncDiplomacy: "Synchronizace: diplomacie a zásoby", patronSyncEconomy: "Synchronizace: ekonomika", patronSyncScience: "Synchronizace: věda", patronCheck: "Kontrola patronátu", space: "Vesmírný program", hudBase: "Původní HUD", hudManagement: "Rozšířená správa", hudCards: "HUD: přehled planet", hudSurface: "HUD: povrch", hudEconomy: "HUD: ekonomika", hudBuildings: "HUD: budovy", hudPatron: "HUD: patronát", hudCatalogueBuild: "HUD: sestavení osad", hudCatalogueReuse: "HUD: opětovné použití katalogu", hudStatus: "HUD: stav", hudVoyages: "HUD: výpravy", hudLog: "HUD: kronika", bioWeather: "Biosféra: počasí a mikrobi", bioConditions: "Biosféra: podmínky", bioVegetation: "Biosféra: vegetace a krize", bioWildlife: "Biosféra: fauna", bioSettlementGrowth: "Biosféra: růst sídel", bioEnergy: "Biosféra: energetika", bioSocieties: "Biosféra: život společnosti" };
       const sorted = Object.entries(row.detailMsPerSecond || {}).sort((a, b) => b[1] - a[1]);
       $("perf-breakdown").textContent = sorted.length ? sorted.map(([key, ms]) =>
         (labels[key] || key) + ": " + format(ms) + " ms/s").join(" · ")
         : "Podrobnosti se zaznamenají při běhu simulace.";
     }
     const scheduler = $("perf-scheduler");
-    if (scheduler) scheduler.textContent = "OPT5 · rozpočet " + format(row.averageSimulationBudgetMs) + " ms/snímek"
+    if (scheduler) scheduler.textContent = "OPT6 · rozpočet " + format(row.averageSimulationBudgetMs) + " ms/snímek"
       + " · limit CPU " + format(row.budgetBlockedFramePercent) + " % snímků"
       + " · čekání na vlákna " + format(row.workerBlockedFramePercent) + " % snímků"
       + " · limit kroků " + format(row.stepCapBlockedFramePercent) + " % snímků";
@@ -139,7 +139,7 @@ const PerformanceHUD = (() => {
     recentError = "";
     if ($("perf-breakdown")) $("perf-breakdown").textContent = "Měření podrobností dosud nezačalo.";
     if ($("perf-worker-status")) $("perf-worker-status").textContent = "Vedlejší soustavy: čekám na měření.";
-    if ($("perf-scheduler")) $("perf-scheduler").textContent = "OPT5: čekám na měření propustnosti a čekání.";
+    if ($("perf-scheduler")) $("perf-scheduler").textContent = "OPT6: čekám na měření propustnosti a čekání.";
     for (const [name, element] of Object.entries(results)) {
       if (name === "notes") element.textContent = "Nech hru běžet alespoň 2 sekundy, pak porovnej rychlosti.";
       else if (name === "history") element.textContent = "Zatím žádné vzorky";
@@ -160,7 +160,7 @@ const PerformanceHUD = (() => {
       return;
     }
     const report = {
-      application: "CosmoEvolve", version: "M1-PERF OPT5", capturedAt: new Date().toISOString(),
+      application: "CosmoEvolve", version: "M1-PERF OPT6", capturedAt: new Date().toISOString(),
       explanation: "Volitelné měření na tomto počítači. ms/s je čas hlavního vlákna na reálnou sekundu (ne celkové vytížení CPU). Skutečná rychlost je odvozena od provedených simulačních kroků, nikoli od popisku tlačítka. Nezahrnuje dobu výpočtu ve Web Workerech.",
       notes: "Vnořené časy se překrývají. Jednotlivé díly biosféry jsou podmnožinou celkové biosféry, díly HUD podmnožinou původního HUD. Tyto skupiny nesčítejte.",
       diagnostics: { lastError: recentError, sampleCount: samples.length }, samples

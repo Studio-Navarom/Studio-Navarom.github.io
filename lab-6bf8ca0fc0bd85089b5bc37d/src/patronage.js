@@ -258,6 +258,13 @@ const Patronage = (() => {
   function sync(state, world) {
     const detailed = typeof PerformanceHUD !== "undefined" && PerformanceHUD.active;
     const syncAt = detailed ? performance.now() : 0;
+    let phaseAt = syncAt;
+    const phase = label => {
+      if (!detailed) return;
+      const now = performance.now();
+      PerformanceHUD.mark(label, now - phaseAt);
+      phaseAt = now;
+    };
     const s = world.biosphere;
     if (!s) return [];
     ensureKnowledge(state);
@@ -272,6 +279,7 @@ const Patronage = (() => {
     // Array.find scanned all communities again for every town. The index is
     // local to this call so ownership changes never leave a stale cache.
     const communitiesById = new Map(s.communities.map(item => [item.id, item]));
+    Evolution.init(state);
     for (const [index, town] of s.towns.entries()) {
       let c = communitiesById.get(town.communityId);
       if (!c) {
@@ -290,7 +298,7 @@ const Patronage = (() => {
       if (s.populationVersion && !c.active && c.people === 0 && alive(s, town)) c.newResidents = true;
       c.town = index; c.home = town.home; c.active = world.pop > 0 && alive(s, town);
       c.nature = s.cultures[town.realm] ?? c.nature ?? "broker";
-      const nation = Evolution.identity(state, world, c, town); c.era = Evolution.settlementEra(s, town);
+      const nation = Evolution.identity(state, world, c, town, true); c.era = Evolution.settlementEra(s, town);
       const pool = knowledge(state, world, c);
       c.faith = pool.faith;
       c.civilizationName = Evolution.nationLabel(state,nation.id);
@@ -301,17 +309,29 @@ const Patronage = (() => {
     // OPT1: this was a full towns scan for every community.
     const townIds = new Set(s.towns.map(town => town.communityId));
     for (const c of s.communities) if (!townIds.has(c.id)) c.active = false;
+    phase("patronSyncIdentity");
     reconcilePopulation(state, world);
+    phase("patronSyncPopulation");
     const active = s.communities.filter(c => c.active);
     for (const c of active) {
       if (c.fresh) { c.food = capacity(c) * 0.54; delete c.fresh; }
       c.food = clamp(c.food, 0, capacity(c));
     }
     if (active.some(c => c.civilization && c.civilization === s.colonialCivilization)) s.colonialSeedPending = false;
-    for (const a of active) for (const b of active) if (a.realm !== b.realm) {
+    // OPT6: diplomatic defaults depend on a *pair of realms*, not on every
+    // combination of their settlements. Preserve first-seen realm order and
+    // first-seen natures so existing/default relations stay byte-for-byte equal.
+    const realmFounders = [];
+    const seenRealms = new Set();
+    for (const c of active) if (!seenRealms.has(c.realm)) {
+      seenRealms.add(c.realm);
+      realmFounders.push(c);
+    }
+    for (const a of realmFounders) for (const b of realmFounders) if (a.realm !== b.realm) {
       const pair = key(a.realm, b.realm);
       s.diplomacy[pair] ??= a.nature === "broker" || b.nature === "broker" ? 20 : a.nature === b.nature ? -10 : 15;
     }
+    phase("patronSyncDiplomacy");
     const grids = Evolution.economies(state, world);
     if (s.nativeRestart && active.length) {
       if (world.nativeFounded && !world.colony) {
@@ -322,7 +342,9 @@ const Patronage = (() => {
       }
       delete s.nativeRestart;
     }
+    phase("patronSyncEconomy");
     prepareScience(state, world);
+    phase("patronSyncScience");
     if (detailed) PerformanceHUD.mark("patronSync", performance.now() - syncAt);
     return active;
   }

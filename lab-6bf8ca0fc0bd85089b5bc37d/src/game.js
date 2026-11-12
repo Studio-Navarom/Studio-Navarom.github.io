@@ -2622,7 +2622,7 @@ function clearGalaxy() {
 }
 
 function startBackground(state) {
-  const workerURL = /^https?:$/.test(location.protocol) ? "./src/galaxy-worker.js?v=m1-perf-opt5" : null;
+  const workerURL = /^https?:$/.test(location.protocol) ? "./src/galaxy-worker.js?v=m1-perf-opt6" : null;
   return Galaxy.background(state, workerURL);
 }
 
