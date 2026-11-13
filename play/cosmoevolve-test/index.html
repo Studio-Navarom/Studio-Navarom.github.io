@@ -9,7 +9,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="CosmoEvolve je 16bitová vesmírná hra od Studio Navarom. Usaď planety na oběžné dráze a sleduj, jak na nich vzniká život.">
 <title>CosmoEvolve · OPT13 TEST (přepínače: limity, zmrazení, hloubka, observer, tension, space) · Studio Navarom</title>
-<link rel="stylesheet" href="./styles/game.css?v=opt13b">
+<link rel="stylesheet" href="./styles/game.css?v=opt13c">
 </head>
 <body>
 <div class="shell">
@@ -323,7 +323,7 @@
                 <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 14h14L10 7H6zM8 5V1M5 5L3 3m8 2 2-2"/></svg>
                 Sopka
               </button>
-              <button class="btn" type="button" data-weather="people" aria-pressed="false" title="Klikni na osadu a prohlédni její obyvatele">⚑ Národy</button>
+              <button class="btn" type="button" data-weather="people" aria-pressed="false" title="Klikni na osadu a prohlédni její obyvatele">⚑ Označit</button>
               <button class="btn" id="station-tool" type="button" data-weather="station" aria-pressed="false" hidden>Umístit stanici</button>
               <button class="btn" id="hydro-tool" type="button" data-weather="hydro" aria-pressed="false" hidden>Vodní turbína</button>
             </div>
@@ -349,6 +349,7 @@
                 <button class="btn bless-btn" type="button" data-weather="bless:knowledge-" data-bless="bad" aria-pressed="false">− Zaslepenost</button>
                 <button class="btn bless-btn" type="button" data-weather="bless:peace+" data-bless="good" aria-pressed="false">+ Mír</button>
                 <button class="btn bless-btn" type="button" data-weather="bless:peace-" data-bless="bad" aria-pressed="false">− Nepřátelství</button>
+                <button class="btn bless-btn" type="button" data-weather="bless:cancel" data-bless="neutral" aria-pressed="false" title="Zruší zásah tam, kam kurzorem zamíříš">⊘ Neutralizovat</button>
               </div>
               <div class="bless-active" id="bless-active" aria-label="Aktivní zásahy"></div>
             </details>
@@ -1055,28 +1056,28 @@
   // Run options (put them in the page address):  ?limits=off  = original limits (18 planets, 4 systems)
   //                                              ?freeze=off  = every system keeps running (workers), as in OPT7
   //                                              ?lod=off     = adaptive simulation depth off (full detail everywhere)
-  window.COSMO_OPTIONS = { limits: !/[?&]limits=off\b/.test(location.search), freeze: !/[?&]freeze=off\b/.test(location.search), lod: !/[?&]lod=off\b/.test(location.search), observer: /[?&]observer=on\b/.test(location.search), tension: !/[?&]tension=old\b/.test(location.search), spaceEvents: !/[?&]space=off\b/.test(location.search) };
+  window.COSMO_OPTIONS = { limits: !/[?&]limits=off\b/.test(location.search), freeze: !/[?&]freeze=off\b/.test(location.search), lod: !/[?&]lod=off\b/.test(location.search), observer: !/[?&]observer=off\b/.test(location.search), tension: !/[?&]tension=old\b/.test(location.search), spaceEvents: !/[?&]space=off\b/.test(location.search) };
   // ?observer=on = observer mode (E1): hides the manual management panels (visibility only, nothing is removed) and lets the
   // civilization under patronage build its first plant autonomously like every other civilization. Default behaviour is unchanged.
   if (window.COSMO_OPTIONS.observer) document.documentElement.classList.add("observer");
 </script>
-<script defer src="./src/journal.js?v=opt13b"></script>
-<script defer src="./src/biosphere.js?v=opt13b"></script>
-<script defer src="./src/evolution.js?v=opt13b"></script>
-<script defer src="./src/patronage.js?v=opt13b"></script>
-<script defer src="./src/orbit.js?v=opt13b"></script>
-<script defer src="./src/space.js?v=opt13b"></script>
-<script defer src="./src/warfare.js?v=opt13b"></script>
-<script defer src="./src/surface-view.js?v=opt13b"></script>
-<script defer src="./src/orbit-view.js?v=opt13b"></script>
-<script defer src="./src/fauna-evolution.js?v=opt13b"></script>
-<script defer src="./src/life-chronicle.js?v=opt13b"></script>
-<script defer src="./src/galaxy.js?v=opt13b"></script>
-<script defer src="./src/history-recorder.js?v=opt13b"></script>
-<script defer src="./src/perf-monitor.js?v=opt13b"></script>
-<script defer src="./src/game.js?v=opt13b"></script>
-<script defer src="./src/interface.js?v=opt13b"></script>
-<script defer src="./src/compass.js?v=opt13b"></script>
-<script defer src="./src/hud-editor.js?v=opt13b"></script>
+<script defer src="./src/journal.js?v=opt13c"></script>
+<script defer src="./src/biosphere.js?v=opt13c"></script>
+<script defer src="./src/evolution.js?v=opt13c"></script>
+<script defer src="./src/patronage.js?v=opt13c"></script>
+<script defer src="./src/orbit.js?v=opt13c"></script>
+<script defer src="./src/space.js?v=opt13c"></script>
+<script defer src="./src/warfare.js?v=opt13c"></script>
+<script defer src="./src/surface-view.js?v=opt13c"></script>
+<script defer src="./src/orbit-view.js?v=opt13c"></script>
+<script defer src="./src/fauna-evolution.js?v=opt13c"></script>
+<script defer src="./src/life-chronicle.js?v=opt13c"></script>
+<script defer src="./src/galaxy.js?v=opt13c"></script>
+<script defer src="./src/history-recorder.js?v=opt13c"></script>
+<script defer src="./src/perf-monitor.js?v=opt13c"></script>
+<script defer src="./src/game.js?v=opt13c"></script>
+<script defer src="./src/interface.js?v=opt13c"></script>
+<script defer src="./src/compass.js?v=opt13c"></script>
+<script defer src="./src/hud-editor.js?v=opt13c"></script>
 </body>
 </html>
