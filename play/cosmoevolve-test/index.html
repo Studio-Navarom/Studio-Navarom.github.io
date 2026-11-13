@@ -9,7 +9,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="CosmoEvolve je 16bitová vesmírná hra od Studio Navarom. Usaď planety na oběžné dráze a sleduj, jak na nich vzniká život.">
 <title>CosmoEvolve · OPT13 TEST (přepínače: limity, zmrazení, hloubka, observer, tension, space) · Studio Navarom</title>
-<link rel="stylesheet" href="./styles/game.css?v=opt13">
+<link rel="stylesheet" href="./styles/game.css?v=opt13b">
 </head>
 <body>
 <div class="shell">
@@ -300,8 +300,9 @@
           </div>
         </div>
         <div class="field-foot" id="surface-tools" hidden>
-          <div class="surface-effects">
-            <div class="weather-tools" role="group" aria-label="Počasí a terén">
+          <div class="surface-effects divine-powers">
+            <details class="power-group" data-group="weather" open><summary>Počasí a život</summary>
+              <div class="weather-tools" role="group" aria-label="Počasí">
               <button class="btn" type="button" data-weather="wind" aria-pressed="true">
                 <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h9c4 0 4-4 1-4M1 8h13M1 11h8c4 0 4 4 1 4"/></svg>
                 Vítr
@@ -313,14 +314,6 @@
               <button class="btn" type="button" data-weather="cold" aria-pressed="false">
                 <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 0v16M1 4l14 8M1 12l14-8M6 2l2 2 2-2m-4 12 2-2 2 2"/></svg>
                 Chlad
-              </button>
-              <button class="btn" type="button" data-weather="channel" aria-pressed="false">
-                <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 5h4l2 6h4l2-6h4M6 8h4"/></svg>
-                Koryto
-              </button>
-              <button class="btn" type="button" data-weather="ridge" aria-pressed="false">
-                <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 11h3l3-6h4l3 6h3"/></svg>
-                Val
               </button>
               <button class="btn" type="button" data-weather="spring" aria-pressed="false">
                 <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12h4l2-2 2 2h4M5 8V6l3-3 3 3v2M8 5v3"/></svg>
@@ -334,24 +327,38 @@
               <button class="btn" id="station-tool" type="button" data-weather="station" aria-pressed="false" hidden>Umístit stanici</button>
               <button class="btn" id="hydro-tool" type="button" data-weather="hydro" aria-pressed="false" hidden>Vodní turbína</button>
             </div>
-            <div class="weather-tools bless-tools" role="group" aria-label="Požehnání a zavržení">
-              <span class="smallcaps bless-label" aria-hidden="true">Požehnání</span>
-              <button class="btn bless-btn" type="button" data-weather="bless:prosperity+" data-bless="good" aria-pressed="false">+ Prosperita</button>
-              <button class="btn bless-btn" type="button" data-weather="bless:prosperity-" data-bless="bad" aria-pressed="false">− Neúroda</button>
-              <button class="btn bless-btn" type="button" data-weather="bless:protection+" data-bless="good" aria-pressed="false">+ Ochrana</button>
-              <button class="btn bless-btn" type="button" data-weather="bless:protection-" data-bless="bad" aria-pressed="false">− Zranitelnost</button>
-              <button class="btn bless-btn" type="button" data-weather="bless:knowledge+" data-bless="good" aria-pressed="false">+ Poznání</button>
-              <button class="btn bless-btn" type="button" data-weather="bless:knowledge-" data-bless="bad" aria-pressed="false">− Zaslepenost</button>
-              <button class="btn bless-btn" type="button" data-weather="bless:peace+" data-bless="good" aria-pressed="false">+ Mír</button>
-              <button class="btn bless-btn" type="button" data-weather="bless:peace-" data-bless="bad" aria-pressed="false">− Nepřátelství</button>
-              <span class="bless-slots" id="bless-slots" role="status"></span>
-            </div>
+            </details>
+            <details class="power-group" data-group="terrain"><summary>Úprava krajiny</summary>
+              <div class="weather-tools" role="group" aria-label="Úprava krajiny">
+              <button class="btn" type="button" data-weather="channel" aria-pressed="false">
+                <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 5h4l2 6h4l2-6h4M6 8h4"/></svg>
+                Koryto
+              </button>
+              <button class="btn" type="button" data-weather="ridge" aria-pressed="false">
+                <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 11h3l3-6h4l3 6h3"/></svg>
+                Val
+              </button></div>
+            </details>
+            <details class="power-group" data-group="bless" open><summary>Požehnání a zavržení <span class="bless-slots" id="bless-slots" role="status"></span></summary>
+              <div class="weather-tools bless-tools" role="group" aria-label="Požehnání a zavržení">
+                <button class="btn bless-btn" type="button" data-weather="bless:prosperity+" data-bless="good" aria-pressed="false">+ Prosperita</button>
+                <button class="btn bless-btn" type="button" data-weather="bless:prosperity-" data-bless="bad" aria-pressed="false">− Neúroda</button>
+                <button class="btn bless-btn" type="button" data-weather="bless:protection+" data-bless="good" aria-pressed="false">+ Ochrana</button>
+                <button class="btn bless-btn" type="button" data-weather="bless:protection-" data-bless="bad" aria-pressed="false">− Zranitelnost</button>
+                <button class="btn bless-btn" type="button" data-weather="bless:knowledge+" data-bless="good" aria-pressed="false">+ Poznání</button>
+                <button class="btn bless-btn" type="button" data-weather="bless:knowledge-" data-bless="bad" aria-pressed="false">− Zaslepenost</button>
+                <button class="btn bless-btn" type="button" data-weather="bless:peace+" data-bless="good" aria-pressed="false">+ Mír</button>
+                <button class="btn bless-btn" type="button" data-weather="bless:peace-" data-bless="bad" aria-pressed="false">− Nepřátelství</button>
+              </div>
+              <div class="bless-active" id="bless-active" aria-label="Aktivní zásahy"></div>
+            </details>
             <div class="zoom brush-size" role="group" aria-label="Dosah zásahu">
               <span class="smallcaps" aria-hidden="true">Dosah</span>
               <button type="button" data-brush-size="small" aria-label="Malý dosah" aria-pressed="false">Malý</button>
               <button type="button" data-brush-size="medium" aria-label="Střední dosah" aria-pressed="true">Střední</button>
               <button type="button" data-brush-size="large" aria-label="Velký dosah" aria-pressed="false">Velký</button>
             </div>
+          
           </div>
           <span class="weather-tip" id="weather-tip">Táhni přes mrak směrem, kam má plout. Delší tah zesílí poryv.</span>
           <div class="surface-actions">
@@ -1053,23 +1060,23 @@
   // civilization under patronage build its first plant autonomously like every other civilization. Default behaviour is unchanged.
   if (window.COSMO_OPTIONS.observer) document.documentElement.classList.add("observer");
 </script>
-<script defer src="./src/journal.js?v=opt13"></script>
-<script defer src="./src/biosphere.js?v=opt13"></script>
-<script defer src="./src/evolution.js?v=opt13"></script>
-<script defer src="./src/patronage.js?v=opt13"></script>
-<script defer src="./src/orbit.js?v=opt13"></script>
-<script defer src="./src/space.js?v=opt13"></script>
-<script defer src="./src/warfare.js?v=opt13"></script>
-<script defer src="./src/surface-view.js?v=opt13"></script>
-<script defer src="./src/orbit-view.js?v=opt13"></script>
-<script defer src="./src/fauna-evolution.js?v=opt13"></script>
-<script defer src="./src/life-chronicle.js?v=opt13"></script>
-<script defer src="./src/galaxy.js?v=opt13"></script>
-<script defer src="./src/history-recorder.js?v=opt13"></script>
-<script defer src="./src/perf-monitor.js?v=opt13"></script>
-<script defer src="./src/game.js?v=opt13"></script>
-<script defer src="./src/interface.js?v=opt13"></script>
-<script defer src="./src/compass.js?v=opt13"></script>
-<script defer src="./src/hud-editor.js?v=opt13"></script>
+<script defer src="./src/journal.js?v=opt13b"></script>
+<script defer src="./src/biosphere.js?v=opt13b"></script>
+<script defer src="./src/evolution.js?v=opt13b"></script>
+<script defer src="./src/patronage.js?v=opt13b"></script>
+<script defer src="./src/orbit.js?v=opt13b"></script>
+<script defer src="./src/space.js?v=opt13b"></script>
+<script defer src="./src/warfare.js?v=opt13b"></script>
+<script defer src="./src/surface-view.js?v=opt13b"></script>
+<script defer src="./src/orbit-view.js?v=opt13b"></script>
+<script defer src="./src/fauna-evolution.js?v=opt13b"></script>
+<script defer src="./src/life-chronicle.js?v=opt13b"></script>
+<script defer src="./src/galaxy.js?v=opt13b"></script>
+<script defer src="./src/history-recorder.js?v=opt13b"></script>
+<script defer src="./src/perf-monitor.js?v=opt13b"></script>
+<script defer src="./src/game.js?v=opt13b"></script>
+<script defer src="./src/interface.js?v=opt13b"></script>
+<script defer src="./src/compass.js?v=opt13b"></script>
+<script defer src="./src/hud-editor.js?v=opt13b"></script>
 </body>
 </html>
