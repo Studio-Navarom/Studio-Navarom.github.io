@@ -9,7 +9,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="CosmoEvolve je 16bitová vesmírná hra od Studio Navarom. Usaď planety na oběžné dráze a sleduj, jak na nich vzniká život.">
 <title>CosmoEvolve · OPT13 TEST (přepínače: limity, zmrazení, hloubka, observer, tension, space) · Studio Navarom</title>
-<link rel="stylesheet" href="./styles/game.css?v=opt13ag">
+<link rel="stylesheet" href="./styles/game.css?v=opt13ah">
 </head>
 <body>
 <div class="shell">
@@ -530,7 +530,7 @@
   <header class="dialog-head guide-header">
     <div><p class="guide-eyebrow">Průvodce a encyklopedie</p><h2 id="instructions-title">Jak hrát</h2></div>
     <label class="guide-search" for="guide-search">
-      <span>Hledat v nápovědě</span><input id="guide-search" type="search" placeholder="Např. hlad, kosmodrom nebo HUD" aria-describedby="guide-search-status">
+      <span>Hledat v nápovědě</span><input id="guide-search" type="search" placeholder="Např. sprška, oblíbené nebo HUD" aria-describedby="guide-search-status">
       <span id="guide-search-status" role="status"></span>
     </label>
     <button class="btn icon" type="button" aria-label="Zavřít průvodce" data-dialog-value="close">✕</button>
@@ -542,6 +542,121 @@
     </nav>
     <label class="guide-picker">Kapitola <select id="guide-picker"></select></label>
     <div class="guide-reader" id="guide-reader">
+      <!-- OPT13ah · nová encyklopedie. Starší kapitoly (správa osad, patronát, výzkum, výpravy…) jsou beze změny v <template id="guide-legacy-pages"> níže. -->
+      <article class="guide-page" data-chapter="Co je CosmoEvolve" data-guide-terms="pozorovatel simulace civilizace úvod tutoriál průvodce" aria-labelledby="guide-title-intro">
+        <h3 id="guide-title-intro">Svět žije sám, ty ho pozoruješ</h3>
+        <p class="guide-intro">CosmoEvolve je simulace soustavy. Planety obíhají Slunce, na vhodných vznikne život, vyvinou se kmeny a civilizace, které rostou, obchodují, bojují a zanikají. Ty jsi <b>pozorovatel s božskými silami</b>: planetu vypustíš a pak ji můžeš ovlivnit počasím, krajinou, požehnáním, meteory nebo sluneční bouří. Civilizace řídí samy sebe.</p>
+        <p class="guide-jump"><button class="btn primary" type="button" data-tutorial-start="">Spustit řízený tutoriál</button><button class="btn" type="button" data-guide-link="guide-title-first">První planeta</button><button class="btn" type="button" data-guide-link="guide-title-powers">Božské síly</button><button class="btn" type="button" data-guide-link="guide-title-civs">Civilizace a sídla</button></p>
+        <ul>
+          <li><b>Řízený tutoriál</b> tě provede pohledy, ovládáním a silami s připravenými kroky. Můžeš ho kdykoli ukončit tlačítkem <b>Volná hra</b> a znovu spustit v panelu <b>Dobrovolný průvodce</b> nebo tady.</li>
+          <li><b>Nic není nutné.</b> Hra běží i bez zásahu. Pozoruj, kdy chceš, zasahuj, kdy chceš.</li>
+          <li>Časy v tlačítkách (například „Sprška meteorů · 12 s“) jsou odpočty, než půjde síla použít znovu.</li>
+        </ul>
+      </article>
+      <article class="guide-page" data-chapter="První planeta" data-guide-terms="vypustit planetu tah dráha předpověď tvorba planet gravitace pásmo" aria-labelledby="guide-title-first">
+        <h3 id="guide-title-first">Vytvoř svět a vypusť ho na dráhu</h3>
+        <p class="guide-intro">V pohledu <b>Soustava</b> otevři panel <b>Tvorba planet a hody</b>. V <b>Nastavení nové planety</b> vyber vývoj, teplotní nároky a počáteční svět, případně vyplň název. Klikni na <b>Vypustit planetu</b>, na mapě stiskni a <b>táhni od místa, odkud má planeta vyletět</b>, a pusť. Na dotyku totéž prstem.</p>
+        <figure>
+          <img data-src="./assets/guide/01-soustava.webp" alt="Detail mapy soustavy. Modrá planeta je v zeleném pásmu a šipka ukazuje směr hodu." decoding="async" width="1016" height="604">
+          <figcaption>Ukázka míření na mapě soustavy. <a href="./assets/guide/01-soustava.webp" target="_blank" rel="noopener">Zvětšit snímek ↗︎</a></figcaption>
+        </figure>
+        <ul>
+          <li><b>Směr a délka tahu</b> určí směr a rychlost. Tečkovaná <b>předpověď dráhy</b> je delší než dřív a ukazuje, kam planeta doletí. Planeta musí Slunce oběhnout, ne do něj spadnout nebo z soustavy uletět.</li>
+          <li><b>Zelený pás</b> je obyvatelná zóna. V panelu <b>Gravitace a pásma</b> vybereš gravitaci (<b>Stabilní</b> drží dráhy, <b>Volná</b> dovolí planetám se vzájemně ovlivňovat) a pomocné pásmo (horké, mírné, chladné).</li>
+          <li><b>Mladý svět</b> začíná před vznikem mikrobů, starší svět může začít zvěří nebo kmeny. Přírodní vývoj lze urychlit.</li>
+          <li>Mimo režim vypouštění tažení mapou posouvá pohled. Planetu přejmenuješ tužkou ✎ u názvu.</li>
+        </ul>
+        <details class="guide-keyboard">
+          <summary>Ovládání klávesnicí</summary>
+          <p>Při míření mění <kbd>Q</kbd> a <kbd>E</kbd> směr, <kbd>+</kbd> a <kbd>−</kbd> sílu. <kbd>Enter</kbd> vypustí planetu a <kbd>Esc</kbd> míření zruší. Mimo míření šipkami posuneš mapu, <kbd>+</kbd> a <kbd>−</kbd> upraví přiblížení a <kbd>Home</kbd> ukáže celou soustavu. <kbd>P</kbd> pozastaví čas.</p>
+        </details>
+      </article>
+      <article class="guide-page" data-chapter="Pohledy a čas" data-guide-terms="galaxie soustava planeta pohled rychlost pauza mapa přiblížení" aria-labelledby="guide-title-views2">
+        <h3 id="guide-title-views2">Tři pohledy a rychlost času</h3>
+        <dl class="guide-reference">
+          <dt>Galaxie</dt><dd>Přehled více soustav. Soustavy přidáváš a přepínáš tady. Přes <b>Uložení a nastavení</b> uložíš celou galaxii.</dd>
+          <dt>Soustava</dt><dd>Slunce, dráhy a planety. Tady vypouštíš planety a používáš vesmírné božské síly. Panel <b>Stav soustavy</b> ukazuje obyvatele, civilizace, planety a <b>Orbitální dohled</b>.</dd>
+          <dt>Planeta</dt><dd>Povrch vybrané planety: počasí, krajina, život a osady. Otevřeš ji záložkou <b>Planeta</b> nebo tlačítkem <b>Otevřít povrch</b>.</dd>
+          <dt>Čas</dt><dd><b>1×</b>, <b>4×</b>, <b>12×</b> a pauza (<kbd>P</kbd>). Při pauze můžeš dál prohlížet a plánovat. Při velkých událostech (dopad, srážka) se čas přizpůsobí a hra ti nechá chvíli na sledování.</dd>
+          <dt>Rozložení</dt><dd>Každý pohled si pamatuje vlastní rozložení panelů. Viz kapitola <b>Editor rozhraní</b>.</dd>
+        </dl>
+      </article>
+      <article class="guide-page" data-chapter="Božské síly" data-guide-terms="sprška meteorů sluneční bouře kometa prach cooldown odpočet sonda" aria-labelledby="guide-title-powers">
+        <h3 id="guide-title-powers">Vesmírné božské síly</h3>
+        <p class="guide-intro">Pod mapou v panelu <b>Tvorba planet a hody</b> je část <b>Božské síly vesmíru</b>. Obě síly mají odpočet, než je použiješ znovu.</p>
+        <ul>
+          <li><b>☄ Sprška meteorů.</b> Klikni, pak na mapě táhni od místa, odkud mají částice vyletět. Směr a délka tahu určí rychlost. Při míření vidíš asteroid a předpověď letu. Prach <b>respektuje gravitaci Slunce</b>, neobíhá jako planeta, ale proletí a po čase plynule zmizí. Každé zrnko, které zasáhne planetu, dopadne jako <b>miniaturní kometa</b> s kráterem a prachem. Planetu jednotlivě sprška nezničí.</li>
+          <li><b>☀ Sluneční bouře.</b> Slunce zazáří a po několika vteřinách soustavou projde vlna. <b>Ohrožené sondy</b> (zhruba 40 %) jsou označené červeným kroužkem a vlna je zničí, jakmile k nim dorazí. Planety jen zablikají. Bouře se nespouští sama, jen tvým tlačítkem.</li>
+          <li>Obě síly ovládáš z pohledu <b>Soustava</b>. <b>Historie planety</b> pod nimi přehraje minulost vybrané planety.</li>
+        </ul>
+      </article>
+      <article class="guide-page" data-chapter="Hrozby a ochrana" data-guide-terms="dopad asteroid kometa srážka orbitální dohled varování sledovat chránit záchrana ztráta planeta zničena" aria-labelledby="guide-title-threats">
+        <h3 id="guide-title-threats">Hrozící dopad, srážka a záchrana</h3>
+        <p class="guide-intro">Když se k planetě blíží těleso, spršku meteorů nebo když se srazí dvě planety, objeví se výstraha nad mapou.</p>
+        <ul>
+          <li><b>Přeskočit ▸▸</b> výstrahu zavře a čas běží dál stejnou rychlostí. Výsledek hrozby se nemění.</li>
+          <li><b>Sledovat v soustavě</b> zaměří mapu na ohroženou planetu a vidíš, jak těleso doletí. <b>Sledovat na povrchu</b> otevře povrch, ukáže celý povrch a pak plynule přejede k místu dopadu. Při spršce se mapa neposouvá, zůstane celkový pohled.</li>
+          <li><b>Chránit planetu</b> se nabídne jen u tělesa, které by planetu zničilo. Ochrana nemá odpočet.</li>
+          <li>Při <b>srážce planet</b> můžeš jednu z nich zachránit tlačítkem se jménem planety. Druhá zanikne.</li>
+          <li>Když planeta zanikne, otevře se okno <b>Planeta zničena</b> s příčinou, čísly, kronikou života a událostí a tlačítkem <b>Historie povrchu</b>.</li>
+          <li><b>Orbitální dohled</b> ve Stavu soustavy rozkliknutím ukáže, co přesně hrozí a které planety se to týká. U každé položky je <b>Zobrazit planetu</b>.</li>
+        </ul>
+      </article>
+      <article class="guide-page" data-chapter="Povrch a síly planety" data-guide-terms="počasí vítr teplo chlad pramen sopka krajina kanál hřeben požehnání zavržení sloty flóra fauna" aria-labelledby="guide-title-surface">
+        <h3 id="guide-title-surface">Počasí, krajina a požehnání</h3>
+        <p class="guide-intro">V pohledu <b>Planeta</b> jsou <b>Božské síly</b> vlevo vedle mapy. Skupiny jsou sbalitelné roletky a hra si pamatuje, co máš otevřené.</p>
+        <ul>
+          <li><b>Počasí a život</b>: vítr, teplo, chlad, pramen, sopka a podobné zásahy. Klikni na nástroj a pak na povrch.</li>
+          <li><b>Úprava krajiny</b>: kanály, hřebeny a další terénní zásahy.</li>
+          <li><b>Požehnání a zavržení</b>: posilují nebo oslabují vybranou oblast (například prosperitu). Počet souběžných zásahů je omezený počtem obydlených sídel. Aktivní zásahy vidíš v nápovědě u osady a můžeš je <b>Zrušit</b>.</li>
+          <li><b>Stav planety</b> ukazuje teplotu, vodu, vegetaci a počasí. <b>Život a evoluce</b> vypráví vývoj biosféry. <b>Flóra a fauna</b> je roletka na kartě planety.</li>
+        </ul>
+      </article>
+      <article class="guide-page" data-chapter="Civilizace a sídla" data-guide-terms="kmen civilizace osada podrobnosti hvězdička oblíbené hledat živý přehled roletka" aria-labelledby="guide-title-civs">
+        <h3 id="guide-title-civs">Procházej kmeny a osady</h3>
+        <p class="guide-intro">Civilizace se řídí samy. Ty je <b>sleduješ</b> a zasahuješ božskými silami. Kde je najdeš:</p>
+        <ul>
+          <li><b>Živý přehled světa</b> (hlavní správa): políčko <b>Hledat</b> najde civilizaci nebo osadu. Pod ním jsou tvoje <b>oblíbené</b>.</li>
+          <li>Roletka <b>Civilizace a sídla</b> vedle <b>Planet</b> (se šipkami ‹ ›) ukazuje <b>všechny kmeny</b> ve hře. Klikni na kmen: rozbalí se planety a osady. U osady <b>Podrobnosti</b> otevřou kartu přímo na místě, <b>Najít na mapě</b> ji ukáže. Roletka vždy zobrazuje všechny planety kmene a nemění filtr planet.</li>
+          <li><b>★ Hvězdička</b> připne kmen nebo osadu mezi <b>oblíbené</b>. Připnuté kmeny jsou v roletce nahoře a oblíbené jsou jako tlačítka pod hledáním. Klik na oblíbený kmen ho rozbalí, klik na oblíbenou osadu ji najde na mapě.</li>
+          <li>Na kartě planety jsou kmeny v <b>Civilizace a sídla</b> odkazy: klik tě přenese do roletky v hlavní správě.</li>
+          <li>Roletka <b>Planety</b> má šipky ‹ › pro listování planetami.</li>
+        </ul>
+      </article>
+      <article class="guide-page" data-chapter="Editor rozhraní" data-guide-terms="HUD mřížka dlaždice rozložení panel skrytí sbalit export import JSON předvolba zamčeno" aria-labelledby="guide-title-hud">
+        <h3 id="guide-title-hud">Uspořádej si herní rozhraní</h3>
+        <p class="guide-intro">V horní liště klikni na <b>Upravit rozložení</b>. Otevře se <b>Editor rozhraní</b>. Nabízí jen panely aktuálního pohledu (Galaxie, Soustava, Planeta), protože každý pohled má vlastní rozložení.</p>
+        <ol class="guide-steps">
+          <li><b>Přesun.</b> Chyť panel za <b>⠿</b> a táhni do volného místa nebo k okraji sousedního panelu. Zelený obrys ukazuje cíl, červený znamená, že tam panel nevejde.</li>
+          <li><b>Velikost.</b> Táhni za <b>◢</b> v pravém dolním rohu, nebo použij <b>−</b> a <b>+</b>.</li>
+          <li><b>Viditelnost.</b> Zaškrtávátky v editoru nebo křížkem ✕ na panelu panel skryješ. Tlačítko <b>Sbalit</b> na panelu ho jen složí. Mapa zůstává vždy.</li>
+          <li><b>Hotovo</b> editor zavře a rozložení zamkne.</li>
+        </ol>
+        <dl class="guide-reference">
+          <dt>Předvolby</dt><dd><b>Vyvážené</b>, <b>Tvůrce</b> a <b>Strategie</b> rozmístí panely znovu. <b>Obnovit rozložení</b> vrátí výchozí. <b>Původní zobrazení</b> vypne mřížku, zapneš ji tlačítkem <b>Upravit HUD</b>.</dd>
+          <dt>Uložení a přenos</dt><dd>Rozložení se ukládá v prohlížeči zvlášť pro každý pohled. Na úzké obrazovce jsou panely pod sebou. <b>Exportovat JSON</b> a <b>Importovat JSON</b> přenesou rozložení jinam.</dd>
+        </dl>
+        <details class="guide-keyboard">
+          <summary>Úpravy klávesnicí</summary>
+          <p>Zaměř úchyt <b>⠿</b> a posouvej panel šipkami. Na úchytu <b>◢</b> šipky mění rozměry. <kbd>Esc</kbd> ruší rozpracované tažení.</p>
+        </details>
+      </article>
+      <article class="guide-page" data-chapter="Uložení, tutoriál a nastavení" data-guide-terms="uložení nová hra tutoriál průvodce pozorovatel observer parametry adresa limits freeze lod" aria-labelledby="guide-title-save">
+        <h3 id="guide-title-save">Ulož hru, spusť tutoriál, testovací volby</h3>
+        <ul>
+          <li><b>Uložení a nastavení</b> (vpravo nahoře) uloží a načte pozici i celou galaxii. <b>Nová hra</b> začne znovu s prázdnou mapou.</li>
+          <li><b>Řízený tutoriál</b>: panel <b>Dobrovolný průvodce</b> → <b>Spustit průvodce</b>. Zvýrazní prvky, vysvětlí je a u vypuštění planety počká na tvoji akci. <b>Volná hra</b> ho kdykoli ukončí, <b>Pokračovat</b> naváže, <b>Začít znovu</b> ho projde od začátku.</li>
+          <li><b>Pozorovatelská vrstva</b> je ve hře výchozí: správa osad, patronát, výzkum a výpravy jsou skryté a svět se řídí sám. Pro testy ji vypneš adresou <code>?observer=off</code>. Další volby adresy: <code>?limits=off</code>, <code>?freeze=off</code>, <code>?lod=off</code>.</li>
+          <li>Testovací verze má vlastní oddělené ukládání a nezasahuje do hlavní hry.</li>
+        </ul>
+      </article>
+      <article class="guide-page" aria-labelledby="guide-title-contamination" data-guide-context hidden>
+        <h3 id="guide-title-contamination">Kontaminace po dopadu</h3>
+        <p>Fialová plocha s obrysem označuje oblast, kde kontaminace ještě trvá. Škody na stavbách zasahují až <b>5 polí</b> od středu dopadu a kontaminace až <b>6 polí</b>. Okraj odeznívá dřív a obrys se postupně stahuje.</p>
+        <p>V zasažené oblasti dočasně ustane růst zeleně, ubude místní potrava a opravy musejí počkat. Osadám může pomoct obživa z nezasaženého okolí, dovoz nebo přesun obyvatel. Déšť pomáhá hasit požáry. Kontaminace ustupuje postupně s časem simulace.</p>
+        <p>V upozornění klikni na název zasažené oblasti a mapa zaměří místo dopadu.</p>
+      </article>
+      <template id="guide-legacy-pages">
       <article class="guide-page" data-chapter="První planeta" aria-labelledby="guide-title-1">
         <h3 id="guide-title-1">Vytvoř svět a vypusť ho na dráhu</h3>
         <p class="guide-jump"><button class="btn" type="button" data-guide-link="guide-title-views">Pohledy a dráha</button><button class="btn" type="button" data-guide-link="guide-title-hud">Úpravy HUDu</button><button class="btn" type="button" data-guide-link="guide-title-settlement">Proč osada strádá</button><button class="btn" type="button" data-guide-link="guide-title-projects">Planetární projekty</button></p>
@@ -823,12 +938,7 @@
           <li>Přes <b>Uložení</b> můžeš rozehranou pozici uložit, exportovat nebo znovu načíst. Export deníku obsahuje text událostí. Nastavení rozložení má vlastní export v editoru HUDu.</li>
         </ul>
       </article>
-      <article class="guide-page" aria-labelledby="guide-title-contamination" data-guide-context hidden>
-        <h3 id="guide-title-contamination">Kontaminace po dopadu</h3>
-        <p>Fialová plocha s obrysem označuje oblast, kde kontaminace ještě trvá. Škody na stavbách zasahují až <b>5 polí</b> od středu dopadu a kontaminace až <b>6 polí</b>. Okraj odeznívá dřív a obrys se postupně stahuje.</p>
-        <p>V zasažené oblasti dočasně ustane růst zeleně, ubude místní potrava a opravy musejí počkat. Osadám může pomoct obživa z nezasaženého okolí, dovoz nebo přesun obyvatel. Déšť pomáhá hasit požáry. Kontaminace ustupuje postupně s časem simulace.</p>
-        <p>V upozornění klikni na název zasažené oblasti a mapa zaměří místo dopadu.</p>
-      </article>
+      </template>
     </div>
   </div>
   <footer class="guide-footer">
@@ -1092,24 +1202,25 @@
   // civilization under patronage build its first plant autonomously like every other civilization. Default behaviour is unchanged.
   if (window.COSMO_OPTIONS.observer) document.documentElement.classList.add("observer");
 </script>
-<script defer src="./src/journal.js?v=opt13ag"></script>
-<script defer src="./src/biosphere.js?v=opt13ag"></script>
-<script defer src="./src/evolution.js?v=opt13ag"></script>
-<script defer src="./src/patronage.js?v=opt13ag"></script>
-<script defer src="./src/orbit.js?v=opt13ag"></script>
-<script defer src="./src/space.js?v=opt13ag"></script>
-<script defer src="./src/warfare.js?v=opt13ag"></script>
-<script defer src="./src/surface-view.js?v=opt13ag"></script>
-<script defer src="./src/orbit-view.js?v=opt13ag"></script>
-<script defer src="./src/fauna-evolution.js?v=opt13ag"></script>
-<script defer src="./src/life-chronicle.js?v=opt13ag"></script>
-<script defer src="./src/galaxy.js?v=opt13ag"></script>
-<script defer src="./src/history-recorder.js?v=opt13ag"></script>
-<script defer src="./src/perf-monitor.js?v=opt13ag"></script>
-<script defer src="./src/game.js?v=opt13ag"></script>
-<script defer src="./src/interface.js?v=opt13ag"></script>
-<script defer src="./src/compass.js?v=opt13ag"></script>
-<script defer src="./src/map-hint.js?v=opt13ag"></script>
-<script defer src="./src/hud-editor.js?v=opt13ag"></script>
+<script defer src="./src/journal.js?v=opt13ah"></script>
+<script defer src="./src/biosphere.js?v=opt13ah"></script>
+<script defer src="./src/evolution.js?v=opt13ah"></script>
+<script defer src="./src/patronage.js?v=opt13ah"></script>
+<script defer src="./src/orbit.js?v=opt13ah"></script>
+<script defer src="./src/space.js?v=opt13ah"></script>
+<script defer src="./src/warfare.js?v=opt13ah"></script>
+<script defer src="./src/surface-view.js?v=opt13ah"></script>
+<script defer src="./src/orbit-view.js?v=opt13ah"></script>
+<script defer src="./src/fauna-evolution.js?v=opt13ah"></script>
+<script defer src="./src/life-chronicle.js?v=opt13ah"></script>
+<script defer src="./src/galaxy.js?v=opt13ah"></script>
+<script defer src="./src/history-recorder.js?v=opt13ah"></script>
+<script defer src="./src/perf-monitor.js?v=opt13ah"></script>
+<script defer src="./src/game.js?v=opt13ah"></script>
+<script defer src="./src/interface.js?v=opt13ah"></script>
+<script defer src="./src/compass.js?v=opt13ah"></script>
+<script defer src="./src/map-hint.js?v=opt13ah"></script>
+<script defer src="./src/hud-editor.js?v=opt13ah"></script>
+<script defer src="./src/tutorial.js?v=opt13ah"></script>
 </body>
 </html>
