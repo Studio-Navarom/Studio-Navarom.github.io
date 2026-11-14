@@ -9,7 +9,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="CosmoEvolve je 16bitová vesmírná hra od Studio Navarom. Usaď planety na oběžné dráze a sleduj, jak na nich vzniká život.">
 <title>CosmoEvolve · OPT13 TEST (přepínače: limity, zmrazení, hloubka, observer, tension, space) · Studio Navarom</title>
-<link rel="stylesheet" href="./styles/game.css?v=opt13e">
+<link rel="stylesheet" href="./styles/game.css?v=opt13g">
 </head>
 <body>
 <div class="shell">
@@ -24,7 +24,7 @@
     </div>
     <div class="mast-actions">
       <button class="btn" id="galaxy-open" type="button" aria-pressed="false">✦ Galaxie</button>
-      <button class="btn" id="storage-open" type="button" title="Uložit nebo načíst rozehranou soustavu">💾 Uložení</button>
+      <button class="btn" id="storage-open" type="button" title="Uložení, export, obnova a nastavení (včetně úpravy HUD)">💾 Uložení a nastavení</button>
       <button class="btn" id="help" type="button"><span class="help-mark" aria-hidden="true">?</span> Jak hrát</button>
       <button class="btn" id="restart" type="button" title="Založit novou soustavu">
         <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -986,8 +986,9 @@
   </div>
 </dialog>
 <dialog id="storage-dialog" aria-labelledby="storage-title">
-  <h2 id="storage-title">Uložené soustavy</h2>
-  <p>Ulož aktuální simulaci do tohoto prohlížeče nebo ji obnov ze zálohy.</p>
+  <h2 id="storage-title">Uložení a nastavení</h2>
+  <h3 class="storage-section">Uložení, export a obnova</h3>
+  <p>Ulož aktuální simulaci do tohoto prohlížeče, exportuj ji do souboru nebo ji obnov ze zálohy.</p>
   <p id="storage-message" class="storage-hint">Ručně uložený stav můžeš obnovit i po zániku civilizace.</p>
   <div class="storage-buttons">
     <button class="btn primary" type="button" id="save-local">Uložit pozici</button>
@@ -997,6 +998,11 @@
   </div>
   <input id="save-file" type="file" accept=".json,application/json" hidden>
   <p class="storage-hint">Lokální uložení je vázáno na tento prohlížeč. Soubor JSON slouží jako přenositelná záloha.</p>
+  <h3 class="storage-section">Nastavení</h3>
+  <div class="storage-buttons">
+    <button class="btn" type="button" id="storage-hud">▦ Upravit HUD (rozložení panelů)</button>
+  </div>
+  <p class="storage-hint">Rozložení panelů se ukládá v tomto prohlížeči a nemění uloženou hru.</p>
   <div class="dialog-actions"><button class="btn" type="button" data-dialog-value="close">Zavřít</button></div>
 </dialog>
 <dialog id="mission-result" aria-labelledby="mission-result-title">
@@ -1065,24 +1071,24 @@
   // civilization under patronage build its first plant autonomously like every other civilization. Default behaviour is unchanged.
   if (window.COSMO_OPTIONS.observer) document.documentElement.classList.add("observer");
 </script>
-<script defer src="./src/journal.js?v=opt13e"></script>
-<script defer src="./src/biosphere.js?v=opt13e"></script>
-<script defer src="./src/evolution.js?v=opt13e"></script>
-<script defer src="./src/patronage.js?v=opt13e"></script>
-<script defer src="./src/orbit.js?v=opt13e"></script>
-<script defer src="./src/space.js?v=opt13e"></script>
-<script defer src="./src/warfare.js?v=opt13e"></script>
-<script defer src="./src/surface-view.js?v=opt13e"></script>
-<script defer src="./src/orbit-view.js?v=opt13e"></script>
-<script defer src="./src/fauna-evolution.js?v=opt13e"></script>
-<script defer src="./src/life-chronicle.js?v=opt13e"></script>
-<script defer src="./src/galaxy.js?v=opt13e"></script>
-<script defer src="./src/history-recorder.js?v=opt13e"></script>
-<script defer src="./src/perf-monitor.js?v=opt13e"></script>
-<script defer src="./src/game.js?v=opt13e"></script>
-<script defer src="./src/interface.js?v=opt13e"></script>
-<script defer src="./src/compass.js?v=opt13e"></script>
-<script defer src="./src/map-hint.js?v=opt13e"></script>
-<script defer src="./src/hud-editor.js?v=opt13e"></script>
+<script defer src="./src/journal.js?v=opt13g"></script>
+<script defer src="./src/biosphere.js?v=opt13g"></script>
+<script defer src="./src/evolution.js?v=opt13g"></script>
+<script defer src="./src/patronage.js?v=opt13g"></script>
+<script defer src="./src/orbit.js?v=opt13g"></script>
+<script defer src="./src/space.js?v=opt13g"></script>
+<script defer src="./src/warfare.js?v=opt13g"></script>
+<script defer src="./src/surface-view.js?v=opt13g"></script>
+<script defer src="./src/orbit-view.js?v=opt13g"></script>
+<script defer src="./src/fauna-evolution.js?v=opt13g"></script>
+<script defer src="./src/life-chronicle.js?v=opt13g"></script>
+<script defer src="./src/galaxy.js?v=opt13g"></script>
+<script defer src="./src/history-recorder.js?v=opt13g"></script>
+<script defer src="./src/perf-monitor.js?v=opt13g"></script>
+<script defer src="./src/game.js?v=opt13g"></script>
+<script defer src="./src/interface.js?v=opt13g"></script>
+<script defer src="./src/compass.js?v=opt13g"></script>
+<script defer src="./src/map-hint.js?v=opt13g"></script>
+<script defer src="./src/hud-editor.js?v=opt13g"></script>
 </body>
 </html>
