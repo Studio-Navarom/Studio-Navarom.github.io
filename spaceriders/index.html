@@ -6,6 +6,23 @@
   <meta name="description" content="Explore an open galaxy, trade, mine, take contracts and build your own power in SpaceRiders: Trade & Conquer.">
   <title>SpaceRiders: Trade &amp; Conquer — Studio Navarom</title>
   <link rel="stylesheet" href="../styles.css">
+<style>
+.faction-story .story-intro{max-width:850px;color:var(--muted);font-size:17px;line-height:1.8;margin:22px 0 30px}
+.story-intro p{margin:0 0 16px}
+.faction-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+.faction-card{--faction:#79b6f4;min-width:0;border:1px solid var(--line);border-top:3px solid var(--faction);border-radius:12px;overflow:hidden;background:linear-gradient(160deg,#101c28,#080e15)}
+.faction-dominion{--faction:#efbd59}.faction-accord{--faction:#5dd9ba}.faction-independents{--faction:#d99e53}
+.faction-card img{display:block;width:100%;height:auto;background:#0b1520}
+.faction-copy{padding:20px}
+.faction-copy .faction-motto{color:var(--faction);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;line-height:1.6;margin:0 0 10px}
+.faction-copy h3{font-size:22px;line-height:1.2;margin:0 0 14px}
+.faction-copy p{font-size:14px;line-height:1.75;color:var(--muted);margin:0}
+.story-choice{text-align:center;max-width:720px;margin:34px auto 0}
+.story-choice>p{font-size:17px;color:var(--muted);line-height:1.7}
+.story-choice .story-question{font-size:clamp(24px,4vw,34px);font-weight:800;color:var(--text);line-height:1.2;margin:18px 0 24px}
+@media(max-width:960px){.faction-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.faction-grid{grid-template-columns:1fr}.faction-card{max-width:360px;margin:0 auto;width:100%}.faction-copy{padding:22px}.faction-copy h3{font-size:24px}.faction-copy p{font-size:15px}}
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -35,7 +52,33 @@
 <article class="guide-card"><span class="guide-number">04</span><h3>Build your own power</h3><p>Hire miners and escorts, found stations or take control of existing ones. Develop your systems and defend them against raids. Remain independent or pledge to a power and inherit its rivalries.</p></article>
 </div>
 </section>
-<section class="detail-section" aria-labelledby="world-title"><div class="label">YOUR ADVENTURE</div><h2 id="world-title">Four powers. Your own path.</h2><p class="detail-section-lead">The Terran Concord guards its borders by force. The Solar Dominion controls the markets and buys worlds. The Free Accord refuses imperial rule, while the Independent Systems survive between them. Trade, exploration and conflict shape your reputation — and the opportunities open to you.</p></section>
+<section class="detail-section faction-story" aria-labelledby="world-title">
+<div class="label">YOUR ADVENTURE</div>
+<h2 id="world-title">Four powers. Your own path.</h2>
+<div class="story-intro">
+<p>Once, trade lanes bound the stars together. Now they are divided by old grievances, shifting borders and wars that never truly ended. Convoys vanish along forgotten routes. Distant colonies look for protection. Beyond the reach of the great fleets, pirates wait.</p>
+<p>The Terran Concord guards its borders by force. The Solar Dominion controls the markets and buys worlds. The Free Accord refuses imperial rule, while the Independent Systems survive between them.</p>
+</div>
+<div class="faction-grid">
+<article class="faction-card faction-concord">
+<img src="../play/spaceriders/assets/concord-Dw0mOwK6.jpg" alt="Concord officers beneath a blue military banner" width="300" height="276" loading="lazy" decoding="async">
+<div class="faction-copy"><p class="faction-motto">Order through strength</p><h3>Terran Concord</h3><p>Born from the ashes of interstellar wars, the Concord unites human colonies under one government. Its fleets defend trade lanes and enforce galactic law. To its admirals, peace is something that must be protected by force.</p></div>
+</article>
+<article class="faction-card faction-dominion">
+<img src="../play/spaceriders/assets/dominion-Bz-z9TpC.jpg" alt="Dominion nobles beneath a golden sun banner" width="300" height="283" loading="lazy" decoding="async">
+<div class="faction-copy"><p class="faction-motto">Wealth becomes power</p><h3>Solar Dominion</h3><p>An empire built by merchant houses and industrial dynasties. The Dominion controls the markets and buys worlds, spreading its influence through wealth and trade. Its ambitions bring it into conflict with the Concord and the free colonies.</p></div>
+</article>
+<article class="faction-card faction-accord">
+<img src="../play/spaceriders/assets/accord-DuQ4Cn_p.jpg" alt="Accord explorers and scientists beside a radio telescope" width="300" height="287" loading="lazy" decoding="async">
+<div class="faction-copy"><p class="faction-motto">Freedom to discover</p><h3>Free Accord</h3><p>Scientists, explorers and settlers who refused the rule of empires. The Accord values independence, research and the right to choose your own future. Its advanced ships chart the unknown while its colonies resist the Dominion's expansion.</p></div>
+</article>
+<article class="faction-card faction-independents">
+<img src="../play/spaceriders/assets/independents-ldVKrEVp.jpg" alt="Independent miners and settlers beneath a gear banner" width="300" height="276" loading="lazy" decoding="async">
+<div class="faction-copy"><p class="faction-motto">No throne. No master.</p><h3>Independent Systems</h3><p>Mining colonies, frontier settlements and smugglers' havens bound by their refusal to bow to the great powers. They have no single ruler or united fleet. Here, traders, outcasts and fortune hunters struggle to keep their freedom — and their routes — alive.</p></div>
+</article>
+</div>
+<div class="story-choice"><p>You are one pilot in a galaxy that remembers. Serve a power, make your fortune, or build something of your own.</p><p class="story-question">Whose side will you fly for?</p><a class="btn primary" href="../play/spaceriders/">Choose your path</a></div>
+</section>
       <section class="detail-section" aria-labelledby="controls-title">
         <div class="label">QUICK REFERENCE</div>
         <h2 id="controls-title">Controls</h2>
