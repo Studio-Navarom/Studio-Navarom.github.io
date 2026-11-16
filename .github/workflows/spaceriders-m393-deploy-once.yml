@@ -1,0 +1,39 @@
+name: Deploy SpaceRiders M3.93 (temporary)
+on:
+  push:
+    paths:
+      - '.github/workflows/spaceriders-m393-deploy-once.yml'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public Studio Navarom
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch verified SpaceRiders build
+        env:
+          BUILD_URL: "https://sdmntprnortheu.oaiusercontent.com/files/00000000-7260-81f4-a0ee-22fd06cb79c7/raw?se=2026-11-16T22%3A04%3A02Z&sp=r&sv=2026-06-06&sr=b&scid=63bd907f-dfeb-55fc-8859-76482a07cec6&skoid=7b771594-2b4f-4e93-93be-fdeeeb59aaf9&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-16T09%3A25%3A51Z&ske=2026-11-17T09%3A25%3A51Z&sks=b&skv=2026-06-06&sig=JE1USgE5D8K9SKZrZJy181oAFVMr6P3aUeOuq918TWQ%3D"
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/spaceriders-ready"
+          curl -fL --retry 3 --connect-timeout 10 --max-time 120 "$BUILD_URL" -o "$RUNNER_TEMP/bundle.zip"
+          unzip -q "$RUNNER_TEMP/bundle.zip" -d "$RUNNER_TEMP/spaceriders-ready"
+          test -s "$RUNNER_TEMP/spaceriders-ready/index.html"
+          test -s "$RUNNER_TEMP/spaceriders-ready/assets/atlas_powers-Bzp5SAVV.png"
+          test -s "$RUNNER_TEMP/spaceriders-ready/assets/index-B1EiSVal.js"
+          grep -q 'index-B1EiSVal.js' "$RUNNER_TEMP/spaceriders-ready/index.html"
+      - name: Publish only compiled game files
+        run: |
+          set -euo pipefail
+          mkdir -p play/spaceriders/assets
+          cp -a "$RUNNER_TEMP/spaceriders-ready/assets/." play/spaceriders/assets/
+          cp "$RUNNER_TEMP/spaceriders-ready/index.html" play/spaceriders/index.html
+          git add play/spaceriders/index.html play/spaceriders/assets
+          if git diff --cached --quiet; then echo "Already current"; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Publish SpaceRiders M3.93: held-F capture and approved faction sprites"
+          git push origin HEAD:main
