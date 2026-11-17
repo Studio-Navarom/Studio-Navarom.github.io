@@ -1,0 +1,41 @@
+name: Publish SpaceRiders M3.97 (static files only)
+on:
+  push:
+    paths:
+      - '.github/workflows/sync-spaceriders-m397.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download already-built static SpaceRiders M3.97
+        env:
+          ARTIFACT_URL: "https://sdmntprnortheu.oaiusercontent.com/files/00000000-9b6c-81f4-9182-3e22f903b9b7/raw?se=2026-11-17T07%3A40%3A21Z&sp=r&sv=2026-06-06&sr=b&scid=491afeaf-af65-57c1-bc0f-c56acf4c51df&skoid=7b771594-2b4f-4e93-93be-fdeeeb59aaf9&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-17T06%3A43%3A42Z&ske=2026-11-18T06%3A43%3A42Z&sks=b&skv=2026-06-06&sig=G33HwhZcc4jkvq3p3YoJ1VuYN4cDUKcSE5uNB3XaY1w%3D"
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 2 --max-time 120 "$ARTIFACT_URL" -o /tmp/spaceriders-static.zip
+          mkdir -p /tmp/spaceriders-static
+          unzip -q /tmp/spaceriders-static.zip -d /tmp/spaceriders-static
+          test -s /tmp/spaceriders-static/index.html
+          test -s /tmp/spaceriders-static/assets/station_player_side-BUcRtPHt.png
+          test -s /tmp/spaceriders-static/assets/index-BivSdzZ9.js
+          if find /tmp/spaceriders-static -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.map' -o -name '.env*' \) | grep -q .; then
+            echo 'Refusing to publish source or source maps' >&2
+            exit 1
+          fi
+      - name: Publish only SpaceRiders (leave other games and site untouched)
+        run: |
+          set -euo pipefail
+          mkdir -p play/spaceriders
+          cp -a /tmp/spaceriders-static/. play/spaceriders/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add play/spaceriders
+          if git diff --cached --quiet; then echo "Already published"; exit 0; fi
+          git commit -m "Publish SpaceRiders M3.97 approved player station"
+          git push
