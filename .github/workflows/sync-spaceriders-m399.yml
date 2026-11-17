@@ -1,0 +1,40 @@
+name: Publish SpaceRiders M3.99 static game only
+on:
+  push:
+    paths:
+      - '.github/workflows/sync-spaceriders-m399.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch verified private static build
+        env:
+          ARTIFACT_URL: "https://sdmntprukwest.oaiusercontent.com/files/00000000-4bd4-8243-ae7f-9aa64c9d4dc2/raw?se=2026-11-17T09%3A03%3A10Z&sp=r&sv=2026-06-06&sr=b&scid=65e1b3a5-7157-5f03-9be3-211226feb074&skoid=7b771594-2b4f-4e93-93be-fdeeeb59aaf9&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-17T03%3A36%3A54Z&ske=2026-11-18T03%3A36%3A54Z&sks=b&skv=2026-06-06&sig=2OGekQBiHPmSNuStsjxC2moOd7pHELFxhS3ozuR10pY%3D"
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --max-time 120 "$ARTIFACT_URL" -o /tmp/sr399.zip
+          mkdir -p /tmp/sr399
+          unzip -q /tmp/sr399.zip -d /tmp/sr399
+          test -s /tmp/sr399/index.html
+          test -s /tmp/sr399/assets/index-Bdd_yjem.js
+          test -s /tmp/sr399/assets/station_hq_independent-ChEJ2P3A.png
+          if find /tmp/sr399 -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.map' -o -name '.env*' \) | grep -q .; then
+            echo 'Unexpected source file in static build' >&2
+            exit 1
+          fi
+          grep -q 'assets/index-Bdd_yjem.js' /tmp/sr399/index.html || exit 1
+      - name: Update SpaceRiders only, retaining SeaRiders and website
+        run: |
+          set -euo pipefail
+          mkdir -p play/spaceriders
+          cp -a /tmp/sr399/. play/spaceriders/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add play/spaceriders
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Deploy SpaceRiders M3.99 autonomous supply convoys"
+          git push
