@@ -1,0 +1,42 @@
+name: Publish SpaceRiders M4.02 high-resolution stations and fleet
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-spaceriders-m402-once.yml'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve exact CI-tested static game build
+        env:
+          ARTIFACT_URL: "https://sdmntprsoutheastus3.oaiusercontent.com/files/00000000-c3dc-820c-91d7-33090a8f4ca2/raw?se=2026-11-17T11%3A49%3A54Z&sp=r&sv=2026-06-06&sr=b&scid=e4b9b332-58d9-5f15-8768-5d04cac24015&skoid=7b771594-2b4f-4e93-93be-fdeeeb59aaf9&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-17T08%3A46%3A41Z&ske=2026-11-18T08%3A46%3A41Z&sks=b&skv=2026-06-06&sig=huzIl/hYdRuxan3JBbzF6SWVGABSSwKxl/WgxYfFyUw%3D"
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --max-time 120 "$ARTIFACT_URL" -o /tmp/sr402.zip
+          echo "e8339edfa19cbe2b84a8884b79bf1ea89b3fcfe64777b76797029d0a206c97de  /tmp/sr402.zip" | sha256sum -c -
+          mkdir -p /tmp/sr402
+          unzip -q /tmp/sr402.zip -d /tmp/sr402
+          test -s /tmp/sr402/index.html
+          test -s /tmp/sr402/assets/index-BLJx2KlW.js
+          for asset in station_accord_hi-0yxaDx98.png station_concord_hi-t4sCEXAz.png station_dominion_hi-DQfhiYwe.png station_independents_hi-CqtVteaV.png; do
+            test -s "/tmp/sr402/assets/$asset"
+          done
+          grep -q 'index-BLJx2KlW.js' /tmp/sr402/index.html
+          if find /tmp/sr402 -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.map' -o -name '.env*' \) | grep -q .; then
+            echo 'Refusing to publish private game sources' >&2
+            exit 1
+          fi
+      - name: Update SpaceRiders alone, retaining site and SeaRiders
+        run: |
+          set -euo pipefail
+          mkdir -p play/spaceriders
+          cp -a /tmp/sr402/. play/spaceriders/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add play/spaceriders
+          if git diff --cached --quiet; then echo 'Already published'; exit 0; fi
+          git commit -m 'Publish SpaceRiders M4.02 new faction station sprites and paid fleet calls'
+          git push
