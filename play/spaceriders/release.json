@@ -1,14 +1,17 @@
 {
-  "release": "starter-variants-2026-11-18",
-  "sourceCommit": "8a15e301bdd3aaa269ba19dd659da83d5d560c1b",
+  "release": "ship-scale-navigation-2026-11-18",
+  "sourceCommit": "4d63b3159214422c3ed64a091d25983af72a0e11",
   "notes": [
-    "Five native 128px faction starter sprites",
-    "Nearest-neighbor canvas and CSS rendering",
-    "Canonical faction names and repair drone shop entry"
+    "Visual hierarchy including hired fleet",
+    "Visible hull bounds for civilians",
+    "NPC scan and extraction cues",
+    "Fuel route segments and both range circles",
+    "Canonical faction names once"
   ],
   "validation": [
-    "Five actual new-game selections",
-    "Unchanged starting stats",
-    "Economy and save-integrity smoke tests"
+    "Production build and source CI",
+    "Economy/save/station/fleet smoke",
+    "Browser work-state checks",
+    "Czech and English navigation/refuel checks"
   ]
 }
