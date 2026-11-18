@@ -1,17 +1,14 @@
 {
-  "release": "ship-scale-navigation-2026-11-18",
-  "sourceCommit": "4d63b3159214422c3ed64a091d25983af72a0e11",
+  "release": "npc-disclosure-2026-11-18",
+  "sourceCommit": "272dcea753e31831c9fc4f69811afb7aa9239bcc",
   "notes": [
-    "Visual hierarchy including hired fleet",
-    "Visible hull bounds for civilians",
-    "NPC scan and extraction cues",
-    "Fuel route segments and both range circles",
-    "Canonical faction names once"
+    "Ore requires completed identity and cargo scans",
+    "Courier activity requires an actual reserved shipment"
   ],
   "validation": [
     "Production build and source CI",
-    "Economy/save/station/fleet smoke",
-    "Browser work-state checks",
-    "Czech and English navigation/refuel checks"
+    "Economy and save-integrity suites",
+    "Actual canvas unknown/identity/cargo/reset scan states",
+    "Empty/loaded/missing destination activity"
   ]
 }
