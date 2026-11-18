@@ -1,19 +1,22 @@
 {
-  "release": "owned-station-stolen-trade-2026-11-18",
-  "sourceCommit": "f5a2a412f2beabd80f5c02ca4852996fafc0373c",
-  "sourcePullRequest": 27,
-  "sourceSnapshotVerifiedFiles": 158,
+  "release": "station-hangars-stage1-2026-11-18",
+  "sourceCommit": "ba41bf0ce96ce0146c6893fce988a32de056ce23",
+  "runtimeImplementationCommit": "7638465f040b4ff7e1122e6f67717cd4de11ae9e",
+  "sourcePullRequest": 28,
+  "sourceSnapshotVerifiedFiles": 204,
   "notes": [
-    "Owned stations accept stolen goods through ordinary trade",
-    "Own-port black markets do not undermine influence or trigger unrest/patrol heat",
-    "Foreign trade rules, raids and conquest unchanged",
-    "Exact previously published graphics retained; no ammo/insurance/combat-bonus changes"
+    "Owned-station physical hangars, capacity upgrades and conservative legacy ship placement",
+    "Persistent insurance/local-replacement choice; no duplicate emergency Starter equipment",
+    "Preserve ammunition on reload; accurate insurance breakdown",
+    "Apply approved declared laser and shield bonuses to actual combat",
+    "Retain own-station stolen-goods sales and existing Fleet/economy rules"
   ],
   "validation": [
-    "All 19 smoke suites",
-    "TypeScript and minified production build",
-    "Production browser own-port sale and black-market description, zero page errors",
-    "Every tracked game source file verified against source commit"
+    "Clean source snapshot and lockfile install",
+    "All 23 smoke suites and TypeScript/minified build",
+    "Production browser desktop/touch hangar, recovery/reload, emergency and foreign services",
+    "Ammunition-overflow and insurance browser checks",
+    "Hashed manifest for every generated file; no sources or source maps"
   ],
   "files": [
     {
@@ -65,16 +68,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-DEaAJHcF.js",
-      "bytes": 1026649,
-      "sha256": "a2ff80dbf4e510e95362900841affadaf039577d0ad344799b135962fef8b9d7",
-      "gitBlob": "1369747282a29d22ee59f4bf4a26340aeb6e860b"
+      "path": "assets/index-C1HOfMeC.css",
+      "bytes": 77380,
+      "sha256": "b8d2fcbca798f39f44de5f1a1fb6518368f1b8664ca08aa829b44b8c70b3bd0e",
+      "gitBlob": "4b1433de5afbf8693311ca4dce4ec11c8fedc053"
     },
     {
-      "path": "assets/index-DquOFYKu.css",
-      "bytes": 77323,
-      "sha256": "c03efd7ca6dc224c7b3c646453f539f7d7a7e80c0749fdd5821b5fe4fdba1d68",
-      "gitBlob": "3ce50468be88183509beef329c7271332a3949ae"
+      "path": "assets/index-DiK8MoR1.js",
+      "bytes": 1044949,
+      "sha256": "6d96218d5333f3ca5ba2754d9fe8e78657b4e14e9372cc75b59e6e07057bd5b2",
+      "gitBlob": "56592285c36e32b87f64ddaf8343208a82628f9f"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -223,8 +226,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "b189c4c4a109ae85d5eaea9107082b1a774dd7c0f71b5e889103afded84a40e3",
-      "gitBlob": "12b55d705bd6074e23c9f3bcc220fbbccee74adb"
+      "sha256": "b0e9349082d811ebb874193f6b4a06d305e001410939e36652e8701142d3b827",
+      "gitBlob": "fead65df94a37ca1ea534c6c527d00cdf42d89cd"
     },
     {
       "path": "robots.txt",
