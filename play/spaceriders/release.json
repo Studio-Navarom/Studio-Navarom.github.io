@@ -1,5 +1,5 @@
 {
-  "release": "management-2026-11-18",
+  "release": "starter-labels-drone-2026-11-18",
   "sourceBase": "c58aee8",
   "tests": "13 smoke suites + 6 desktop/mobile browser flows",
   "features": [
@@ -12,7 +12,11 @@
     "command-center",
     "raid-alerts",
     "diplomacy",
-    "restoration"
+    "restoration",
+    "approved-starter-art",
+    "canonical-faction-labels",
+    "visible-repair-drone-shop"
   ],
-  "sourceCommit": "0982a11c5ab4f5f18ef7fb4c7f02fccde5e19198"
+  "sourceCommit": "3dc40c704074e9b1ecce9e3a42619077d27b4960",
+  "verification": "All four powers + unpledged starter art; canonical faction labels; Czech/English real repair-drone purchase"
 }
