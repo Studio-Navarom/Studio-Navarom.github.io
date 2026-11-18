@@ -1,22 +1,14 @@
 {
-  "release": "starter-labels-drone-2026-11-18",
-  "sourceBase": "c58aee8",
-  "tests": "13 smoke suites + 6 desktop/mobile browser flows",
-  "features": [
-    "emergency-tanker",
-    "repair-drone",
-    "engine-turbo",
-    "fleet-routes",
-    "private-warehouses",
-    "station-modules",
-    "command-center",
-    "raid-alerts",
-    "diplomacy",
-    "restoration",
-    "approved-starter-art",
-    "canonical-faction-labels",
-    "visible-repair-drone-shop"
+  "release": "starter-variants-2026-11-18",
+  "sourceCommit": "8a15e301bdd3aaa269ba19dd659da83d5d560c1b",
+  "notes": [
+    "Five native 128px faction starter sprites",
+    "Nearest-neighbor canvas and CSS rendering",
+    "Canonical faction names and repair drone shop entry"
   ],
-  "sourceCommit": "3dc40c704074e9b1ecce9e3a42619077d27b4960",
-  "verification": "All four powers + unpledged starter art; canonical faction labels; Czech/English real repair-drone purchase"
+  "validation": [
+    "Five actual new-game selections",
+    "Unchanged starting stats",
+    "Economy and save-integrity smoke tests"
+  ]
 }
