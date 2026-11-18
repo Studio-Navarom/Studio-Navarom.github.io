@@ -1,16 +1,16 @@
 {
-  "release": "npc-routing-performance-2026-11-18",
-  "sourceCommit": "22c4f78587eb8e4b0441784b8080a30a5f66e1f9",
-  "sourcePullRequest": 25,
+  "release": "npc-route-cache-2026-11-18",
+  "sourceCommit": "b9612dbd397f9d85aeed8f488055a520a2580960",
+  "sourcePullRequest": 26,
   "notes": [
-    "Reject impossible hostile-destination NPC routes before exhaustive search",
-    "Preserve all routes, diplomacy, fleet and economic simulation rules",
-    "Includes crisp single-sample ship rotations"
+    "Reuse unchanged NPC route results across five-second checks",
+    "Stable priority queue and per-search geometry/access reuse",
+    "Preserve route choices, costs, node budget, diplomacy and simulation"
   ],
   "validation": [
-    "Production TypeScript/build",
-    "All 17 smoke suites",
-    "Paired 8000-step simulations with byte-identical full saved state",
-    "Browser shipments, reload and cargo scan secrecy"
+    "All 18 smoke suites and TypeScript/build",
+    "80 seeded exact route comparisons and complete isolated-search edge-order checks",
+    "Byte-identical 8000-step full saved state",
+    "Production browser delivery/reload and recurring-route checks"
   ]
 }
