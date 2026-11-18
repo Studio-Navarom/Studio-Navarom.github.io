@@ -1,14 +1,16 @@
 {
-  "release": "crisp-ship-rotations-2026-11-18",
-  "sourceCommit": "e3a73ab12f0057115a6abfc434e9c4b74595837e",
-  "sourcePullRequest": 24,
+  "release": "npc-routing-performance-2026-11-18",
+  "sourceCommit": "22c4f78587eb8e4b0441784b8080a30a5f66e1f9",
+  "sourcePullRequest": 25,
   "notes": [
-    "Ship rotations sampled once from original artwork at backing-pixel size",
-    "Approved sprites, sizes and simulation unchanged"
+    "Reject impossible hostile-destination NPC routes before exhaustive search",
+    "Preserve all routes, diplomacy, fleet and economic simulation rules",
+    "Includes crisp single-sample ship rotations"
   ],
   "validation": [
     "Production TypeScript/build",
-    "Economy/save regression",
-    "Browser comparison DPR 1, 1.5 and 2"
+    "All 17 smoke suites",
+    "Paired 8000-step simulations with byte-identical full saved state",
+    "Browser shipments, reload and cargo scan secrecy"
   ]
 }
