@@ -1,17 +1,14 @@
 {
-  "release": "npc-material-logistics-2026-11-18",
-  "sourceCommit": "14a24f943d5b286760c39c96c7afb1a8e9feac8a",
-  "sourcePullRequest": 22,
+  "release": "crisp-ship-rotations-2026-11-18",
+  "sourceCommit": "e3a73ab12f0057115a6abfc434e9c4b74595837e",
+  "sourcePullRequest": 24,
   "notes": [
-    "Real interstellar NPC procurement with reserved stock",
-    "Material-funded replacements, repairs and faction expansion",
-    "Larger public markets, persistent logistics and factual news",
-    "Private warehouses excluded and cargo scan secrecy preserved"
+    "Ship rotations sampled once from original artwork at backing-pixel size",
+    "Approved sprites, sizes and simulation unchanged"
   ],
   "validation": [
     "Production TypeScript/build",
-    "All 16 smoke suites",
-    "Browser outbound/loading/return/jump/reload",
-    "Canvas cargo scan secrecy"
+    "Economy/save regression",
+    "Browser comparison DPR 1, 1.5 and 2"
   ]
 }
