@@ -1,16 +1,236 @@
 {
-  "release": "npc-route-cache-2026-11-18",
-  "sourceCommit": "b9612dbd397f9d85aeed8f488055a520a2580960",
-  "sourcePullRequest": 26,
+  "release": "owned-station-stolen-trade-2026-11-18",
+  "sourceCommit": "f5a2a412f2beabd80f5c02ca4852996fafc0373c",
+  "sourcePullRequest": 27,
+  "sourceSnapshotVerifiedFiles": 158,
   "notes": [
-    "Reuse unchanged NPC route results across five-second checks",
-    "Stable priority queue and per-search geometry/access reuse",
-    "Preserve route choices, costs, node budget, diplomacy and simulation"
+    "Owned stations accept stolen goods through ordinary trade",
+    "Own-port black markets do not undermine influence or trigger unrest/patrol heat",
+    "Foreign trade rules, raids and conquest unchanged",
+    "Exact previously published graphics retained; no ammo/insurance/combat-bonus changes"
   ],
   "validation": [
-    "All 18 smoke suites and TypeScript/build",
-    "80 seeded exact route comparisons and complete isolated-search edge-order checks",
-    "Byte-identical 8000-step full saved state",
-    "Production browser delivery/reload and recurring-route checks"
+    "All 19 smoke suites",
+    "TypeScript and minified production build",
+    "Production browser own-port sale and black-market description, zero page errors",
+    "Every tracked game source file verified against source commit"
+  ],
+  "files": [
+    {
+      "path": "assets/accord-DuQ4Cn_p.jpg",
+      "bytes": 28134,
+      "sha256": "80e937719cfe7307e934887fdc9ad7836f3fe5e44e1a75f891b95cbbd218ce3e",
+      "gitBlob": "fcfb6cb10cdf9a3e5f876c1a8db975e790105c4e"
+    },
+    {
+      "path": "assets/atlas-BlstJF8k.png",
+      "bytes": 20444,
+      "sha256": "5700f551b69ecc262447bf89ffe752309ebf05576cd4136881c483dd7f095973",
+      "gitBlob": "080ea27d54676a880b790572b613514fd6506ef1"
+    },
+    {
+      "path": "assets/atlas_powers-Bzp5SAVV.png",
+      "bytes": 121932,
+      "sha256": "293e95d41bb24c1a0e98e7b8fe956ab60bcacd28dcc721fffd75367818e1daeb",
+      "gitBlob": "4ad1b71a22ce488ad9925b44ddbcc7cf8c70902b"
+    },
+    {
+      "path": "assets/atlas_world-Ci-UcLYt.png",
+      "bytes": 438012,
+      "sha256": "a3537942ddf2fc59f189d8596670a70bd499a7d551b63e7cd20459d80544bba8",
+      "gitBlob": "3b1ec2ef7b40c41efd0b0c3d55ed51ccb82248d0"
+    },
+    {
+      "path": "assets/concord-Dw0mOwK6.jpg",
+      "bytes": 27419,
+      "sha256": "cb87c6719febfab8b543d4bcda7f567f4fdfcfde209acea41aaa4e38e9d3b763",
+      "gitBlob": "f5b4fbcc0687f88dc6a85d496a92fd9cbe975de9"
+    },
+    {
+      "path": "assets/dominion-Bz-z9TpC.jpg",
+      "bytes": 28882,
+      "sha256": "d2730c55278d24fe5d46f5c73ebdf9a3180193c957fce54b6a5203282feb530e",
+      "gitBlob": "766bbc07e09b8fc4500ef26b7fcbd0827816b1cd"
+    },
+    {
+      "path": "assets/gate_ring-Bfv80DEA.png",
+      "bytes": 1723592,
+      "sha256": "b3411ddb2d043301c5912b66cff87c929d65814ba6f6426bc5a4b068c9cad461",
+      "gitBlob": "73f95b18838cde5cc56db2369ebfa65de515b1d6"
+    },
+    {
+      "path": "assets/independents-ldVKrEVp.jpg",
+      "bytes": 27960,
+      "sha256": "e92aa78f6619537d293ba9d729f1f1030a33acfa4f9954e0a416aac3dc788237",
+      "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
+    },
+    {
+      "path": "assets/index-DEaAJHcF.js",
+      "bytes": 1026649,
+      "sha256": "a2ff80dbf4e510e95362900841affadaf039577d0ad344799b135962fef8b9d7",
+      "gitBlob": "1369747282a29d22ee59f4bf4a26340aeb6e860b"
+    },
+    {
+      "path": "assets/index-DquOFYKu.css",
+      "bytes": 77323,
+      "sha256": "c03efd7ca6dc224c7b3c646453f539f7d7a7e80c0749fdd5821b5fe4fdba1d68",
+      "gitBlob": "3ce50468be88183509beef329c7271332a3949ae"
+    },
+    {
+      "path": "assets/mothership_accord-EJjtWypP.png",
+      "bytes": 8811,
+      "sha256": "d595c825396fe114270fafe87be29b84375d5fc06e6d9912935b179e268ae26c",
+      "gitBlob": "e57b654a026631800d3bed01a10edb60e25bc25e"
+    },
+    {
+      "path": "assets/mothership_concord-Bp_xAd4P.png",
+      "bytes": 9151,
+      "sha256": "b8f096ccb28c4d07d3df3d9ea5af57686508a1f96467336f3ae335cd8caf9314",
+      "gitBlob": "abb34983b4c4a02e2eb05fa886a439c455a91290"
+    },
+    {
+      "path": "assets/mothership_dominion-CnHX90r9.png",
+      "bytes": 10085,
+      "sha256": "d6106a0736269263ad92eb456992d6a1f6bd8d028e7947cfec0e5c49a7385401",
+      "gitBlob": "ba5763342d3d7cd09a279e437bbcb849efb892b2"
+    },
+    {
+      "path": "assets/mothership_independents-C1TyeBU4.png",
+      "bytes": 10136,
+      "sha256": "7380643e52095d359fa6541abbabbec46d5d43154138af110209ef93a6005252",
+      "gitBlob": "b734ca4e5e21fa80e79aec34db70d5c62906588a"
+    },
+    {
+      "path": "assets/nav_beacon-XR-iVBOR.png",
+      "bytes": 733788,
+      "sha256": "b0d5025f61183874005dc766c2d2db688fa5d3e336de4a369eabb330a0ea77b7",
+      "gitBlob": "56972793275b7b94b87abaafa991716a4085f39f"
+    },
+    {
+      "path": "assets/ship_armored-CUHi6O8N.png",
+      "bytes": 4901,
+      "sha256": "c51b04b6fada0f102ca47946b7f63ca67c91f6564fd8e447c92328c6b0bdd926",
+      "gitBlob": "66d6bca4f27ce74d6d9a61e0699713515781504f"
+    },
+    {
+      "path": "assets/ship_hauler-BiClgf_T.png",
+      "bytes": 6033,
+      "sha256": "f0cf53a6b35a917fa40d0deb39e9b35773eb19d0d4cf1bd324affd0222c64836",
+      "gitBlob": "2a22d991275cd3181bd7ba8afe4858e8418f65a5"
+    },
+    {
+      "path": "assets/ship_interceptor-E9LAwUkh.png",
+      "bytes": 10900,
+      "sha256": "33fa63f845580c29ee6b58d9c111ca491beea79000bc7f86fb8489c1ebbe4e66",
+      "gitBlob": "20949d1bbd7358cf73991df2c1b0178cb6138f4d"
+    },
+    {
+      "path": "assets/ship_raider-DNSbkG_k.png",
+      "bytes": 14171,
+      "sha256": "0230d3c279ebf2ba9dfee2730959d56ee12a5a8c1e17e245bb2f568dce6f79f4",
+      "gitBlob": "7b8dd16f0b3abb9c76fa25dec1cdf8e2ca39e011"
+    },
+    {
+      "path": "assets/ship_trader-C9nX8rv8.png",
+      "bytes": 4605,
+      "sha256": "570211d701b50d6ba63cbbd6247087aa83e91865047edd1b5500d8ceb7567434",
+      "gitBlob": "0d0431d887688d2a8f11b964b07fc81f3ea00097"
+    },
+    {
+      "path": "assets/starter_free_accord_128-BYBVL3Xc.png",
+      "bytes": 14852,
+      "sha256": "1ffa122eb3148f19436e14592419a21059354b5b065b64bbd65053e09a2073af",
+      "gitBlob": "9c5a3afbcd840c53a541954c003b00241c55913c"
+    },
+    {
+      "path": "assets/starter_independent_systems_128-CuR9gnqK.png",
+      "bytes": 14294,
+      "sha256": "170d08ce00655470b31b0f89cdb5290bc3adb3c87e88df68dc16c2a4b614a09c",
+      "gitBlob": "0f9942ef654511d87873ba621f3a4f9c493ea144"
+    },
+    {
+      "path": "assets/starter_neutral_128-CfH_gaLY.png",
+      "bytes": 14221,
+      "sha256": "5354e18f74c16194ea42f0f25b9573cc8596a30b4fe2612efcea4e112bc080e1",
+      "gitBlob": "c4a3fdfc3abb926b2594c2733baffe77e02510c6"
+    },
+    {
+      "path": "assets/starter_solar_dominion_128-DXnCm3Bs.png",
+      "bytes": 14653,
+      "sha256": "d18d1502fc32a0d8375ec077b5b0dca1fbbaac8d84a0851ab2ade3aafe07d010",
+      "gitBlob": "66e4d12c6782a78e6a2e4ce529772065a0755a7b"
+    },
+    {
+      "path": "assets/starter_terran_concord_128-DYlZajRU.png",
+      "bytes": 14143,
+      "sha256": "b42bc845ceeacdd2c6bbb6d70825078e259002540fc16930a489acfd5baa93ae",
+      "gitBlob": "4c7b2ddba8c168cbbce90de884d3f68549aaa2c3"
+    },
+    {
+      "path": "assets/station_accord_hi-0yxaDx98.png",
+      "bytes": 57579,
+      "sha256": "6718e6e74e38de40bfc925efaf6574a34cc07e5745a7e52837e8de372aba10a5",
+      "gitBlob": "d053aa4454afe8fd9cb556ade6a090d9518e8cc5"
+    },
+    {
+      "path": "assets/station_concord_hi-t4sCEXAz.png",
+      "bytes": 40798,
+      "sha256": "91b3cf70519267c5189ecc039d600142a598b5a200890e4327816691c8b20f24",
+      "gitBlob": "47d483d8e7f0e15f19f838f3fc97aa3334e07ea6"
+    },
+    {
+      "path": "assets/station_dominion_hi-DQfhiYwe.png",
+      "bytes": 55223,
+      "sha256": "36b6a3512065d6bb5be98e8aee36ec2c322f0b6353995dd0d862a07157ff6dba",
+      "gitBlob": "40cf2d98d88a5858b9022715622eaa958b1a05b7"
+    },
+    {
+      "path": "assets/station_hq_independent-ChEJ2P3A.png",
+      "bytes": 26431,
+      "sha256": "0c124000d4830857e6d504536fc6ba6aca796b1ba268c3e76497544bc236bd70",
+      "gitBlob": "1b54313b63ba02f1d4f5613555c699171179ebfe"
+    },
+    {
+      "path": "assets/station_independents_hi-CqtVteaV.png",
+      "bytes": 53193,
+      "sha256": "607ea94eef732f524cacef1647dcb8cb6a66cc8e6449cc2fc1e3d09a5e945885",
+      "gitBlob": "a144c33cb42c5aa5c27137fa288c415c0fe63f9e"
+    },
+    {
+      "path": "assets/station_player_side-BUcRtPHt.png",
+      "bytes": 9447,
+      "sha256": "0d2c230a6e4eb5ab67d7bc45ef6628b5b3da78d0d20bf327cdca232c758d7ede",
+      "gitBlob": "e31b31410652628f2bf98421f5f753887ec781e9"
+    },
+    {
+      "path": "assets/tanker-CNwojpiK.png",
+      "bytes": 1838475,
+      "sha256": "f51dd6688d8752c85a9762168bfa703a61cd602e36b029dfc0a89e84fed192f6",
+      "gitBlob": "d3f3c3942842a23a763a95ffefbdb266bd0c7a4b"
+    },
+    {
+      "path": "assets/visual394-D56io_ZV.png",
+      "bytes": 40866,
+      "sha256": "a0ad74ad68904ca1212231aac7ad325c54af5119bb434360e0d425b82ebd12bb",
+      "gitBlob": "3bd514dd01592e5387631ad85f4275c86792be83"
+    },
+    {
+      "path": "favicon.ico",
+      "bytes": 20373,
+      "sha256": "dd821076a9b03adc2173c93956226aea3d92482d7578fc4339c5d3a2e9c24586",
+      "gitBlob": "3c01d69713f9c184e92b74f5799e6dff2f500825"
+    },
+    {
+      "path": "index.html",
+      "bytes": 650,
+      "sha256": "b189c4c4a109ae85d5eaea9107082b1a774dd7c0f71b5e889103afded84a40e3",
+      "gitBlob": "12b55d705bd6074e23c9f3bcc220fbbccee74adb"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 160,
+      "sha256": "a3d27b3ca5ce32341fa9f96f01169b521b1657c05d1860c45d1e53a6258e9e8b",
+      "gitBlob": "6018e701fc7dd0317cda9eceea390524322e8a05"
+    }
   ]
 }
