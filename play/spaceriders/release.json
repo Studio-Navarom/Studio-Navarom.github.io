@@ -1,22 +1,20 @@
 {
-  "release": "equipment-slots-stage2-2026-11-18",
-  "sourceCommit": "07dff4f63a5c5c98592c3dd2e26584da6c721ad7",
-  "runtimeImplementationCommit": "9a6763df17b6c441019fdcb6542c37ecb040adc2",
-  "sourcePullRequest": 29,
-  "sourceSnapshotVerifiedFiles": 219,
+  "release": "energy-heat-stage3-2026-11-18",
+  "sourceCommit": "632ebdf69649a28184cf5dd2e49c3382e6bff856",
+  "runtimeImplementationCommit": "436581baa9eec2ab80a7c0dafcc4dfc54ce3f17a",
+  "sourcePullRequest": 30,
+  "sourceSnapshotVerifiedFiles": 235,
   "notes": [
-    "S/M/L hardpoints retain all existing lasers as S and preserve original slot counts",
-    "Fitted modules follow physical hull locations; atomic local transfers preserve ID and charge",
-    "Loose equipment remains the pilot personal inventory with existing recovery rules",
-    "Selected-hull previews and local utility drones without duplicate devices",
-    "Preserve Fleet, existing prices, combat, insurance and approved Stage 1 behavior"
+    "Approved player energy and heat model; basic flight and FSD protected",
+    "Persistent per-hull budgets; no refill on reload, swapping, insurance or reactor upgrade",
+    "Atomic laser, rocket, repair and turbo costs; Reactor II uses local scrap",
+    "NPC, hired Fleet, fuel, graphics and dependencies unchanged"
   ],
   "validation": [
-    "Clean source snapshot and lockfile install",
-    "All 25 smoke suites and TypeScript/minified build",
-    "Desktop/touch equipment transfers, remote read-only display and actual Save/reload",
-    "Stage 1 recovery/hangar and ammunition/insurance browser regressions",
-    "Hashed manifest for every generated file; no sources or source maps"
+    "Clean verified source snapshot and lockfile install",
+    "All 27 smoke suites and TypeScript/minified build",
+    "CS desktop and EN touch browser energy, equipment, recovery and ammunition regressions",
+    "Hashed manifest for every generated file; no source code or source maps"
   ],
   "files": [
     {
@@ -68,16 +66,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-B2Oq8IY0.css",
-      "bytes": 77344,
-      "sha256": "d6d35155c3d66f83ded80147b689223ca2549d879b7a71f759bd02538b052fad",
-      "gitBlob": "5264d248265547fcd27776fe97ae1fa16e9d1d19"
+      "path": "assets/index-C5MO5xOb.css",
+      "bytes": 77452,
+      "sha256": "81af796ab275d3e21a0a703b0a53e24ef4d24c924c939e3c279698dd7b185d5e",
+      "gitBlob": "abba8484c65d53a6037b64a6bf974bdecc36ce6d"
     },
     {
-      "path": "assets/index-DbQ7tUj-.js",
-      "bytes": 1054780,
-      "sha256": "40e3c517155fb5550fe2675dc63a131f4b3a9d4674dc3f2662b7813fbf97beac",
-      "gitBlob": "5ae23c2d7486edbcccb9cdfb82e923fc5a85d591"
+      "path": "assets/index-VrsWOIFK.js",
+      "bytes": 1062740,
+      "sha256": "0bec1c481afecb5a843a7366b6da161537b6a57483aa3e978573d39cb2adca49",
+      "gitBlob": "8a8d284321f8f0a84b54317972bfa235843a7a35"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -226,8 +224,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "40926a5b708a7e8b16eb5fcac7815cf0588c3de3aeb45bdd68193f181a7d5565",
-      "gitBlob": "c23e1e53655b0b0256abc28feb60d7a91910114e"
+      "sha256": "414b1b83df273e7e915c643e74ea0294770caa92fd31b596041c49d4201dd2e5",
+      "gitBlob": "6923d1374d82f64eede5ed7bf5fd5f9ac2d89f64"
     },
     {
       "path": "robots.txt",
