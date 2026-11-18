@@ -1,14 +1,17 @@
 {
-  "release": "npc-disclosure-2026-11-18",
-  "sourceCommit": "272dcea753e31831c9fc4f69811afb7aa9239bcc",
+  "release": "npc-material-logistics-2026-11-18",
+  "sourceCommit": "14a24f943d5b286760c39c96c7afb1a8e9feac8a",
+  "sourcePullRequest": 22,
   "notes": [
-    "Ore requires completed identity and cargo scans",
-    "Courier activity requires an actual reserved shipment"
+    "Real interstellar NPC procurement with reserved stock",
+    "Material-funded replacements, repairs and faction expansion",
+    "Larger public markets, persistent logistics and factual news",
+    "Private warehouses excluded and cargo scan secrecy preserved"
   ],
   "validation": [
-    "Production build and source CI",
-    "Economy and save-integrity suites",
-    "Actual canvas unknown/identity/cargo/reset scan states",
-    "Empty/loaded/missing destination activity"
+    "Production TypeScript/build",
+    "All 16 smoke suites",
+    "Browser outbound/loading/return/jump/reload",
+    "Canvas cargo scan secrecy"
   ]
 }
