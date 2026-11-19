@@ -1,19 +1,19 @@
 {
-  "release": "support-home-trial-stage5-2026-11-19",
-  "sourceCommit": "48c6f1b0044463234fffd172964768481e4c17d3",
-  "runtimeImplementationCommit": "6f26141dbce5f05671ea7964a47b36eec99c4a91",
-  "sourcePullRequest": 32,
-  "sourceSnapshotVerifiedFiles": 315,
+  "release": "production-space-spacing-2026-11-19",
+  "sourceCommit": "46ccef923fa8bce9a2a8bdcdf10cd7bcb4c1480c",
+  "runtimeImplementationCommit": "46ccef923fa8bce9a2a8bdcdf10cd7bcb4c1480c",
+  "sourcePullRequest": 33,
+  "sourceSnapshotVerifiedFiles": 324,
   "notes": [
-    "Seven approved player support modules with explicit prices, slots and energy trade-offs",
-    "Mining Focuser improves large-body pulse cadence; no extra ore or NPC damage",
-    "Opt-in fresh-pilot Home Expanse x1.5 trial; isolated normal and trial saves",
-    "Normal existing worlds, NPC and asteroid counts, hired Fleet and legacy physics preserved"
+    "Production systems 9000 units with minimum 1800 station spacing",
+    "Versioned one-time old-save migration with exact raw backup",
+    "Trial switching removed; previous pilot profile preserved",
+    "Population, quantities, prices and physical ship parameters preserved"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
-    "All 34 smoke suites and TypeScript/minified build",
-    "19 production browser scenarios, normal and trial saves isolated",
+    "All 35 smoke suites and TypeScript/minified build",
+    "23 production browser scenarios including old ordinary, legacy-profile and remote saves",
     "Hashed manifest for every generated file; no source code or source maps"
   ],
   "files": [
@@ -66,10 +66,10 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-CNpPaO-7.js",
-      "bytes": 1088512,
-      "sha256": "733ab7732b1042c86273922d6710fa5be39888d294159ff653630c849b89cb84",
-      "gitBlob": "ccb7e2c9c1988aba15fc00c877eb38f220a1d0c1"
+      "path": "assets/index-Cna9ZkX1.js",
+      "bytes": 1091115,
+      "sha256": "a8ece6ce0bd69bcf07b438fd653c9489a089543b47335b9a77ec5c2120e5b6f5",
+      "gitBlob": "8ef4c37bee7762a6a412ace02193931ba006298c"
     },
     {
       "path": "assets/index-D81ZmaGG.css",
@@ -224,8 +224,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "082c07a31209f2edc574a0e5bc1f0569be80553b431cae595fb20053612799f0",
-      "gitBlob": "7cf6e1deb6c1a7dae98d0c5e6d6915eabe79752f"
+      "sha256": "eaa767f4571ae924668a7bc0bdbd8d1ab4d14ced3bf79d10a3a5b8f962d13529",
+      "gitBlob": "3c606e692393529f87953af8ec8b6c9457d5beab"
     },
     {
       "path": "robots.txt",
