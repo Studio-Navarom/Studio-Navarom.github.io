@@ -1,19 +1,19 @@
 {
-  "release": "energy-heat-stage3-2026-11-18",
-  "sourceCommit": "632ebdf69649a28184cf5dd2e49c3382e6bff856",
-  "runtimeImplementationCommit": "436581baa9eec2ab80a7c0dafcc4dfc54ce3f17a",
-  "sourcePullRequest": 30,
-  "sourceSnapshotVerifiedFiles": 235,
+  "release": "weapons-mining-stage4-2026-11-19",
+  "sourceCommit": "6fa6b69f8e5d4da4be1db6a23f0a5730870fe2f3",
+  "runtimeImplementationCommit": "6fa6b69f8e5d4da4be1db6a23f0a5730870fe2f3",
+  "sourcePullRequest": 31,
+  "sourceSnapshotVerifiedFiles": 272,
   "notes": [
-    "Approved player energy and heat model; basic flight and FSD protected",
-    "Persistent per-hull budgets; no refill on reload, swapping, insurance or reactor upgrade",
-    "Atomic laser, rocket, repair and turbo costs; Reactor II uses local scrap",
-    "NPC, hired Fleet, fuel, graphics and dependencies unchanged"
+    "Seven new primary weapons including S Mining Laser",
+    "Per-hull finite kinetic ammunition and local hangar transfers",
+    "Mining Laser: 16 combat DPS, asteroid-only x20; unchanged ore drops",
+    "Legacy collision rules, projectile limit, Fleet and NPC loadouts preserved"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
-    "All 27 smoke suites and TypeScript/minified build",
-    "CS desktop and EN touch browser energy, equipment, recovery and ammunition regressions",
+    "All 31 smoke suites and TypeScript/minified build",
+    "15 production browser scenarios; 256 Mining Laser comparison cases",
     "Hashed manifest for every generated file; no source code or source maps"
   ],
   "files": [
@@ -66,16 +66,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-C5MO5xOb.css",
-      "bytes": 77452,
-      "sha256": "81af796ab275d3e21a0a703b0a53e24ef4d24c924c939e3c279698dd7b185d5e",
-      "gitBlob": "abba8484c65d53a6037b64a6bf974bdecc36ce6d"
+      "path": "assets/index--C4HdyTV.js",
+      "bytes": 1076033,
+      "sha256": "e77e31a29455c4d65a3ff81e5adea2047dfd68d63cc699b8142d9fad329880ad",
+      "gitBlob": "0330208846d524a84efc63b24f589a13d10a1733"
     },
     {
-      "path": "assets/index-VrsWOIFK.js",
-      "bytes": 1062740,
-      "sha256": "0bec1c481afecb5a843a7366b6da161537b6a57483aa3e978573d39cb2adca49",
-      "gitBlob": "8a8d284321f8f0a84b54317972bfa235843a7a35"
+      "path": "assets/index-D81ZmaGG.css",
+      "bytes": 77477,
+      "sha256": "4a0d0871360364c45676bd1e1a5d8365f7433b7d09be0b3664fa694b9df39c1d",
+      "gitBlob": "7947adc092eb2f6de304c7bb18b996c651788ac3"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -224,8 +224,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "414b1b83df273e7e915c643e74ea0294770caa92fd31b596041c49d4201dd2e5",
-      "gitBlob": "6923d1374d82f64eede5ed7bf5fd5f9ac2d89f64"
+      "sha256": "fb0604f762f225a854841f014da8c4d693e7c1dce2427420dc4942d640bd5a8c",
+      "gitBlob": "b6fe472ee80b7ea09b3ca9ca6baee35687b89ed4"
     },
     {
       "path": "robots.txt",
