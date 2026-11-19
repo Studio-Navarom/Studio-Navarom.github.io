@@ -1,21 +1,18 @@
 {
-  "release": "flight-fleet-mining-2026-11-19",
-  "sourceCommit": "bd66fe5eaed1dc5b8c62830c7f6e2046ca801fb1",
-  "runtimeImplementationCommit": "bd66fe5eaed1dc5b8c62830c7f6e2046ca801fb1",
-  "sourcePullRequest": 38,
+  "release": "fleet-scale-2026-11-19",
+  "sourceCommit": "784e3471a7560e2e4c5b55ab0f7d4ce1ae822523",
+  "runtimeImplementationCommit": "784e3471a7560e2e4c5b55ab0f7d4ce1ae822523",
+  "sourcePullRequest": 39,
   "sourceSnapshotVerifiedFiles": 377,
   "notes": [
-    "Forward white-star hyperspace retaining the target glow; energy/heat inside resource bar",
-    "Approved fleet drone/miner/fighter atlas with unchanged stats and sizes",
-    "Preserve stolen-cargo provenance through retaliation, fleet finishes and reloads",
-    "Bounded military attack manoeuvres with unchanged weapon stats",
-    "Equal initial power counts for new galaxies only; preserve old saves and original geometry/asteroids/crew counts",
-    "Player weapon asteroid impact multiplier 0.5; NPC/fleet mining and ore payouts unchanged"
+    "Smaller companion fleet: drone18, harvester36, fighter32 world artwork size",
+    "Preserve nearest-neighbour sprites and readable hiring portraits",
+    "No physics, stats, collision, AI, mining or economic changes"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
-    "All 47 smoke suites and TypeScript/minified build",
-    "32 production desktop/touch and DPR1/1.5/2 browser scenarios",
+    "Five mandatory core smoke suites and TypeScript/minified build",
+    "Three desktop/touch fleet browser scenarios at DPR1/1.5/2",
     "Hashed manifest for every generated file; no source code or source maps"
   ],
   "files": [
@@ -74,16 +71,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
+      "path": "assets/index-DA0k-y88.js",
+      "bytes": 1151867,
+      "sha256": "bd8c164699cc00c888d457f53db5b7199a5d33bd056534dd7ddad26a1820a8cc",
+      "gitBlob": "8a8fef6aca7bc6a3939e824200fbe4c75c95c681"
+    },
+    {
       "path": "assets/index-IHh-m7Yu.css",
       "bytes": 78633,
       "sha256": "8756e840bbd4dc09b8c15c3171b87ab97f2d50a4d6cd7415732139e74e9727ef",
       "gitBlob": "521073c6bb423ab1b022af28ada4df87c0b9af3f"
-    },
-    {
-      "path": "assets/index-bhOI-HED.js",
-      "bytes": 1151867,
-      "sha256": "10bfd8ecb8b5cc346c3414d36732faf6fe2c0e32235b6876d0252b6989f35773",
-      "gitBlob": "533b6c8e93e4528900d600b43a66aebebac5920e"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -232,8 +229,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "947916ddb0575b5eb90d416a1b3033c8e14257051af18836f70512485d9bd7d8",
-      "gitBlob": "5cad49a02649389411f5055216c1dfd1f7c8742e"
+      "sha256": "b40c2988f0bfceaaa7ebc3701061937e7807dec51756b75dbd1f659e5401c607",
+      "gitBlob": "038be46886ae64d1ebc0f6198e8ba494e2b8f40c"
     },
     {
       "path": "robots.txt",
