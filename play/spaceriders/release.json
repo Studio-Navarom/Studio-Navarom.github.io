@@ -1,15 +1,16 @@
 {
-  "release": "live-mechanics-gates-2026-11-19",
-  "sourceCommit": "081633e401ec563e8acfd58ba319771f6548e3e1",
-  "runtimeImplementationCommit": "081633e401ec563e8acfd58ba319771f6548e3e1",
-  "sourcePullRequest": 35,
-  "sourceSnapshotVerifiedFiles": 349,
+  "release": "live-mechanics-gates-integrity-2026-11-19",
+  "sourceCommit": "465dbab24218aff0e1b085794c7522ce51dc2a51",
+  "runtimeImplementationCommit": "465dbab24218aff0e1b085794c7522ce51dc2a51",
+  "sourcePullRequest": 36,
+  "sourceSnapshotVerifiedFiles": 350,
   "notes": [
     "Confirmed dock ammunition refill with per-hull autofill and primary-first affordability",
     "Direct own-warehouse commodity trading and opposing-power covert markets",
     "Approved rare equipment salvage and guest docking distinct from war",
     "Material player gates with finite capacity, paired cobalt upkeep and fuel-free player travel",
-    "Faction-neutral combat tutorial connected to diplomacy, preserving existing progress and rewards"
+    "Faction-neutral combat tutorial connected to diplomacy, preserving existing progress and rewards",
+    "Exact whole-unit warehouse payment preserves fractional legacy stocks"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
@@ -67,10 +68,10 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-BYDWHFiz.js",
-      "bytes": 1132341,
-      "sha256": "b0d36b9a764c72739c3a001ea58ceca07fdd9b1eb1f93868de70c59f0c9feb25",
-      "gitBlob": "d6e5f6e87596ae7ab66fcc235a2620402ce431db"
+      "path": "assets/index-Bu6GgoP4.js",
+      "bytes": 1132353,
+      "sha256": "02e58858f41eab205fe290b553ea362124673e78b1aabb7164247e69d1aa8f14",
+      "gitBlob": "33947a3635d008c52e5ddc3c43cd5da528f3b5ac"
     },
     {
       "path": "assets/index-C47ZkBuf.css",
@@ -225,8 +226,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "5dc2c828eee717ae38d034fcd038153b74b5a1dd06d0160d930bacc83bd40287",
-      "gitBlob": "2b9436007750326b33b4412126501db38e97e8b9"
+      "sha256": "cfbc0e85a22044fd8bcd218cf886edbb5e218837058024e24dc5a8ec1dd3516c",
+      "gitBlob": "4521c816a5dd2325a6b4a89dad91784270f83ad1"
     },
     {
       "path": "robots.txt",
