@@ -1,19 +1,21 @@
 {
-  "release": "station-mining-guidance-2026-11-19",
-  "sourceCommit": "7855f412125aad7f014c6b111c2c9d80cafb3802",
-  "runtimeImplementationCommit": "7855f412125aad7f014c6b111c2c9d80cafb3802",
-  "sourcePullRequest": 37,
-  "sourceSnapshotVerifiedFiles": 361,
+  "release": "flight-fleet-mining-2026-11-19",
+  "sourceCommit": "bd66fe5eaed1dc5b8c62830c7f6e2046ca801fb1",
+  "runtimeImplementationCommit": "bd66fe5eaed1dc5b8c62830c7f6e2046ca801fb1",
+  "sourcePullRequest": 38,
+  "sourceSnapshotVerifiedFiles": 377,
   "notes": [
-    "Contextual station ownership, system control and black-market availability reasons",
-    "Optional real-situation guide example with no quest or reward",
-    "Survey-gated mining comparison and actual main-ore probability table, displayed grades 1-5",
-    "No change to diplomacy, prices, ore generation, quantities or hidden asteroid composition"
+    "Forward white-star hyperspace retaining the target glow; energy/heat inside resource bar",
+    "Approved fleet drone/miner/fighter atlas with unchanged stats and sizes",
+    "Preserve stolen-cargo provenance through retaliation, fleet finishes and reloads",
+    "Bounded military attack manoeuvres with unchanged weapon stats",
+    "Equal initial power counts for new galaxies only; preserve old saves and original geometry/asteroids/crew counts",
+    "Player weapon asteroid impact multiplier 0.5; NPC/fleet mining and ore payouts unchanged"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
-    "All 43 smoke suites and TypeScript/minified build",
-    "27 production desktop and touch browser scenarios",
+    "All 47 smoke suites and TypeScript/minified build",
+    "32 production desktop/touch and DPR1/1.5/2 browser scenarios",
     "Hashed manifest for every generated file; no source code or source maps"
   ],
   "files": [
@@ -54,6 +56,12 @@
       "gitBlob": "766bbc07e09b8fc4500ef26b7fcbd0827816b1cd"
     },
     {
+      "path": "assets/fleet_units_approved-D49K_Jrl.png",
+      "bytes": 721963,
+      "sha256": "cab1ea163c9ae7c4f072ec9d2a4610111728b4be6346280bfb4382e6629d8a61",
+      "gitBlob": "1cc52eda3923f1b9003ee515244a1165c7f749cf"
+    },
+    {
       "path": "assets/gate_ring-Bfv80DEA.png",
       "bytes": 1723592,
       "sha256": "b3411ddb2d043301c5912b66cff87c929d65814ba6f6426bc5a4b068c9cad461",
@@ -66,16 +74,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-DH3wUhsb.css",
-      "bytes": 78223,
-      "sha256": "3e0a8080e900fab6ca1a8a4f4e50cf6c66036258d47b2c3a121d5dc96cea2296",
-      "gitBlob": "ed265c3935009c58b8ff55119c0f86bcd7159ea3"
+      "path": "assets/index-IHh-m7Yu.css",
+      "bytes": 78633,
+      "sha256": "8756e840bbd4dc09b8c15c3171b87ab97f2d50a4d6cd7415732139e74e9727ef",
+      "gitBlob": "521073c6bb423ab1b022af28ada4df87c0b9af3f"
     },
     {
-      "path": "assets/index-MosAkxLn.js",
-      "bytes": 1147308,
-      "sha256": "9ed3d61dfdbdfcf36c6814351e6cc8e0417304e594c28e163aae02f824068e3c",
-      "gitBlob": "cedd54a97899478bf0ac836407af007da075650a"
+      "path": "assets/index-bhOI-HED.js",
+      "bytes": 1151867,
+      "sha256": "10bfd8ecb8b5cc346c3414d36732faf6fe2c0e32235b6876d0252b6989f35773",
+      "gitBlob": "533b6c8e93e4528900d600b43a66aebebac5920e"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -224,8 +232,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "720e0498b81f53c7afa36110309db52ee4306ff982a7d1ab86d1925a9030a140",
-      "gitBlob": "3c8ffa5116d1e234956009ed01c46f2cb2e7e102"
+      "sha256": "947916ddb0575b5eb90d416a1b3033c8e14257051af18836f70512485d9bd7d8",
+      "gitBlob": "5cad49a02649389411f5055216c1dfd1f7c8742e"
     },
     {
       "path": "robots.txt",
