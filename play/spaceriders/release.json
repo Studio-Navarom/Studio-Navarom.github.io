@@ -1,19 +1,20 @@
 {
-  "release": "live-feedback-onboarding-2026-11-19",
-  "sourceCommit": "6bff6652603bfc9e9564c18215ad5e36cbd9102c",
-  "runtimeImplementationCommit": "5b288d835e82758125829dce1ad43c2c13e49797",
-  "sourcePullRequest": 34,
-  "sourceSnapshotVerifiedFiles": 333,
+  "release": "live-mechanics-gates-2026-11-19",
+  "sourceCommit": "081633e401ec563e8acfd58ba319771f6548e3e1",
+  "runtimeImplementationCommit": "081633e401ec563e8acfd58ba319771f6548e3e1",
+  "sourcePullRequest": 35,
+  "sourceSnapshotVerifiedFiles": 349,
   "notes": [
-    "Onboarding follows system scan, fuel services and Command Center prerequisites",
-    "Warehouse quantities, collapsible trade sections and map destination links",
-    "Dismissible equipment previews and clearer recovery and fitting guidance",
-    "Existing rewards, transaction prices, inventories and recovery rules preserved"
+    "Confirmed dock ammunition refill with per-hull autofill and primary-first affordability",
+    "Direct own-warehouse commodity trading and opposing-power covert markets",
+    "Approved rare equipment salvage and guest docking distinct from war",
+    "Material player gates with finite capacity, paired cobalt upkeep and fuel-free player travel",
+    "Faction-neutral combat tutorial connected to diplomacy, preserving existing progress and rewards"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
-    "All 36 smoke suites and TypeScript/minified build",
-    "19 production desktop and touch browser scenarios",
+    "All 41 smoke suites and TypeScript/minified build",
+    "25 production desktop and touch browser scenarios; paired four-gate performance profile",
     "Hashed manifest for every generated file; no source code or source maps"
   ],
   "files": [
@@ -66,16 +67,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-C7u50scJ.css",
-      "bytes": 77822,
-      "sha256": "b071452e8722705c97bbc8f6d373d658fc673959ad41a59089d2b246696bd9c1",
-      "gitBlob": "ea2cdcb5daa24886d8c78a977a883b0f22bfdb89"
+      "path": "assets/index-BYDWHFiz.js",
+      "bytes": 1132341,
+      "sha256": "b0d36b9a764c72739c3a001ea58ceca07fdd9b1eb1f93868de70c59f0c9feb25",
+      "gitBlob": "d6e5f6e87596ae7ab66fcc235a2620402ce431db"
     },
     {
-      "path": "assets/index-DlHEBM2G.js",
-      "bytes": 1101204,
-      "sha256": "a25247d224a5763b5476cb044e7019ce9c449791acb3182e0270ddeefb1fb6d6",
-      "gitBlob": "e4ccd660473af8d79772f0c363a52012bb73be24"
+      "path": "assets/index-C47ZkBuf.css",
+      "bytes": 78154,
+      "sha256": "3d0a0d2e2520e94dcefbb772cc4171b60477aa9e76bd3b5fd58b57ca230c28bc",
+      "gitBlob": "a46315080654cd420a15deef77053a0bad3bf9cd"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -224,8 +225,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "39c508f8fb67201ace6371c361d8333d5621636a2c297968947140aa84f9d06b",
-      "gitBlob": "9eb04c588f22aa8e5cdeab0eca36c0e1bde9ab9a"
+      "sha256": "5dc2c828eee717ae38d034fcd038153b74b5a1dd06d0160d930bacc83bd40287",
+      "gitBlob": "2b9436007750326b33b4412126501db38e97e8b9"
     },
     {
       "path": "robots.txt",
