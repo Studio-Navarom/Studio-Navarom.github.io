@@ -1,18 +1,19 @@
 {
-  "release": "drone-percentage-2026-11-20",
-  "sourceCommit": "01f11d2db1ccc2f4cf6bb1f1b98fcbd54c4794e0",
-  "runtimeImplementationCommit": "01f11d2db1ccc2f4cf6bb1f1b98fcbd54c4794e0",
-  "sourcePullRequest": 43,
-  "sourceSnapshotVerifiedFiles": 398,
+  "release": "guided-interface-2026-11-20",
+  "sourceCommit": "11b98729396066e1eae86a3edac5c54d2debaba0",
+  "runtimeImplementationCommit": "11b98729396066e1eae86a3edac5c54d2debaba0",
+  "sourcePullRequest": 44,
+  "sourceSnapshotVerifiedFiles": 406,
   "notes": [
-    "Repair drone shield labels rounded to integer percentages in installed, purchase and spare views",
-    "No mechanical values, pricing, repair effects or save changes",
-    "UI restructuring remains a private recommendation, not a deployed redesign"
+    "Contextual walkthroughs navigate to and highlight actual controls without performing purchases or orders",
+    "Fleet filters, groups and reviewed orders; grouped station navigation",
+    "Fuel help explains route, budget, blockers and last-resort recovery",
+    "Preserve all simulation rules, costs, services and valid save data; additive UI preferences only"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
-    "All 49 smoke suites and TypeScript/minified build",
-    "Two CS desktop/EN touch browser scenarios",
+    "All 50 smoke suites and TypeScript/minified build",
+    "20 CS desktop/EN touch browser scenarios including100-unit roster, actual route planning and player-gate regression",
     "Hashed generated files; no sources or sourcemaps"
   ],
   "files": [
@@ -71,16 +72,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-B3LjfknG.js",
-      "bytes": 1155531,
-      "sha256": "a777b9adf862bb9782d15d319e4c6c2e08dc5356df47368d7120a81b14d37230",
-      "gitBlob": "f4e42cd2419cb7a5625fb42ca40eadc00c310184"
+      "path": "assets/index-B9u2mEYv.js",
+      "bytes": 1190105,
+      "sha256": "5e9801f58a89eede92c6503846c53d7d9b118cd36511ddeb05aef3f2473dcf2c",
+      "gitBlob": "8c722a3b9d261642df8007e4ed8b6e802a0e5910"
     },
     {
-      "path": "assets/index-IHh-m7Yu.css",
-      "bytes": 78633,
-      "sha256": "8756e840bbd4dc09b8c15c3171b87ab97f2d50a4d6cd7415732139e74e9727ef",
-      "gitBlob": "521073c6bb423ab1b022af28ada4df87c0b9af3f"
+      "path": "assets/index-BRTVj5pN.css",
+      "bytes": 79290,
+      "sha256": "561b8116a7b13f78bfce88da1806de32c28d670c7831018ab962a81fe18254f2",
+      "gitBlob": "256e9f8c67fe5ac464e633fc97ba89284fa530be"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -229,8 +230,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "93fd0066762489a9f5b4d8462d8863ec398ea75e7cc396ef324e24c1f773779a",
-      "gitBlob": "ddf6b31f44de5f9c66f1ddeecc7a26ab12cfb9d6"
+      "sha256": "0b52522b5ed3f7a3298f2f5277f65c634a78b5cc92d08d32d6e55493301b154a",
+      "gitBlob": "0546ace89c1492df8dbf410d07f4fa1523fb2a3f"
     },
     {
       "path": "robots.txt",
