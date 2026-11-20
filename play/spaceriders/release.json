@@ -1,21 +1,20 @@
 {
-  "release": "faction-jobs-survey-guidance-2026-11-20",
-  "sourceCommit": "0e77cc03b33a51dac108a9003c2ca7d4a81410c5",
-  "runtimeImplementationCommit": "0e77cc03b33a51dac108a9003c2ca7d4a81410c5",
-  "sourcePullRequest": 50,
-  "sourceSnapshotVerifiedFiles": 444,
+  "release": "localization-mobile-dock-2026-11-20",
+  "sourceCommit": "6f79339f07f5d3ff7309d1e69fd52a8828a1a5ce",
+  "runtimeImplementationCommit": "6f79339f07f5d3ff7309d1e69fd52a8828a1a5ce",
+  "sourcePullRequest": 54,
+  "sourceSnapshotVerifiedFiles": 451,
   "notes": [
-    "Active faction-job walkthrough highlights actual tab, disclosure and offer",
-    "Completed survey walkthrough explains revealed sites and ore chance comparison",
-    "Read-only lessons preserve rewards, quest rules and player actions",
-    "Narrow station screens retain reachable content under long help text",
-    "Legacy NPC identity and faction marker rules preserved"
+    "Consistent CS/EN equipment, map, service and rank labels",
+    "Language switching restores text and accessibility attributes",
+    "Small-screen station navigation precedes collapsible fuel, service and relation details",
+    "Tutorials can reveal station details; game rules and saved IDs unchanged"
   ],
   "validation": [
-    "Clean verified snapshot of approved PR50",
-    "Lockfile install and TypeScript/minified production build without sources or sourcemaps",
-    "All53 smoke suites",
-    "24 CS/EN desktop/touch browser scenarios covering new lessons, actual scan completion, persistence, HQ, jobs, fleet, fuel and equipment"
+    "Clean verified snapshot of approved PR54",
+    "Lockfile install and TypeScript/minified build without sources or sourcemaps",
+    "All54 smoke suites",
+    "41 CS/EN desktop/touch browser scenarios; physical iOS Safari not tested"
   ],
   "files": [
     {
@@ -73,16 +72,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-0FIXlwsB.css",
-      "bytes": 80288,
-      "sha256": "bef9d6dbab4bc5f4f9c7d9e1d5b3b04e81f281840b899edd7d4b48516c8af932",
-      "gitBlob": "81ceef3ce3391f97b3fd2f735759064b9223d597"
+      "path": "assets/index-7CXj0uIs.js",
+      "bytes": 1230787,
+      "sha256": "cd804821d4476ce8cf61c7f55b29b6b08d8916068f5d2c454b94269ffdd28c2e",
+      "gitBlob": "e035168685f1f8e533a79f5c867d1165d2551872"
     },
     {
-      "path": "assets/index-BYs7TE42.js",
-      "bytes": 1208915,
-      "sha256": "f70e95b6e4175c35f6acabd1e505c59b89e8004c1b22d97fccc9f48f52fc15bd",
-      "gitBlob": "847c413a2c0e128631da4cd79a32ca453d846d7d"
+      "path": "assets/index-BY-Ixy_3.css",
+      "bytes": 80606,
+      "sha256": "a106d8e3abde20da95afed1ecf771252f78319d17c3ebe4c1b97347153c38ff1",
+      "gitBlob": "4ddaa1a7a38a7dad9e216054b1443ba97575060c"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -231,8 +230,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "8995baa4d47e4f6f434b8b1bc460a1636172509b806d8e4e8940df9785ac9eaf",
-      "gitBlob": "a3cbdb59d4345f379e4d3f81f5fbb5d478f226bc"
+      "sha256": "28bb34f5c6efb30f3d7438cb114265f470761242e72116d02c3b27c1bd386314",
+      "gitBlob": "e64c371fc5f790c011342b2e6b4a1e2fc6811bc8"
     },
     {
       "path": "robots.txt",
