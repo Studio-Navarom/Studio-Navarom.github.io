@@ -1,20 +1,19 @@
 {
-  "release": "hunt-provocation-2026-11-19",
-  "sourceCommit": "224396a2a88e05923e400e1ee0a7c5c859660759",
-  "runtimeImplementationCommit": "224396a2a88e05923e400e1ee0a7c5c859660759",
-  "sourcePullRequest": 41,
-  "sourceSnapshotVerifiedFiles": 388,
+  "release": "player-built-gates-only-2026-11-20",
+  "sourceCommit": "f5697bef8fce00e8c404b49a2528a902454d28d0",
+  "runtimeImplementationCommit": "f5697bef8fce00e8c404b49a2528a902454d28d0",
+  "sourcePullRequest": 42,
+  "sourceSnapshotVerifiedFiles": 395,
   "notes": [
-    "Piracy victims do not become tutorial hunt targets through retaliation",
-    "Preserve legitimate defence, confirmed warrants/smugglers and actual war",
-    "Existing450Cr reward, legacy progress/claimed, loot, contracts and standing preserved",
-    "No new save fields or migration; update private requirements audit and remaining-work list"
+    "Automatic star/station relays disabled, including loaded systems",
+    "Preserve player-built gates, pairs, supply costs, travel and ordinary FSD",
+    "Update guide and research prerequisites without erasing legacy progress"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
-    "All 48 smoke suites and TypeScript/minified build",
-    "Two CS desktop/EN touch save-reload and reward browser scenarios",
-    "Hashed manifest for every generated file; no source code or source maps"
+    "All 49 smoke suites and TypeScript/minified build",
+    "Four CS desktop/EN touch browser scenarios",
+    "Hashed generated files; no sources or sourcemaps"
   ],
   "files": [
     {
@@ -72,16 +71,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
+      "path": "assets/index-C9DlGnPg.js",
+      "bytes": 1155495,
+      "sha256": "43405681c3837108a004c3b067787c1bab103a762383d8ddc1cfc8ce3631291f",
+      "gitBlob": "ad49f9c8dd4c11f64caa62344e0d463bd69c87cf"
+    },
+    {
       "path": "assets/index-IHh-m7Yu.css",
       "bytes": 78633,
       "sha256": "8756e840bbd4dc09b8c15c3171b87ab97f2d50a4d6cd7415732139e74e9727ef",
       "gitBlob": "521073c6bb423ab1b022af28ada4df87c0b9af3f"
-    },
-    {
-      "path": "assets/index-gRc4qpuV.js",
-      "bytes": 1157110,
-      "sha256": "ddb300e1b5f0309c92e7255f4881163c6f5fd8c73c211b9ccf1447267673b11f",
-      "gitBlob": "cf93a8627b2238e3f349af7f266fbf9d1b19f9f6"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -230,8 +229,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "57f64fab871635c1ec925f5fbf9b412aba6371f69a4f5f3e42e2f609e75fd974",
-      "gitBlob": "91c3695df2b4ea00d63b773c25e7ab39ac368a0c"
+      "sha256": "c0674892b09322ba1b293e8d9c0ee6de7e6bcf4ab346b6c730a817e1ed85381e",
+      "gitBlob": "24008b2439f341a48f05bf213655ea5ad832fd7f"
     },
     {
       "path": "robots.txt",
