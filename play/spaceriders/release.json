@@ -1,18 +1,18 @@
 {
-  "release": "player-built-gates-only-2026-11-20",
-  "sourceCommit": "f5697bef8fce00e8c404b49a2528a902454d28d0",
-  "runtimeImplementationCommit": "f5697bef8fce00e8c404b49a2528a902454d28d0",
-  "sourcePullRequest": 42,
-  "sourceSnapshotVerifiedFiles": 395,
+  "release": "drone-percentage-2026-11-20",
+  "sourceCommit": "01f11d2db1ccc2f4cf6bb1f1b98fcbd54c4794e0",
+  "runtimeImplementationCommit": "01f11d2db1ccc2f4cf6bb1f1b98fcbd54c4794e0",
+  "sourcePullRequest": 43,
+  "sourceSnapshotVerifiedFiles": 398,
   "notes": [
-    "Automatic star/station relays disabled, including loaded systems",
-    "Preserve player-built gates, pairs, supply costs, travel and ordinary FSD",
-    "Update guide and research prerequisites without erasing legacy progress"
+    "Repair drone shield labels rounded to integer percentages in installed, purchase and spare views",
+    "No mechanical values, pricing, repair effects or save changes",
+    "UI restructuring remains a private recommendation, not a deployed redesign"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
     "All 49 smoke suites and TypeScript/minified build",
-    "Four CS desktop/EN touch browser scenarios",
+    "Two CS desktop/EN touch browser scenarios",
     "Hashed generated files; no sources or sourcemaps"
   ],
   "files": [
@@ -71,10 +71,10 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-C9DlGnPg.js",
-      "bytes": 1155495,
-      "sha256": "43405681c3837108a004c3b067787c1bab103a762383d8ddc1cfc8ce3631291f",
-      "gitBlob": "ad49f9c8dd4c11f64caa62344e0d463bd69c87cf"
+      "path": "assets/index-B3LjfknG.js",
+      "bytes": 1155531,
+      "sha256": "a777b9adf862bb9782d15d319e4c6c2e08dc5356df47368d7120a81b14d37230",
+      "gitBlob": "f4e42cd2419cb7a5625fb42ca40eadc00c310184"
     },
     {
       "path": "assets/index-IHh-m7Yu.css",
@@ -229,8 +229,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "c0674892b09322ba1b293e8d9c0ee6de7e6bcf4ab346b6c730a817e1ed85381e",
-      "gitBlob": "24008b2439f341a48f05bf213655ea5ad832fd7f"
+      "sha256": "93fd0066762489a9f5b4d8462d8863ec398ea75e7cc396ef324e24c1f773779a",
+      "gitBlob": "ddf6b31f44de5f9c66f1ddeecc7a26ab12cfb9d6"
     },
     {
       "path": "robots.txt",
