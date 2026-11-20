@@ -1,245 +1,677 @@
 {
-  "release": "privacy-optin-analytics-2026-11-20",
-  "sourceCommit": "6c150f491c1e524794b76a9e203cd0e19e446980",
-  "runtimeImplementationCommit": "6c150f491c1e524794b76a9e203cd0e19e446980",
-  "sourcePullRequests": [
-    67
-  ],
-  "sourcePullRequest": 67,
-  "sourceSnapshotVerifiedFiles": 526,
-  "notes": [
-    "Opt-in anonymous gameplay statistics (PostHog EU capture API); nothing sent or stored before consent; Do Not Track respected",
-    "Consent prompt on the title screen and toggle in Options, both linking to /soukromi/",
-    "Game rules, saves and lessons unchanged; includes release cf-web-analytics-2026-11-20"
-  ],
-  "validation": [
-    "Clean shallow snapshot of main 6c150f4, 526 tracked files verified against Git blobs",
-    "Lockfile install and TypeScript/minified build without sources or sourcemaps",
-    "All 54 smoke suites",
-    "65 browser scenarios on the release build, including opt-in analytics (no request before consent, anonymous payload, withdrawal, Do Not Track, blocked network)"
-  ],
-  "files": [
-    {
-      "path": "assets/accord-DuQ4Cn_p.jpg",
-      "bytes": 28134,
-      "sha256": "80e937719cfe7307e934887fdc9ad7836f3fe5e44e1a75f891b95cbbd218ce3e",
-      "gitBlob": "fcfb6cb10cdf9a3e5f876c1a8db975e790105c4e"
-    },
-    {
-      "path": "assets/atlas-BlstJF8k.png",
-      "bytes": 20444,
-      "sha256": "5700f551b69ecc262447bf89ffe752309ebf05576cd4136881c483dd7f095973",
-      "gitBlob": "080ea27d54676a880b790572b613514fd6506ef1"
-    },
-    {
-      "path": "assets/atlas_powers-Bzp5SAVV.png",
-      "bytes": 121932,
-      "sha256": "293e95d41bb24c1a0e98e7b8fe956ab60bcacd28dcc721fffd75367818e1daeb",
-      "gitBlob": "4ad1b71a22ce488ad9925b44ddbcc7cf8c70902b"
-    },
-    {
-      "path": "assets/atlas_world-Ci-UcLYt.png",
-      "bytes": 438012,
-      "sha256": "a3537942ddf2fc59f189d8596670a70bd499a7d551b63e7cd20459d80544bba8",
-      "gitBlob": "3b1ec2ef7b40c41efd0b0c3d55ed51ccb82248d0"
-    },
-    {
-      "path": "assets/concord-Dw0mOwK6.jpg",
-      "bytes": 27419,
-      "sha256": "cb87c6719febfab8b543d4bcda7f567f4fdfcfde209acea41aaa4e38e9d3b763",
-      "gitBlob": "f5b4fbcc0687f88dc6a85d496a92fd9cbe975de9"
-    },
-    {
-      "path": "assets/dominion-Bz-z9TpC.jpg",
-      "bytes": 28882,
-      "sha256": "d2730c55278d24fe5d46f5c73ebdf9a3180193c957fce54b6a5203282feb530e",
-      "gitBlob": "766bbc07e09b8fc4500ef26b7fcbd0827816b1cd"
-    },
-    {
-      "path": "assets/fleet_units_approved-D49K_Jrl.png",
-      "bytes": 721963,
-      "sha256": "cab1ea163c9ae7c4f072ec9d2a4610111728b4be6346280bfb4382e6629d8a61",
-      "gitBlob": "1cc52eda3923f1b9003ee515244a1165c7f749cf"
-    },
-    {
-      "path": "assets/gate_ring-Bfv80DEA.png",
-      "bytes": 1723592,
-      "sha256": "b3411ddb2d043301c5912b66cff87c929d65814ba6f6426bc5a4b068c9cad461",
-      "gitBlob": "73f95b18838cde5cc56db2369ebfa65de515b1d6"
-    },
-    {
-      "path": "assets/independents-ldVKrEVp.jpg",
-      "bytes": 27960,
-      "sha256": "e92aa78f6619537d293ba9d729f1f1030a33acfa4f9954e0a416aac3dc788237",
-      "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
-    },
-    {
-      "path": "assets/index-DT8Flw47.css",
-      "bytes": 82388,
-      "sha256": "0a827fdc0e637cac3d2578e682b52bad209c4a90b599f290a1a973e7946a06f4",
-      "gitBlob": "41f6dd0d6591a70dd9bf08bf6b093be756a6478e"
-    },
-    {
-      "path": "assets/index-DUZ8w8IG.js",
-      "bytes": 1249955,
-      "sha256": "d1750f04763f75c0a50376f88ee60c4c3bfb2c8886f0c49e8cb346ccfe5b52ce",
-      "gitBlob": "fe05683fe1c879b836b1d2e55fe2cd27795c1d4a"
-    },
-    {
-      "path": "assets/mothership_accord-EJjtWypP.png",
-      "bytes": 8811,
-      "sha256": "d595c825396fe114270fafe87be29b84375d5fc06e6d9912935b179e268ae26c",
-      "gitBlob": "e57b654a026631800d3bed01a10edb60e25bc25e"
-    },
-    {
-      "path": "assets/mothership_concord-Bp_xAd4P.png",
-      "bytes": 9151,
-      "sha256": "b8f096ccb28c4d07d3df3d9ea5af57686508a1f96467336f3ae335cd8caf9314",
-      "gitBlob": "abb34983b4c4a02e2eb05fa886a439c455a91290"
-    },
-    {
-      "path": "assets/mothership_dominion-CnHX90r9.png",
-      "bytes": 10085,
-      "sha256": "d6106a0736269263ad92eb456992d6a1f6bd8d028e7947cfec0e5c49a7385401",
-      "gitBlob": "ba5763342d3d7cd09a279e437bbcb849efb892b2"
-    },
-    {
-      "path": "assets/mothership_independents-C1TyeBU4.png",
-      "bytes": 10136,
-      "sha256": "7380643e52095d359fa6541abbabbec46d5d43154138af110209ef93a6005252",
-      "gitBlob": "b734ca4e5e21fa80e79aec34db70d5c62906588a"
-    },
-    {
-      "path": "assets/nav_beacon-XR-iVBOR.png",
-      "bytes": 733788,
-      "sha256": "b0d5025f61183874005dc766c2d2db688fa5d3e336de4a369eabb330a0ea77b7",
-      "gitBlob": "56972793275b7b94b87abaafa991716a4085f39f"
-    },
-    {
-      "path": "assets/ship_armored-CUHi6O8N.png",
-      "bytes": 4901,
-      "sha256": "c51b04b6fada0f102ca47946b7f63ca67c91f6564fd8e447c92328c6b0bdd926",
-      "gitBlob": "66d6bca4f27ce74d6d9a61e0699713515781504f"
-    },
-    {
-      "path": "assets/ship_hauler-BiClgf_T.png",
-      "bytes": 6033,
-      "sha256": "f0cf53a6b35a917fa40d0deb39e9b35773eb19d0d4cf1bd324affd0222c64836",
-      "gitBlob": "2a22d991275cd3181bd7ba8afe4858e8418f65a5"
-    },
-    {
-      "path": "assets/ship_interceptor-E9LAwUkh.png",
-      "bytes": 10900,
-      "sha256": "33fa63f845580c29ee6b58d9c111ca491beea79000bc7f86fb8489c1ebbe4e66",
-      "gitBlob": "20949d1bbd7358cf73991df2c1b0178cb6138f4d"
-    },
-    {
-      "path": "assets/ship_raider-DNSbkG_k.png",
-      "bytes": 14171,
-      "sha256": "0230d3c279ebf2ba9dfee2730959d56ee12a5a8c1e17e245bb2f568dce6f79f4",
-      "gitBlob": "7b8dd16f0b3abb9c76fa25dec1cdf8e2ca39e011"
-    },
-    {
-      "path": "assets/ship_trader-C9nX8rv8.png",
-      "bytes": 4605,
-      "sha256": "570211d701b50d6ba63cbbd6247087aa83e91865047edd1b5500d8ceb7567434",
-      "gitBlob": "0d0431d887688d2a8f11b964b07fc81f3ea00097"
-    },
-    {
-      "path": "assets/starter_free_accord_128-BYBVL3Xc.png",
-      "bytes": 14852,
-      "sha256": "1ffa122eb3148f19436e14592419a21059354b5b065b64bbd65053e09a2073af",
-      "gitBlob": "9c5a3afbcd840c53a541954c003b00241c55913c"
-    },
-    {
-      "path": "assets/starter_independent_systems_128-CuR9gnqK.png",
-      "bytes": 14294,
-      "sha256": "170d08ce00655470b31b0f89cdb5290bc3adb3c87e88df68dc16c2a4b614a09c",
-      "gitBlob": "0f9942ef654511d87873ba621f3a4f9c493ea144"
-    },
-    {
-      "path": "assets/starter_neutral_128-CfH_gaLY.png",
-      "bytes": 14221,
-      "sha256": "5354e18f74c16194ea42f0f25b9573cc8596a30b4fe2612efcea4e112bc080e1",
-      "gitBlob": "c4a3fdfc3abb926b2594c2733baffe77e02510c6"
-    },
-    {
-      "path": "assets/starter_solar_dominion_128-DXnCm3Bs.png",
-      "bytes": 14653,
-      "sha256": "d18d1502fc32a0d8375ec077b5b0dca1fbbaac8d84a0851ab2ade3aafe07d010",
-      "gitBlob": "66e4d12c6782a78e6a2e4ce529772065a0755a7b"
-    },
-    {
-      "path": "assets/starter_terran_concord_128-DYlZajRU.png",
-      "bytes": 14143,
-      "sha256": "b42bc845ceeacdd2c6bbb6d70825078e259002540fc16930a489acfd5baa93ae",
-      "gitBlob": "4c7b2ddba8c168cbbce90de884d3f68549aaa2c3"
-    },
-    {
-      "path": "assets/station_accord_hi-0yxaDx98.png",
-      "bytes": 57579,
-      "sha256": "6718e6e74e38de40bfc925efaf6574a34cc07e5745a7e52837e8de372aba10a5",
-      "gitBlob": "d053aa4454afe8fd9cb556ade6a090d9518e8cc5"
-    },
-    {
-      "path": "assets/station_concord_hi-t4sCEXAz.png",
-      "bytes": 40798,
-      "sha256": "91b3cf70519267c5189ecc039d600142a598b5a200890e4327816691c8b20f24",
-      "gitBlob": "47d483d8e7f0e15f19f838f3fc97aa3334e07ea6"
-    },
-    {
-      "path": "assets/station_dominion_hi-DQfhiYwe.png",
-      "bytes": 55223,
-      "sha256": "36b6a3512065d6bb5be98e8aee36ec2c322f0b6353995dd0d862a07157ff6dba",
-      "gitBlob": "40cf2d98d88a5858b9022715622eaa958b1a05b7"
-    },
-    {
-      "path": "assets/station_hq_independent-ChEJ2P3A.png",
-      "bytes": 26431,
-      "sha256": "0c124000d4830857e6d504536fc6ba6aca796b1ba268c3e76497544bc236bd70",
-      "gitBlob": "1b54313b63ba02f1d4f5613555c699171179ebfe"
-    },
-    {
-      "path": "assets/station_independents_hi-CqtVteaV.png",
-      "bytes": 53193,
-      "sha256": "607ea94eef732f524cacef1647dcb8cb6a66cc8e6449cc2fc1e3d09a5e945885",
-      "gitBlob": "a144c33cb42c5aa5c27137fa288c415c0fe63f9e"
-    },
-    {
-      "path": "assets/station_player_side-BUcRtPHt.png",
-      "bytes": 9447,
-      "sha256": "0d2c230a6e4eb5ab67d7bc45ef6628b5b3da78d0d20bf327cdca232c758d7ede",
-      "gitBlob": "e31b31410652628f2bf98421f5f753887ec781e9"
-    },
-    {
-      "path": "assets/tanker-CNwojpiK.png",
-      "bytes": 1838475,
-      "sha256": "f51dd6688d8752c85a9762168bfa703a61cd602e36b029dfc0a89e84fed192f6",
-      "gitBlob": "d3f3c3942842a23a763a95ffefbdb266bd0c7a4b"
-    },
-    {
-      "path": "assets/visual394-D56io_ZV.png",
-      "bytes": 40866,
-      "sha256": "a0ad74ad68904ca1212231aac7ad325c54af5119bb434360e0d425b82ebd12bb",
-      "gitBlob": "3bd514dd01592e5387631ad85f4275c86792be83"
-    },
-    {
-      "path": "favicon.ico",
-      "bytes": 20373,
-      "sha256": "dd821076a9b03adc2173c93956226aea3d92482d7578fc4339c5d3a2e9c24586",
-      "gitBlob": "3c01d69713f9c184e92b74f5799e6dff2f500825"
-    },
-    {
-      "path": "index.html",
-      "bytes": 872,
-      "sha256": "017c347d5c8691c4e933848142c758e7f6b75ad91835443e4bb93926fcd3a538",
-      "gitBlob": "43a54e3cd37cb4732085ed05efb74de9671f0d9c"
-    },
-    {
-      "path": "robots.txt",
-      "bytes": 160,
-      "sha256": "a3d27b3ca5ce32341fa9f96f01169b521b1657c05d1860c45d1e53a6258e9e8b",
-      "gitBlob": "6018e701fc7dd0317cda9eceea390524322e8a05"
-    }
-  ]
+ "release": "ships-stations-ambush-2026-11-21",
+ "sourceCommit": "bb25c616c4185f87394a3d84a737417bf6d14f60",
+ "runtimeImplementationCommit": "d950c676f144d86825a27454da9bc1868cf4f320",
+ "sourcePullRequests": [
+  69
+ ],
+ "sourcePullRequest": 69,
+ "sourceSnapshotVerifiedFiles": 637,
+ "notes": [
+  "New ship and station artwork (4 powers x fighter/transport/Heavy Cruiser, pirates, masks, 3 player station tiers) at reference proportions; crisp Lanczos 1x/2x/3x levels; phones up to 2x density with automatic fallback",
+  "Masks until scanned, no role label before a scan, per-nozzle engine plumes, hyperspace arrival effect",
+  "Rules approved by the user: hull-class toughness, station tier III, 2x station hulls (one-time lift of older saves), edge-based station reach, hyperspace ambushes by system security, unknown contacts without a faction, convoy escorts"
+ ],
+ "validation": [
+  "Clean shallow snapshot of main bb25c61, 637 tracked files verified against Git blobs",
+  "Lockfile install and TypeScript/minified build without sources or sourcemaps",
+  "All 55 smoke suites",
+  "Release-build browser checks: ship art (desktop DPR2, phone DPR3, masks, arrival, ambush), mobile dock, analytics; PR CI all green"
+ ],
+ "files": [
+  {
+   "path": "assets/accord-DuQ4Cn_p.jpg",
+   "bytes": 28134,
+   "sha256": "80e937719cfe7307e934887fdc9ad7836f3fe5e44e1a75f891b95cbbd218ce3e",
+   "gitBlob": "fcfb6cb10cdf9a3e5f876c1a8db975e790105c4e"
+  },
+  {
+   "path": "assets/accord_cruiser@1x-p17zuOWq.png",
+   "bytes": 15062,
+   "sha256": "72dd67e9bc346ab2ebe6a1e4a811e44d19fb3d90e649af5721896fbe35373b0c",
+   "gitBlob": "bfbee13f4ec9954fa733c144e15eb3c69afe7dea"
+  },
+  {
+   "path": "assets/accord_cruiser@2x-Bv8gLcOm.png",
+   "bytes": 40043,
+   "sha256": "ebc93636f50aef5fb14bb399f220df6274fe5eea22a00c9495d716c6d5aeb87f",
+   "gitBlob": "dc4d9eada533d98d2591a93675e8a0879072d767"
+  },
+  {
+   "path": "assets/accord_cruiser@3x-Da3if1n5.png",
+   "bytes": 70843,
+   "sha256": "3f030ef4448e21669959728bd56ef6e61e24d3317a7ba607ce19db93884b01fc",
+   "gitBlob": "fe42e581e65171d4ea9ff44935e43140632e403c"
+  },
+  {
+   "path": "assets/accord_fighter@2x-CEvi743x.png",
+   "bytes": 4617,
+   "sha256": "343f9af2170990965e13d6c58134c0563bf778e2445117f9bd82340768cac9e7",
+   "gitBlob": "e171fb0288b19825647a5deb4eba2f0aff01fa58"
+  },
+  {
+   "path": "assets/accord_fighter@3x-CS4Q8iq1.png",
+   "bytes": 7878,
+   "sha256": "14c184a9de03633b78ba387b6d7b0c89b8ecb8e49405f388071a80260bad28fb",
+   "gitBlob": "39420e079e737aa93a2e3a4b4817fd749165a6f6"
+  },
+  {
+   "path": "assets/accord_transport@1x-DwvwrwOe.png",
+   "bytes": 8301,
+   "sha256": "209dae6b47fb8de494eb3215772307cb17013fd39c14c115e6e9695f0841a296",
+   "gitBlob": "5a60731c050c2578787283a0cc19a5d5f965f658"
+  },
+  {
+   "path": "assets/accord_transport@2x-ps3umJ8e.png",
+   "bytes": 22160,
+   "sha256": "abe9e72cbdddd6c94c0450fdcb81ea616d6aacedc97812809b63dd460a100e0a",
+   "gitBlob": "338c98f8da39dc431b3200dd579db09439acd301"
+  },
+  {
+   "path": "assets/accord_transport@3x-C-8nSofR.png",
+   "bytes": 39323,
+   "sha256": "1910765dac7f06a3badd9bd68a8b958b85170e465815a7ec3ce920052bf23179",
+   "gitBlob": "24094461f9f10b9f53312cc44b5ac7dbc1456699"
+  },
+  {
+   "path": "assets/atlas-BlstJF8k.png",
+   "bytes": 20444,
+   "sha256": "5700f551b69ecc262447bf89ffe752309ebf05576cd4136881c483dd7f095973",
+   "gitBlob": "080ea27d54676a880b790572b613514fd6506ef1"
+  },
+  {
+   "path": "assets/atlas_powers-Bzp5SAVV.png",
+   "bytes": 121932,
+   "sha256": "293e95d41bb24c1a0e98e7b8fe956ab60bcacd28dcc721fffd75367818e1daeb",
+   "gitBlob": "4ad1b71a22ce488ad9925b44ddbcc7cf8c70902b"
+  },
+  {
+   "path": "assets/atlas_world-Ci-UcLYt.png",
+   "bytes": 438012,
+   "sha256": "a3537942ddf2fc59f189d8596670a70bd499a7d551b63e7cd20459d80544bba8",
+   "gitBlob": "3b1ec2ef7b40c41efd0b0c3d55ed51ccb82248d0"
+  },
+  {
+   "path": "assets/concord-Dw0mOwK6.jpg",
+   "bytes": 27419,
+   "sha256": "cb87c6719febfab8b543d4bcda7f567f4fdfcfde209acea41aaa4e38e9d3b763",
+   "gitBlob": "f5b4fbcc0687f88dc6a85d496a92fd9cbe975de9"
+  },
+  {
+   "path": "assets/concord_cruiser@1x-Dz8G_WPf.png",
+   "bytes": 14697,
+   "sha256": "46ba0b628cadfd8acccfcfcf316fb6c049586a9af24da5385d3e366ca9bbad74",
+   "gitBlob": "cb91dd91d26a37322824dbd4fd6de959e24e62ca"
+  },
+  {
+   "path": "assets/concord_cruiser@2x-CPnl60tG.png",
+   "bytes": 39493,
+   "sha256": "7b66e5e3850f92e9540e4600bca42de81711c1973e8d73212d7dad9407da47e7",
+   "gitBlob": "dd074c855fbc35c97a7afbbbfff9b143c28f5d6a"
+  },
+  {
+   "path": "assets/concord_cruiser@3x-GU73XERy.png",
+   "bytes": 69679,
+   "sha256": "f04924f853b64cc210959fe453e0a662da980ac2725c2d91ff1d493a44e9e926",
+   "gitBlob": "f727bd021fb7b9dbae42088653c292546bed881b"
+  },
+  {
+   "path": "assets/concord_fighter@2x-3sNVBrhO.png",
+   "bytes": 4853,
+   "sha256": "75f7b0c844bc566aa3579366bc8a8da1002fd1322f74fc871509d472acbc4cbd",
+   "gitBlob": "f258d7110f0d34218de6a45e126564c58a6c3d2c"
+  },
+  {
+   "path": "assets/concord_fighter@3x-Drf4Okmb.png",
+   "bytes": 8004,
+   "sha256": "972bf7bae49320e4161965412c9f6804f2d2302ab64cecbaeed54e4cd5358b8c",
+   "gitBlob": "019353a19d24abbd1fd78675e95c45814cf3cd39"
+  },
+  {
+   "path": "assets/concord_transport@1x-CHqybmj9.png",
+   "bytes": 7546,
+   "sha256": "b8183fa3e1a61107fb0047232a8679868de5247f91bd63fefc6d9614f829b9f7",
+   "gitBlob": "c5b24de0d12693389dabe1f0afecf85eadc843d2"
+  },
+  {
+   "path": "assets/concord_transport@2x-DqEm9LxO.png",
+   "bytes": 19779,
+   "sha256": "25cc98c3e131623a8b38d613d84263159e37a0dcaf2e8301325cafabc582a89f",
+   "gitBlob": "9fdb93cda37e1e1daf22b3bd654f61ccf2b4e834"
+  },
+  {
+   "path": "assets/concord_transport@3x-wlfo3Jx9.png",
+   "bytes": 34791,
+   "sha256": "b097828503ada0a17713fb4b1ff0d5a33d81fb9925ac4430e67507d348d8781c",
+   "gitBlob": "b6866c60d66de899aabf13549b801171f95b5086"
+  },
+  {
+   "path": "assets/dominion-Bz-z9TpC.jpg",
+   "bytes": 28882,
+   "sha256": "d2730c55278d24fe5d46f5c73ebdf9a3180193c957fce54b6a5203282feb530e",
+   "gitBlob": "766bbc07e09b8fc4500ef26b7fcbd0827816b1cd"
+  },
+  {
+   "path": "assets/dominion_cruiser@1x-uA5eRwBy.png",
+   "bytes": 14844,
+   "sha256": "ce1f7d0b42cb371c09ba767ee85421390db54fcd072249c720fc848b9071b911",
+   "gitBlob": "9ec2844fd923fb7b4a2895dd7ec44eccd9be21ff"
+  },
+  {
+   "path": "assets/dominion_cruiser@2x-BBJf_ojP.png",
+   "bytes": 39814,
+   "sha256": "87e928cb5eaf9fbd67da294366c1e30885d97fa971f62f895156972ceedbe8a4",
+   "gitBlob": "082418c54dd26795e30fc413c8e673121d34eee8"
+  },
+  {
+   "path": "assets/dominion_cruiser@3x-CiEZ94vS.png",
+   "bytes": 71029,
+   "sha256": "be0b73ed2a7bc19358f15ba1db10bf1b44bc1025fe113893a2c3e63e708dc335",
+   "gitBlob": "3fc7a7f1229bd61bec475234bdb7153138c9d7e8"
+  },
+  {
+   "path": "assets/dominion_fighter@2x-VaIS6W3A.png",
+   "bytes": 4873,
+   "sha256": "e9296c1d1b9c78562dfa97080c7c2c499d3c53292fe883f196e779f062994d86",
+   "gitBlob": "c1d83c308063613ce9801bb5a70f66fa4543fe17"
+  },
+  {
+   "path": "assets/dominion_fighter@3x-Cdw5o6kx.png",
+   "bytes": 8124,
+   "sha256": "e95bcd42752d22444e3a228c17a3d1f2204670e2e0b4211d1397cf8a75de5c8e",
+   "gitBlob": "6d94fc23535eef4420f8b2909e6a908d0819ef94"
+  },
+  {
+   "path": "assets/dominion_transport@1x-Bpl_ERGs.png",
+   "bytes": 8959,
+   "sha256": "476f4227b9741a073ab7d80c67bf9573876205866dfe76635a92b9c7c5f450f6",
+   "gitBlob": "0f8be206aa1b96b7b31fd3100d98d2267775743c"
+  },
+  {
+   "path": "assets/dominion_transport@2x-CloTa23R.png",
+   "bytes": 23334,
+   "sha256": "9f63e1e369509167cc2602627295280cb299529b45d9ada8d807ee7054c7b70e",
+   "gitBlob": "ea0395507cda1bda126d414b010829f141bedc31"
+  },
+  {
+   "path": "assets/dominion_transport@3x-AkI_plEU.png",
+   "bytes": 41542,
+   "sha256": "5ad41e01db08a66b9bca413cab40f7aff94da1dd2af12e54849bf9f4d5ae659a",
+   "gitBlob": "fe3500b9aa92800bbe329159d7d3d0bb4d565f67"
+  },
+  {
+   "path": "assets/fleet_units_approved-D49K_Jrl.png",
+   "bytes": 721963,
+   "sha256": "cab1ea163c9ae7c4f072ec9d2a4610111728b4be6346280bfb4382e6629d8a61",
+   "gitBlob": "1cc52eda3923f1b9003ee515244a1165c7f749cf"
+  },
+  {
+   "path": "assets/gate_ring-Bfv80DEA.png",
+   "bytes": 1723592,
+   "sha256": "b3411ddb2d043301c5912b66cff87c929d65814ba6f6426bc5a4b068c9cad461",
+   "gitBlob": "73f95b18838cde5cc56db2369ebfa65de515b1d6"
+  },
+  {
+   "path": "assets/independents-ldVKrEVp.jpg",
+   "bytes": 27960,
+   "sha256": "e92aa78f6619537d293ba9d729f1f1030a33acfa4f9954e0a416aac3dc788237",
+   "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
+  },
+  {
+   "path": "assets/independents_cruiser@1x-DzK2CZaN.png",
+   "bytes": 13169,
+   "sha256": "bbb02ba9a228d6594c7499d8faaf5af80b1d63c89cc5d4a8952a562ededa21e9",
+   "gitBlob": "71067c32ef0c0d5024723bfd09bf497702d64a0b"
+  },
+  {
+   "path": "assets/independents_cruiser@2x-XYK72RTR.png",
+   "bytes": 36314,
+   "sha256": "aab80acf0278093709b784a9cc56762367f0bda364c0946ea59e661d2a94cb4d",
+   "gitBlob": "9a42bc3a5b5d196333819fae7e65f4149f64f82d"
+  },
+  {
+   "path": "assets/independents_cruiser@3x-DLYEBp1D.png",
+   "bytes": 63283,
+   "sha256": "ea299dd364708d18a2e230679f3a789b378636aefb6ce3313c22f81fb0213e24",
+   "gitBlob": "5051c45699505c90aeef152556ed792b77d9239b"
+  },
+  {
+   "path": "assets/independents_fighter@2x-Bt-y8mBD.png",
+   "bytes": 4825,
+   "sha256": "14d790d1328044d0d1423550b330d987015fb8b4267b1d0334d511c6ef4827f9",
+   "gitBlob": "d11cb83402e0fe5b90fd3b33a5927d879513ac0a"
+  },
+  {
+   "path": "assets/independents_fighter@3x-DCb2NPnj.png",
+   "bytes": 8136,
+   "sha256": "4fc28bd11af9e41e8557b70d709d2bba6d62904333e77a0da9cc9398f79f968f",
+   "gitBlob": "eb803f581e2a23cd660512f0e79dddb66a471e04"
+  },
+  {
+   "path": "assets/independents_transport@1x-BkarV6-0.png",
+   "bytes": 8087,
+   "sha256": "3e7b60d96348aaf487d56a5754bdf16eb134c734869a4a1464acd1f9eb54306e",
+   "gitBlob": "2011717b0a8424b9d40803f7828b2a8dc29093d9"
+  },
+  {
+   "path": "assets/independents_transport@2x-C0KVYgwG.png",
+   "bytes": 21070,
+   "sha256": "8b38ff7335d088b62855f467d1a32aecbea420e5d064a4895d3a15ae460ef7ed",
+   "gitBlob": "a884799eafccb5a46b777f438b2108f9268dbd84"
+  },
+  {
+   "path": "assets/independents_transport@3x-G6oJ8cDE.png",
+   "bytes": 38336,
+   "sha256": "a8e4fd17247543933b895ee3aa4db7656558527646188b2d9d4d550661cb9310",
+   "gitBlob": "7059d5f0014060c76e355af3811b28205c55d604"
+  },
+  {
+   "path": "assets/index-BR-iOgbF.js",
+   "bytes": 1289547,
+   "sha256": "c7ec018bf0065acc13b4798d9798f9088664d680df60534ebf332c447bed0c9e",
+   "gitBlob": "6fbf8439403dd885cc2d9085bcc42b2a5d7cf1af"
+  },
+  {
+   "path": "assets/index-BzeX4Ca4.css",
+   "bytes": 82410,
+   "sha256": "ff52aa6059d4060bd4095911ac7b56a34bd70b336f7f2ba2883d98feb41d5fe2",
+   "gitBlob": "1e636eb404dee77e295de7504318bcb7183a0339"
+  },
+  {
+   "path": "assets/mask_blue_window@1x-CoioIqme.png",
+   "bytes": 7369,
+   "sha256": "fa889b3b0830c8ac733785e1b9cab7c405d0e45194d4fd1993fe9ade70f0f322",
+   "gitBlob": "b7f58ae9304c280771d12f53a442ec6d2258dfab"
+  },
+  {
+   "path": "assets/mask_blue_window@2x-BDspGOuK.png",
+   "bytes": 18319,
+   "sha256": "b3024faaa6b42d92f1d44c910c6b6a217797bff55fae006a7685e399888b8e02",
+   "gitBlob": "b9559b05e020223e73a1347b448e3012b26f5a0e"
+  },
+  {
+   "path": "assets/mask_blue_window@3x-C8s_5hYH.png",
+   "bytes": 32214,
+   "sha256": "2314121d5012e4cad7cf483119bbb1f66ca789e875bdea53448c47485a45a1a7",
+   "gitBlob": "4248bcca34a631aa23262be6cdb49563cb7e4789"
+  },
+  {
+   "path": "assets/mask_heavy_transport_a@1x-CcS-SUPo.png",
+   "bytes": 8669,
+   "sha256": "42371c7f5ce6635cf2a984ec97307a8708541ede39846d80353546143529d7be",
+   "gitBlob": "b761e5a673c068d7bcd7f5f939dbf5793dd8e427"
+  },
+  {
+   "path": "assets/mask_heavy_transport_a@2x-tLd91P9A.png",
+   "bytes": 22222,
+   "sha256": "f7e6c7f507146eea96a8a6ff0aba871348b38e75d5bbccf571ef95341db3b1f7",
+   "gitBlob": "60f351ccb6ab9203cb119f33809c7dbe6d6c0cb3"
+  },
+  {
+   "path": "assets/mask_heavy_transport_a@3x-BQmhBMhC.png",
+   "bytes": 38668,
+   "sha256": "f7dc51795fb28c81c75b37dd31f3c470a4e166f09f4a2f3b5fcf3923c4e9cb9a",
+   "gitBlob": "b8a373af81c65e82a82cc87581aba2a7d4443f72"
+  },
+  {
+   "path": "assets/mask_heavy_transport_b@1x-D7ZDmzFg.png",
+   "bytes": 7909,
+   "sha256": "4bc189d34225ed5442077a5c4aeaf9ebaba0b100780d0a51e1cee89247df6bde",
+   "gitBlob": "d8b3592b80c4e6a40c6cb9898469096d92f55042"
+  },
+  {
+   "path": "assets/mask_heavy_transport_b@2x-BHtxgV3N.png",
+   "bytes": 22540,
+   "sha256": "2b97ada9c5ff8deca6dd5d51346040a4ad32bea780b92a967e45f591878e2e77",
+   "gitBlob": "fb106fde0d25502f5fb734bda714e91369a6bf51"
+  },
+  {
+   "path": "assets/mask_heavy_transport_b@3x-CIwbDaVl.png",
+   "bytes": 40697,
+   "sha256": "d61110cd2d4f9c52fbf575ca7bf939c4446ed633efb8280ab9b497caeaeb87d1",
+   "gitBlob": "d5ba12a4a9eea2f2e4d77f4078bf77e4da6f6597"
+  },
+  {
+   "path": "assets/mask_t2@1x-CArSK0UP.png",
+   "bytes": 7311,
+   "sha256": "c2689cada6e6381cc30edda6c2373cf51d9feba9b17bbf942ccd3e445ef64b1c",
+   "gitBlob": "201732cc2470da367e27315595a32d4af4f9d10a"
+  },
+  {
+   "path": "assets/mask_t2@2x-DyG8d6Ay.png",
+   "bytes": 19356,
+   "sha256": "02ff8cc4159db8b626cf192b535c9ed45850ccdddf75dcfe608ee51988e5e0e1",
+   "gitBlob": "3f3b0b04116ee4b3cc70c07e620c215f324a48a2"
+  },
+  {
+   "path": "assets/mask_t2@3x-CBQ1vmMr.png",
+   "bytes": 34783,
+   "sha256": "28126601519c75fe6644265e72ef254ad7b6a7a0ff9a46132d7b21a0e820fca8",
+   "gitBlob": "a1c0d75791ab15c1f6d38a7047d67b700ee33ec9"
+  },
+  {
+   "path": "assets/mask_t3@1x-BO6lFMon.png",
+   "bytes": 8976,
+   "sha256": "c3ce6fc211e97c50ca0da32df40daf8ee0acec5c67a98b19ed159dc7f0d416a2",
+   "gitBlob": "53511704e563d5b4e9cafba9d14180d9fbc21d5d"
+  },
+  {
+   "path": "assets/mask_t3@2x-BqE5jUDY.png",
+   "bytes": 24283,
+   "sha256": "deb7f986fb7f8a34059e1d0a75447b4c79a2c2122228cd805cb83ba3798005c5",
+   "gitBlob": "eba7d96cb473d98c50172558a0749b925a5b6053"
+  },
+  {
+   "path": "assets/mask_t3@3x-r3hacGgZ.png",
+   "bytes": 44478,
+   "sha256": "0e7c6013a5e0fc10657b787cb9e707efe145b5e70615490be7e2b6899ea62332",
+   "gitBlob": "add4735a46dcfbd75fb6648bb12a4997d7c7b191"
+  },
+  {
+   "path": "assets/mask_uniship@1x-aAczSfEs.png",
+   "bytes": 8356,
+   "sha256": "1ea740cbfab02512a4e14ac35d3b726163128117c24af86bcc645005219a691d",
+   "gitBlob": "fa6828a0f24ab810f20f80cd7852ff66ecf52ef4"
+  },
+  {
+   "path": "assets/mask_uniship@2x-Bk5Bg9EP.png",
+   "bytes": 22901,
+   "sha256": "3f88d61ed70477c448f319d95a0ff65190e31c3a341d470070bc2345c1d0ce04",
+   "gitBlob": "1da9073065ca7be87e47431c15547adc804f5e79"
+  },
+  {
+   "path": "assets/mask_uniship@3x-BN7pv8uZ.png",
+   "bytes": 41110,
+   "sha256": "380117be33689cdc3f8e414d7b80060efd6dc9295e95f3a3c59c0156125b3794",
+   "gitBlob": "4db79026962a627b2a444f28f7a0bea863425c57"
+  },
+  {
+   "path": "assets/mothership_accord-EJjtWypP.png",
+   "bytes": 8811,
+   "sha256": "d595c825396fe114270fafe87be29b84375d5fc06e6d9912935b179e268ae26c",
+   "gitBlob": "e57b654a026631800d3bed01a10edb60e25bc25e"
+  },
+  {
+   "path": "assets/mothership_concord-Bp_xAd4P.png",
+   "bytes": 9151,
+   "sha256": "b8f096ccb28c4d07d3df3d9ea5af57686508a1f96467336f3ae335cd8caf9314",
+   "gitBlob": "abb34983b4c4a02e2eb05fa886a439c455a91290"
+  },
+  {
+   "path": "assets/mothership_dominion-CnHX90r9.png",
+   "bytes": 10085,
+   "sha256": "d6106a0736269263ad92eb456992d6a1f6bd8d028e7947cfec0e5c49a7385401",
+   "gitBlob": "ba5763342d3d7cd09a279e437bbcb849efb892b2"
+  },
+  {
+   "path": "assets/mothership_independents-C1TyeBU4.png",
+   "bytes": 10136,
+   "sha256": "7380643e52095d359fa6541abbabbec46d5d43154138af110209ef93a6005252",
+   "gitBlob": "b734ca4e5e21fa80e79aec34db70d5c62906588a"
+  },
+  {
+   "path": "assets/nav_beacon-XR-iVBOR.png",
+   "bytes": 733788,
+   "sha256": "b0d5025f61183874005dc766c2d2db688fa5d3e336de4a369eabb330a0ea77b7",
+   "gitBlob": "56972793275b7b94b87abaafa991716a4085f39f"
+  },
+  {
+   "path": "assets/pirate_cruiser@1x-Dhi1q108.png",
+   "bytes": 7075,
+   "sha256": "3556690b12d88c0bf735115ec7f88132821ed55406d626c3d72e83b4b0c713aa",
+   "gitBlob": "cfca509cbbaf220b1ab6579bf06926e4e35c0b6e"
+  },
+  {
+   "path": "assets/pirate_cruiser@2x-BiN4bHG1.png",
+   "bytes": 19945,
+   "sha256": "a8787f99fa0271441caf232d7e7bc1155deff3c7a29ce6a108b9b7a861342ad2",
+   "gitBlob": "6c5e9fe94c49e0a00e5b631aa82353853b005696"
+  },
+  {
+   "path": "assets/pirate_cruiser@3x-CakKcbQe.png",
+   "bytes": 37043,
+   "sha256": "f42081aafdebea4c4fa41fcfcf568d4f8d689419cdf18348b1bf1791ab054494",
+   "gitBlob": "7797b95e050047ae9bb895486322361f9dd9bfd6"
+  },
+  {
+   "path": "assets/pirate_fighter@2x-ito3gEga.png",
+   "bytes": 4407,
+   "sha256": "fd2c1ebbdfd04c2a9fd09eef5d56398859f9ab04c4761e4f963ad4fb30e2bf74",
+   "gitBlob": "5739955df987ff5ae638a786932f09f73734b9cf"
+  },
+  {
+   "path": "assets/pirate_fighter@3x-BlwLUokh.png",
+   "bytes": 7757,
+   "sha256": "e2ec1452ebbbfaf9802a0a6d3b1dced38b99c132391d7cd4b26d3b0e4344caed",
+   "gitBlob": "8aaced1f5489aee0e6751bef3bce0829c1813798"
+  },
+  {
+   "path": "assets/pirate_transport@1x-CqmFFfPh.png",
+   "bytes": 5512,
+   "sha256": "dcecbf1fed8b70b5129d9dab74cccc3641bf4c8e6fefd3f9cdb6c02a662ee240",
+   "gitBlob": "abd2faab9a140852a0c5c6d2913d771c08064f85"
+  },
+  {
+   "path": "assets/pirate_transport@2x-Dir_yxrx.png",
+   "bytes": 15055,
+   "sha256": "f2e77fa55b7c05926f3cef05d625a5424bd55d5891dbb9205746ee99ab8760cd",
+   "gitBlob": "45644d13f9ea7f77b75eed87ddacf09a4f0f6e2f"
+  },
+  {
+   "path": "assets/pirate_transport@3x-BgVXvNmT.png",
+   "bytes": 27900,
+   "sha256": "2f88b8ecd1526e96d49a9e1b7ab3131667bdfda831cde208020f466b0eba9bb2",
+   "gitBlob": "50baf0736fb0b30b549182b3c85850fbf125b661"
+  },
+  {
+   "path": "assets/ship_armored-CUHi6O8N.png",
+   "bytes": 4901,
+   "sha256": "c51b04b6fada0f102ca47946b7f63ca67c91f6564fd8e447c92328c6b0bdd926",
+   "gitBlob": "66d6bca4f27ce74d6d9a61e0699713515781504f"
+  },
+  {
+   "path": "assets/ship_hauler-BiClgf_T.png",
+   "bytes": 6033,
+   "sha256": "f0cf53a6b35a917fa40d0deb39e9b35773eb19d0d4cf1bd324affd0222c64836",
+   "gitBlob": "2a22d991275cd3181bd7ba8afe4858e8418f65a5"
+  },
+  {
+   "path": "assets/ship_interceptor-E9LAwUkh.png",
+   "bytes": 10900,
+   "sha256": "33fa63f845580c29ee6b58d9c111ca491beea79000bc7f86fb8489c1ebbe4e66",
+   "gitBlob": "20949d1bbd7358cf73991df2c1b0178cb6138f4d"
+  },
+  {
+   "path": "assets/ship_raider-DNSbkG_k.png",
+   "bytes": 14171,
+   "sha256": "0230d3c279ebf2ba9dfee2730959d56ee12a5a8c1e17e245bb2f568dce6f79f4",
+   "gitBlob": "7b8dd16f0b3abb9c76fa25dec1cdf8e2ca39e011"
+  },
+  {
+   "path": "assets/ship_trader-C9nX8rv8.png",
+   "bytes": 4605,
+   "sha256": "570211d701b50d6ba63cbbd6247087aa83e91865047edd1b5500d8ceb7567434",
+   "gitBlob": "0d0431d887688d2a8f11b964b07fc81f3ea00097"
+  },
+  {
+   "path": "assets/starter_free_accord_128-BYBVL3Xc.png",
+   "bytes": 14852,
+   "sha256": "1ffa122eb3148f19436e14592419a21059354b5b065b64bbd65053e09a2073af",
+   "gitBlob": "9c5a3afbcd840c53a541954c003b00241c55913c"
+  },
+  {
+   "path": "assets/starter_independent_systems_128-CuR9gnqK.png",
+   "bytes": 14294,
+   "sha256": "170d08ce00655470b31b0f89cdb5290bc3adb3c87e88df68dc16c2a4b614a09c",
+   "gitBlob": "0f9942ef654511d87873ba621f3a4f9c493ea144"
+  },
+  {
+   "path": "assets/starter_neutral_128-CfH_gaLY.png",
+   "bytes": 14221,
+   "sha256": "5354e18f74c16194ea42f0f25b9573cc8596a30b4fe2612efcea4e112bc080e1",
+   "gitBlob": "c4a3fdfc3abb926b2594c2733baffe77e02510c6"
+  },
+  {
+   "path": "assets/starter_solar_dominion_128-DXnCm3Bs.png",
+   "bytes": 14653,
+   "sha256": "d18d1502fc32a0d8375ec077b5b0dca1fbbaac8d84a0851ab2ade3aafe07d010",
+   "gitBlob": "66e4d12c6782a78e6a2e4ce529772065a0755a7b"
+  },
+  {
+   "path": "assets/starter_terran_concord_128-DYlZajRU.png",
+   "bytes": 14143,
+   "sha256": "b42bc845ceeacdd2c6bbb6d70825078e259002540fc16930a489acfd5baa93ae",
+   "gitBlob": "4c7b2ddba8c168cbbce90de884d3f68549aaa2c3"
+  },
+  {
+   "path": "assets/station_accord@1x-BR5MfLNy.png",
+   "bytes": 94063,
+   "sha256": "1fa5b55f6e7384fe31468f5e87fbe2ec5585f1820f44ac8010889727b9ac8fc1",
+   "gitBlob": "c8f6ba040360512f4f17ae849661a436058df4e5"
+  },
+  {
+   "path": "assets/station_accord@2x-D6So8s4e.png",
+   "bytes": 238828,
+   "sha256": "250f3b6332edeebf3582669b64b05bd1d80de759437956fa2c7b1560a96b13b3",
+   "gitBlob": "c66ff1f4888aaa9375e5e885b378814d80f6fab1"
+  },
+  {
+   "path": "assets/station_accord_hi-0yxaDx98.png",
+   "bytes": 57579,
+   "sha256": "6718e6e74e38de40bfc925efaf6574a34cc07e5745a7e52837e8de372aba10a5",
+   "gitBlob": "d053aa4454afe8fd9cb556ade6a090d9518e8cc5"
+  },
+  {
+   "path": "assets/station_concord@1x-Lzy8oZw6.png",
+   "bytes": 60784,
+   "sha256": "0ad90423150ee123c28c62f81f4ac29ebd1c0570b4176e999bcf254fcff2731f",
+   "gitBlob": "7e0c7f9c75a48895ca6417360622026835db3108"
+  },
+  {
+   "path": "assets/station_concord@2x-BVFK_7NH.png",
+   "bytes": 142768,
+   "sha256": "e53932d2995edcb36428f8a20da22983143a57add2728e7646329edaf1c15d23",
+   "gitBlob": "a6703f0e337af7b123e7b0d150b0490f2c67001b"
+  },
+  {
+   "path": "assets/station_concord_hi-t4sCEXAz.png",
+   "bytes": 40798,
+   "sha256": "91b3cf70519267c5189ecc039d600142a598b5a200890e4327816691c8b20f24",
+   "gitBlob": "47d483d8e7f0e15f19f838f3fc97aa3334e07ea6"
+  },
+  {
+   "path": "assets/station_dominion@1x-BndE5GYJ.png",
+   "bytes": 88976,
+   "sha256": "7f4c732bba831a329ac5f249c73879b7729b0544022ded125dfb4ae943e11faa",
+   "gitBlob": "c8d6d62aa91254a8dc7d56ff0cf01207e038ab5e"
+  },
+  {
+   "path": "assets/station_dominion@2x-BehGdMBy.png",
+   "bytes": 223629,
+   "sha256": "f6e3bff2828e0072b71b921324349bd8844b0f5c349f26c3a5eabfe9e239e4ee",
+   "gitBlob": "cdddedf672085194ba03276eef0cabf9c5ec5f3a"
+  },
+  {
+   "path": "assets/station_dominion_hi-DQfhiYwe.png",
+   "bytes": 55223,
+   "sha256": "36b6a3512065d6bb5be98e8aee36ec2c322f0b6353995dd0d862a07157ff6dba",
+   "gitBlob": "40cf2d98d88a5858b9022715622eaa958b1a05b7"
+  },
+  {
+   "path": "assets/station_hq_independent-ChEJ2P3A.png",
+   "bytes": 26431,
+   "sha256": "0c124000d4830857e6d504536fc6ba6aca796b1ba268c3e76497544bc236bd70",
+   "gitBlob": "1b54313b63ba02f1d4f5613555c699171179ebfe"
+  },
+  {
+   "path": "assets/station_independents@1x-DKLgbjpq.png",
+   "bytes": 81261,
+   "sha256": "105d7b685ac1cee053e34e4769663cce4abcc31b4a2667f10137e73cf2f6d1fa",
+   "gitBlob": "348cb2a08abc1d4df21b2ef0c51f93d6e082359f"
+  },
+  {
+   "path": "assets/station_independents@2x-sCF5MbTP.png",
+   "bytes": 193776,
+   "sha256": "8ccb8b28a19d6b64b2758f19d9b51832288627e217458e056a2c12dbcd630d46",
+   "gitBlob": "e25d823258112f5542137970507af52aa7a89eff"
+  },
+  {
+   "path": "assets/station_independents_hi-CqtVteaV.png",
+   "bytes": 53193,
+   "sha256": "607ea94eef732f524cacef1647dcb8cb6a66cc8e6449cc2fc1e3d09a5e945885",
+   "gitBlob": "a144c33cb42c5aa5c27137fa288c415c0fe63f9e"
+  },
+  {
+   "path": "assets/station_player_side-BUcRtPHt.png",
+   "bytes": 9447,
+   "sha256": "0d2c230a6e4eb5ab67d7bc45ef6628b5b3da78d0d20bf327cdca232c758d7ede",
+   "gitBlob": "e31b31410652628f2bf98421f5f753887ec781e9"
+  },
+  {
+   "path": "assets/station_t1@1x-C4_zBj72.png",
+   "bytes": 36069,
+   "sha256": "33a6fd3fa3ad5c527e518096bbf8516794e9fbe4d86f8291e95e9d68c4e953c0",
+   "gitBlob": "82a183ec5b91853ee82305b8cb98db975c9e7abc"
+  },
+  {
+   "path": "assets/station_t1@2x-AeGrZfWs.png",
+   "bytes": 94229,
+   "sha256": "e696ba977b139b113411d97e7c2807771f6c5a1795e377d52599bd322357df47",
+   "gitBlob": "6f5902e79c75138ae74cd358487f1500f49388ab"
+  },
+  {
+   "path": "assets/station_t2@1x-gqeihx6S.png",
+   "bytes": 87007,
+   "sha256": "7dd9dac1188f2710254c83f4974096e0ba6defdfdb1a93ea58d4dd442209ca78",
+   "gitBlob": "de11949eb63c05ea5f9972268e032f3b33f0f228"
+  },
+  {
+   "path": "assets/station_t2@2x-D99OagVj.png",
+   "bytes": 245661,
+   "sha256": "ada05f80f1f09e82f96083087304e3779713c2f1d6a0a2801df3525a1ac50950",
+   "gitBlob": "0e01a4f5de423967ce719ff04294dbdfbc7c33ad"
+  },
+  {
+   "path": "assets/station_t3@1x-YmDCB7pg.png",
+   "bytes": 105682,
+   "sha256": "5f8e287592b860bfc93fb14c6d058e2017a3dfe3035b86628fd6164470b0c2ae",
+   "gitBlob": "80a020ba7783cb7104fd6e7a92ec3207b3eab5b1"
+  },
+  {
+   "path": "assets/station_t3@2x-zlZMG7v_.png",
+   "bytes": 296576,
+   "sha256": "d4b875f9c07c871c1cf57f1dcfd6a36de56ca2e4ddb1bfdfe4d93b4ddf6462d3",
+   "gitBlob": "b70efa64c9eb17e8f83fdd712fd73db29bc48ef2"
+  },
+  {
+   "path": "assets/tanker-CNwojpiK.png",
+   "bytes": 1838475,
+   "sha256": "f51dd6688d8752c85a9762168bfa703a61cd602e36b029dfc0a89e84fed192f6",
+   "gitBlob": "d3f3c3942842a23a763a95ffefbdb266bd0c7a4b"
+  },
+  {
+   "path": "assets/visual394-D56io_ZV.png",
+   "bytes": 40866,
+   "sha256": "a0ad74ad68904ca1212231aac7ad325c54af5119bb434360e0d425b82ebd12bb",
+   "gitBlob": "3bd514dd01592e5387631ad85f4275c86792be83"
+  },
+  {
+   "path": "favicon.ico",
+   "bytes": 20373,
+   "sha256": "dd821076a9b03adc2173c93956226aea3d92482d7578fc4339c5d3a2e9c24586",
+   "gitBlob": "3c01d69713f9c184e92b74f5799e6dff2f500825"
+  },
+  {
+   "path": "index.html",
+   "bytes": 872,
+   "sha256": "883e360b381182d82ceae5afeef3b638a5dbadf4ed2b2aa1dd8492e2cddc9bbe",
+   "gitBlob": "bc720737352f158351f8d82943313a7f782a8931"
+  },
+  {
+   "path": "robots.txt",
+   "bytes": 160,
+   "sha256": "a3d27b3ca5ce32341fa9f96f01169b521b1657c05d1860c45d1e53a6258e9e8b",
+   "gitBlob": "6018e701fc7dd0317cda9eceea390524322e8a05"
+  }
+ ]
 }
