@@ -1,24 +1,22 @@
 {
-  "release": "ore-guide-2026-11-20",
-  "sourceCommit": "8b73e518d1813f5bbdf25105955b3252e998129d",
-  "runtimeImplementationCommit": "8b73e518d1813f5bbdf25105955b3252e998129d",
+  "release": "cf-web-analytics-2026-11-20",
+  "sourceCommit": "3a7836f55c719fca63e93a7c77f63f822ecf4bb0",
+  "runtimeImplementationCommit": "3a7836f55c719fca63e93a7c77f63f822ecf4bb0",
   "sourcePullRequests": [
-    64
+    66
   ],
-  "sourcePullRequest": 64,
+  "sourcePullRequest": 66,
   "sourceSnapshotVerifiedFiles": 521,
   "notes": [
-    "Guide texts follow the scanner versus galaxy-map ore search",
-    "New optional contextual lesson: Ore deposits on the galaxy map",
-    "System-scan and site hints and mining encyclopedia updated",
-    "Includes previous releases dock-guide-example-2026-11-20 and mobile-dock-sticky-ore-map-2026-11-20",
-    "Quest goals, rewards, chances, RNG, yields and saves unchanged"
+    "Cloudflare Web Analytics beacon (cookieless, public token) on the game page",
+    "Studio home, SpaceRiders and SeaRiders pages carry the same beacon",
+    "Game runtime, rules and saves unchanged; includes release ore-guide-2026-11-20"
   ],
   "validation": [
-    "Clean shallow snapshot of main 8b73e51, 521 tracked files verified against Git blobs",
+    "Clean shallow snapshot of main 3a7836f, 521 tracked files verified against Git blobs",
     "Lockfile install and TypeScript/minified build without sources or sourcemaps",
     "All 54 smoke suites",
-    "71 CS/EN desktop/touch browser scenarios on the release build; physical iOS/Android not tested"
+    "63 browser scenarios on the PR build; beacon requested with the correct token and game unaffected when blocked"
   ],
   "files": [
     {
@@ -233,9 +231,9 @@
     },
     {
       "path": "index.html",
-      "bytes": 650,
-      "sha256": "d4d09a49a254f746de0df7946116afd3cd3fca635e6d63d733397256c35e0f73",
-      "gitBlob": "abeb4257137814848aa1a9f230b87305ae8068d6"
+      "bytes": 872,
+      "sha256": "603e66990f459efe80df090eef4993f4ea8dcc4799023a4a5d7761c7c54e779d",
+      "gitBlob": "ff146df64d449c4ecca00900b3d2e26cdc9df245"
     },
     {
       "path": "robots.txt",
