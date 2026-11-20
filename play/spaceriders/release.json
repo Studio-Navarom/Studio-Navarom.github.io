@@ -1,21 +1,20 @@
 {
-  "release": "galaxy-system-cards-overview-2026-11-20",
-  "sourceCommit": "b6c9febfd02ba881e652f7c7d71013bbb2192a72",
-  "runtimeImplementationCommit": "b6c9febfd02ba881e652f7c7d71013bbb2192a72",
-  "sourcePullRequest": 48,
-  "sourceSnapshotVerifiedFiles": 428,
+  "release": "galaxy-backdrop-core-focus-2026-11-20",
+  "sourceCommit": "751040c496f5d2c1d50dc0d2aae0ae04dbfff95d",
+  "runtimeImplementationCommit": "751040c496f5d2c1d50dc0d2aae0ae04dbfff95d",
+  "sourcePullRequest": 49,
+  "sourceSnapshotVerifiedFiles": 438,
   "notes": [
-    "Interactive system cards on mouse hover and touch, explicit route action only",
-    "Bounded known/visited overview with extended zoom and canonical coordinates",
-    "Responsive cards, rotation and Escape return behavior",
-    "Galaxy schematic is not to scale; physical core and travel model remain a separate proposal",
-    "Preserve unscanned data, core simulation, generator, fuel, prices and valid saves"
+    "Fix native oversized SVG focus halo; retain bounded keyboard focus",
+    "Cosmic background and direct galactic arms in bounded overview",
+    "Anchored cartographic core, player-based distance and edge direction",
+    "Galaxy camera framing is read-only; no travel, economy, generation or save changes"
   ],
   "validation": [
-    "Clean snapshot of approved PR48, all428 source files hash-verified",
+    "Clean verified snapshot of approved PR49",
     "Lockfile install and TypeScript/minified production build without sources or sourcemaps",
-    "All52 smoke suites",
-    "24 CS/EN desktop/touch browser scenarios: cards, zoom, rotation, map/fuel navigation, guide and fleet regressions"
+    "All53 smoke suites",
+    "28 CS/EN desktop/touch browser scenarios including focus regression, direct arms, core distance, map, guide, fuel and fleet"
   ],
   "files": [
     {
@@ -73,16 +72,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-BPE17mYd.js",
-      "bytes": 1199966,
-      "sha256": "428942cea60ffe966b732131fde57403ae5f381717c7f7e3a18a3add77741646",
-      "gitBlob": "5d342337b626413e07f19535f1ac372cc8e693eb"
+      "path": "assets/index-BS2DMt3Q.js",
+      "bytes": 1203242,
+      "sha256": "eaadd0438b7278992864c2f113913695b9fa184316e09e9b7088dc4e2bfa280c",
+      "gitBlob": "f05bfcfdeda42f6f90080df3c0d6e3096f0d1539"
     },
     {
-      "path": "assets/index-CkNa38XC.css",
-      "bytes": 79592,
-      "sha256": "739ceeb20852b667062b590522b92e86b2790aa7281f8bcf83c840c66fff43c8",
-      "gitBlob": "6cc581fc8eb270d1284ee10d727e5fc6a95fe2bf"
+      "path": "assets/index-DppUBvNE.css",
+      "bytes": 79757,
+      "sha256": "abd755f13875f72d329d379779f8d39628043e627a7f7654c5c7875e173e465a",
+      "gitBlob": "3fffe45cbfc5e3c18621ec8f4b97f64d8a640fcf"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -231,8 +230,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "1707cc0b9f58ca580e970b91d09b914e684db13b9244b29f1f43735ab437545e",
-      "gitBlob": "a68481cd5e8606a2374dca886fc7b015eab86b60"
+      "sha256": "de890ac693e82d2a2e1536a9c73ac6de53cc2d5c89f3cb600eba3bb792543c45",
+      "gitBlob": "77fb7fcedfd97301e8b9694e9dbd8447d6f53b15"
     },
     {
       "path": "robots.txt",
