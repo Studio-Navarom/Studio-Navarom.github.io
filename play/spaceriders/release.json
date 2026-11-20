@@ -1,22 +1,22 @@
 {
-  "release": "cf-web-analytics-2026-11-20",
-  "sourceCommit": "3a7836f55c719fca63e93a7c77f63f822ecf4bb0",
-  "runtimeImplementationCommit": "3a7836f55c719fca63e93a7c77f63f822ecf4bb0",
+  "release": "privacy-optin-analytics-2026-11-20",
+  "sourceCommit": "6c150f491c1e524794b76a9e203cd0e19e446980",
+  "runtimeImplementationCommit": "6c150f491c1e524794b76a9e203cd0e19e446980",
   "sourcePullRequests": [
-    66
+    67
   ],
-  "sourcePullRequest": 66,
-  "sourceSnapshotVerifiedFiles": 521,
+  "sourcePullRequest": 67,
+  "sourceSnapshotVerifiedFiles": 526,
   "notes": [
-    "Cloudflare Web Analytics beacon (cookieless, public token) on the game page",
-    "Studio home, SpaceRiders and SeaRiders pages carry the same beacon",
-    "Game runtime, rules and saves unchanged; includes release ore-guide-2026-11-20"
+    "Opt-in anonymous gameplay statistics (PostHog EU capture API); nothing sent or stored before consent; Do Not Track respected",
+    "Consent prompt on the title screen and toggle in Options, both linking to /soukromi/",
+    "Game rules, saves and lessons unchanged; includes release cf-web-analytics-2026-11-20"
   ],
   "validation": [
-    "Clean shallow snapshot of main 3a7836f, 521 tracked files verified against Git blobs",
+    "Clean shallow snapshot of main 6c150f4, 526 tracked files verified against Git blobs",
     "Lockfile install and TypeScript/minified build without sources or sourcemaps",
     "All 54 smoke suites",
-    "63 browser scenarios on the PR build; beacon requested with the correct token and game unaffected when blocked"
+    "65 browser scenarios on the release build, including opt-in analytics (no request before consent, anonymous payload, withdrawal, Do Not Track, blocked network)"
   ],
   "files": [
     {
@@ -74,16 +74,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-D2NvtEjc.js",
-      "bytes": 1244478,
-      "sha256": "4de0c85759fb808f5c16342c2e27215d2f393c68f6e57cdaa2c929f79c049f31",
-      "gitBlob": "bffc70441705ed09e0b20e72616b219de211b6ff"
-    },
-    {
       "path": "assets/index-DT8Flw47.css",
       "bytes": 82388,
       "sha256": "0a827fdc0e637cac3d2578e682b52bad209c4a90b599f290a1a973e7946a06f4",
       "gitBlob": "41f6dd0d6591a70dd9bf08bf6b093be756a6478e"
+    },
+    {
+      "path": "assets/index-DUZ8w8IG.js",
+      "bytes": 1249955,
+      "sha256": "d1750f04763f75c0a50376f88ee60c4c3bfb2c8886f0c49e8cb346ccfe5b52ce",
+      "gitBlob": "fe05683fe1c879b836b1d2e55fe2cd27795c1d4a"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -232,8 +232,8 @@
     {
       "path": "index.html",
       "bytes": 872,
-      "sha256": "603e66990f459efe80df090eef4993f4ea8dcc4799023a4a5d7761c7c54e779d",
-      "gitBlob": "ff146df64d449c4ecca00900b3d2e26cdc9df245"
+      "sha256": "017c347d5c8691c4e933848142c758e7f6b75ad91835443e4bb93926fcd3a538",
+      "gitBlob": "43a54e3cd37cb4732085ed05efb74de9671f0d9c"
     },
     {
       "path": "robots.txt",

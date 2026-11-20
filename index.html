@@ -12,6 +12,9 @@
 .support-copy .support-footnote { font-size: 13px; color: #b8c8d4; border-left: 3px solid var(--gold); padding-left: 13px; margin-top: 26px; }
 .support-embed { min-width: 0; background: #fff; border: 1px solid #344b5b; border-radius: 12px; overflow: hidden; }
 .support-embed iframe { display: block; width: 100%; height: 730px; border: 0; background: #fff; }
+.support-consent { min-height: 260px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px; padding: 28px 22px; background: #111d29; color: #b8c9d5; text-align: center; font: 14px/1.6 Arial,Helvetica,sans-serif; }
+.support-consent p { margin: 0; max-width: 34ch; }
+.support-consent a { color: #f4b73b; }
 .support-embed .support-fallback { margin: 0; background: #111d29; color: #b8c9d5; font: 13px/1.5 Arial,Helvetica,sans-serif; text-align: center; padding: 13px 12px; }
 .support-fallback a { color: #f4b73b; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 #support a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
@@ -41,11 +44,24 @@
       <p class="support-footnote">The games are free to play. Supporting the project is entirely optional. Thank you for being part of the journey!</p>
     </div>
     <div class="support-embed">
-      <iframe src="https://ko-fi.com/studionavarom/?hidefeed=true&amp;widget=true&amp;embed=true"
-              title="Support Studio Navarom — Ko-fi tip panel"
-              loading="lazy" allow="payment"
-              referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      <p class="support-fallback">Panel not loading? <a href="https://ko-fi.com/studionavarom" target="_blank" rel="noopener noreferrer">Open Ko-fi directly</a>.</p>
+      <div class="support-consent" id="kofi-slot">
+        <p>The Ko-fi panel loads only after you ask for it. Ko-fi and its payment partners may then use their own cookies (<a href="soukromi/">Privacy</a>).</p>
+        <button type="button" class="btn primary" id="kofi-load">Load the Ko-fi support panel</button>
+      </div>
+      <p class="support-fallback">Prefer not to load it here? <a href="https://ko-fi.com/studionavarom" target="_blank" rel="noopener noreferrer">Open Ko-fi directly</a>.</p>
+      <script>
+      // Click-to-load: no third-party content or cookies before the visitor chooses it.
+      document.getElementById('kofi-load').addEventListener('click', function () {
+        var f = document.createElement('iframe');
+        f.src = 'https://ko-fi.com/studionavarom/?hidefeed=true&widget=true&embed=true';
+        f.title = 'Support Studio Navarom — Ko-fi tip panel';
+        f.allow = 'payment';
+        f.referrerPolicy = 'strict-origin-when-cross-origin';
+        var slot = document.getElementById('kofi-slot');
+        slot.replaceWith(f);
+        f.focus();
+      });
+      </script>
     </div>
   </div>
-</section></main><footer>© 2026 Studio Navarom. All rights reserved.</footer></div></body></html>
+</section></main><footer>© 2026 Studio Navarom. All rights reserved. · <a href="soukromi/">Soukromí / Privacy</a></footer></div></body></html>
