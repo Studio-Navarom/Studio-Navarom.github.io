@@ -1,21 +1,21 @@
 {
-  "release": "hq-jobs-wide-galaxy-2026-11-20",
-  "sourceCommit": "9c0d0f791c92ab0cfad0f93fbc0663462f94cd27",
-  "runtimeImplementationCommit": "9c0d0f791c92ab0cfad0f93fbc0663462f94cd27",
-  "sourcePullRequest": 47,
-  "sourceSnapshotVerifiedFiles": 418,
+  "release": "galaxy-system-cards-overview-2026-11-20",
+  "sourceCommit": "b6c9febfd02ba881e652f7c7d71013bbb2192a72",
+  "runtimeImplementationCommit": "b6c9febfd02ba881e652f7c7d71013bbb2192a72",
+  "sourcePullRequest": 48,
+  "sourceSnapshotVerifiedFiles": 428,
   "notes": [
-    "Full-window responsive galaxy map with information below and uniform hit-testing",
-    "HQ upgrade shortfall uses HQ stock only",
-    "Separate Jobs and missions from Pilot; shared collapsed mission sections",
-    "Approved global faction-job cap5 preserves legacy excess jobs and guide progress",
-    "No other core simulation, price, fuel, save or routing changes"
+    "Interactive system cards on mouse hover and touch, explicit route action only",
+    "Bounded known/visited overview with extended zoom and canonical coordinates",
+    "Responsive cards, rotation and Escape return behavior",
+    "Galaxy schematic is not to scale; physical core and travel model remain a separate proposal",
+    "Preserve unscanned data, core simulation, generator, fuel, prices and valid saves"
   ],
   "validation": [
-    "Clean snapshot of approved PR47, all418 source files hash-verified",
-    "Lockfile install, TypeScript and minified build without sources or sourcemaps",
-    "All51 smoke suites",
-    "24 CS/EN desktop/touch browser scenarios covering HQ, missions, map, rotation, fuel help and fleet"
+    "Clean snapshot of approved PR48, all428 source files hash-verified",
+    "Lockfile install and TypeScript/minified production build without sources or sourcemaps",
+    "All52 smoke suites",
+    "24 CS/EN desktop/touch browser scenarios: cards, zoom, rotation, map/fuel navigation, guide and fleet regressions"
   ],
   "files": [
     {
@@ -73,16 +73,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-DhtSylV4.css",
-      "bytes": 79441,
-      "sha256": "b34e83bc1286bbf389e438485792cc2d42fa694d43217087f26423042262c63b",
-      "gitBlob": "8db76080cb47750cf0ac77042e75135f78d46cb8"
+      "path": "assets/index-BPE17mYd.js",
+      "bytes": 1199966,
+      "sha256": "428942cea60ffe966b732131fde57403ae5f381717c7f7e3a18a3add77741646",
+      "gitBlob": "5d342337b626413e07f19535f1ac372cc8e693eb"
     },
     {
-      "path": "assets/index-kKGkrRDJ.js",
-      "bytes": 1194167,
-      "sha256": "9b450b94e8814a0d94db3acc707fdf5674717459e2c45ba69edfa818ce43d680",
-      "gitBlob": "dacf8d3fa30015f1f4d6fe69ca742ce314529ef7"
+      "path": "assets/index-CkNa38XC.css",
+      "bytes": 79592,
+      "sha256": "739ceeb20852b667062b590522b92e86b2790aa7281f8bcf83c840c66fff43c8",
+      "gitBlob": "6cc581fc8eb270d1284ee10d727e5fc6a95fe2bf"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -231,8 +231,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "7cd5320d2d4e67e38645fd1a32d71b2b373eda8ddfb11adf507a5dfc57892038",
-      "gitBlob": "49106349a79c564b94c85dfbfc29e45379fb8984"
+      "sha256": "1707cc0b9f58ca580e970b91d09b914e684db13b9244b29f1f43735ab437545e",
+      "gitBlob": "a68481cd5e8606a2374dca886fc7b015eab86b60"
     },
     {
       "path": "robots.txt",
