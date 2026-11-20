@@ -1,19 +1,20 @@
 {
-  "release": "guided-interface-2026-11-20",
-  "sourceCommit": "11b98729396066e1eae86a3edac5c54d2debaba0",
-  "runtimeImplementationCommit": "11b98729396066e1eae86a3edac5c54d2debaba0",
-  "sourcePullRequest": 44,
-  "sourceSnapshotVerifiedFiles": 406,
+  "release": "guided-interface-first-visit-2026-11-20",
+  "sourceCommit": "94948cdc19ea220a3ecef8734227aff4ff5ca21e",
+  "runtimeImplementationCommit": "94948cdc19ea220a3ecef8734227aff4ff5ca21e",
+  "sourcePullRequest": 45,
+  "sourceSnapshotVerifiedFiles": 408,
   "notes": [
     "Contextual walkthroughs navigate to and highlight actual controls without performing purchases or orders",
     "Fleet filters, groups and reviewed orders; grouped station navigation",
     "Fuel help explains route, budget, blockers and last-resort recovery",
+    "Short contextual first station visit; optional full tour and aligned navigation hints",
     "Preserve all simulation rules, costs, services and valid save data; additive UI preferences only"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
     "All 50 smoke suites and TypeScript/minified build",
-    "20 CS desktop/EN touch browser scenarios including100-unit roster, actual route planning and player-gate regression",
+    "22 CS desktop/EN touch browser scenarios including100-unit roster, actual route planning and player-gate regression",
     "Hashed generated files; no sources or sourcemaps"
   ],
   "files": [
@@ -72,10 +73,10 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-B9u2mEYv.js",
-      "bytes": 1190105,
-      "sha256": "5e9801f58a89eede92c6503846c53d7d9b118cd36511ddeb05aef3f2473dcf2c",
-      "gitBlob": "8c722a3b9d261642df8007e4ed8b6e802a0e5910"
+      "path": "assets/index-BRJ7jk8S.js",
+      "bytes": 1190775,
+      "sha256": "2456b5843e4a435bec81df8d0f11c82f84643e700e9bf6b282e9a22bc19642f3",
+      "gitBlob": "d0c4cff660f0ec11e8b7657f3dbbdcd64df4d75c"
     },
     {
       "path": "assets/index-BRTVj5pN.css",
@@ -230,8 +231,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "0b52522b5ed3f7a3298f2f5277f65c634a78b5cc92d08d32d6e55493301b154a",
-      "gitBlob": "0546ace89c1492df8dbf410d07f4fa1523fb2a3f"
+      "sha256": "1fd1ffeeced678d6b80f78dcc9ae2aad6c1fb9b4c64c0bf19d871a02e06480bc",
+      "gitBlob": "f25bbfb23045b62854705fe8a236f560c3689650"
     },
     {
       "path": "robots.txt",
