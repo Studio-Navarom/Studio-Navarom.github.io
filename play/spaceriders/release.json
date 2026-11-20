@@ -1,20 +1,21 @@
 {
-  "release": "guided-interface-first-visit-2026-11-20",
-  "sourceCommit": "94948cdc19ea220a3ecef8734227aff4ff5ca21e",
-  "runtimeImplementationCommit": "94948cdc19ea220a3ecef8734227aff4ff5ca21e",
-  "sourcePullRequest": 45,
-  "sourceSnapshotVerifiedFiles": 408,
+  "release": "guided-interface-navigation-2026-11-20",
+  "sourceCommit": "26c8e08510d83fead61387852c8df246a0b904af",
+  "runtimeImplementationCommit": "26c8e08510d83fead61387852c8df246a0b904af",
+  "sourcePullRequest": 46,
+  "sourceSnapshotVerifiedFiles": 410,
   "notes": [
     "Contextual walkthroughs navigate to and highlight actual controls without performing purchases or orders",
     "Fleet filters, groups and reviewed orders; grouped station navigation",
     "Fuel help explains route, budget, blockers and last-resort recovery",
     "Short contextual first station visit; optional full tour and aligned navigation hints",
+    "Guided navigation refreshes after service unlocks and restores fuel help after keyboard map close",
     "Preserve all simulation rules, costs, services and valid save data; additive UI preferences only"
   ],
   "validation": [
     "Clean verified source snapshot and lockfile install",
     "All 50 smoke suites and TypeScript/minified build",
-    "22 CS desktop/EN touch browser scenarios including100-unit roster, actual route planning and player-gate regression",
+    "24 CS desktop/EN touch browser scenarios including100-unit roster, actual route planning and player-gate regression",
     "Hashed generated files; no sources or sourcemaps"
   ],
   "files": [
@@ -73,16 +74,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-BRJ7jk8S.js",
-      "bytes": 1190775,
-      "sha256": "2456b5843e4a435bec81df8d0f11c82f84643e700e9bf6b282e9a22bc19642f3",
-      "gitBlob": "d0c4cff660f0ec11e8b7657f3dbbdcd64df4d75c"
-    },
-    {
       "path": "assets/index-BRTVj5pN.css",
       "bytes": 79290,
       "sha256": "561b8116a7b13f78bfce88da1806de32c28d670c7831018ab962a81fe18254f2",
       "gitBlob": "256e9f8c67fe5ac464e633fc97ba89284fa530be"
+    },
+    {
+      "path": "assets/index-ChVer3rj.js",
+      "bytes": 1191038,
+      "sha256": "91279639ef9aaa9f5c3606aa5d03fbeb307c635541a3968097c738150ed27630",
+      "gitBlob": "e255fbbb884687137a3c4880e4ba40fe50fd572e"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -231,8 +232,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "1fd1ffeeced678d6b80f78dcc9ae2aad6c1fb9b4c64c0bf19d871a02e06480bc",
-      "gitBlob": "f25bbfb23045b62854705fe8a236f560c3689650"
+      "sha256": "09196052e5c1ac8df913101948688b24177280162939d295c3ede88d5a5931bf",
+      "gitBlob": "d61832e1ef1ee1aa5d8c68ce18f2e7a2169acac1"
     },
     {
       "path": "robots.txt",
