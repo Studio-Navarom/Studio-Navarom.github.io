@@ -1,23 +1,24 @@
 {
-  "release": "dock-guide-example-2026-11-20",
-  "sourceCommit": "08fc87c08f32c52eba4e782db7156563815c8e2b",
-  "runtimeImplementationCommit": "08fc87c08f32c52eba4e782db7156563815c8e2b",
+  "release": "ore-guide-2026-11-20",
+  "sourceCommit": "8b73e518d1813f5bbdf25105955b3252e998129d",
+  "runtimeImplementationCommit": "8b73e518d1813f5bbdf25105955b3252e998129d",
   "sourcePullRequests": [
-    62
+    64
   ],
-  "sourcePullRequest": 62,
+  "sourcePullRequest": 64,
   "sourceSnapshotVerifiedFiles": 521,
   "notes": [
-    "Collapsed station services open while the voluntary guide politics example is offered and collapse after acknowledgement",
-    "Nested section toggles no longer reset the dock services or the fuel section",
-    "Includes the previous release mobile-dock-sticky-ore-map-2026-11-20 (PR #58, PR #60)",
-    "Game rules, prices, standings, markets, rewards and saves unchanged"
+    "Guide texts follow the scanner versus galaxy-map ore search",
+    "New optional contextual lesson: Ore deposits on the galaxy map",
+    "System-scan and site hints and mining encyclopedia updated",
+    "Includes previous releases dock-guide-example-2026-11-20 and mobile-dock-sticky-ore-map-2026-11-20",
+    "Quest goals, rewards, chances, RNG, yields and saves unchanged"
   ],
   "validation": [
-    "Clean shallow snapshot of main 08fc87c, 521 tracked files verified against Git blobs",
+    "Clean shallow snapshot of main 8b73e51, 521 tracked files verified against Git blobs",
     "Lockfile install and TypeScript/minified build without sources or sourcemaps",
     "All 54 smoke suites",
-    "67 CS/EN desktop/touch browser scenarios on the release build; physical iOS/Android not tested"
+    "71 CS/EN desktop/touch browser scenarios on the release build; physical iOS/Android not tested"
   ],
   "files": [
     {
@@ -75,10 +76,10 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-8wUJrTNP.js",
-      "bytes": 1242144,
-      "sha256": "a7b00babdcbcccb322fcd119cb2e8fee71986154259be8d7c8e69474681df5fb",
-      "gitBlob": "c925fa9bd56f3543f619381611327b406e188fc2"
+      "path": "assets/index-D2NvtEjc.js",
+      "bytes": 1244478,
+      "sha256": "4de0c85759fb808f5c16342c2e27215d2f393c68f6e57cdaa2c929f79c049f31",
+      "gitBlob": "bffc70441705ed09e0b20e72616b219de211b6ff"
     },
     {
       "path": "assets/index-DT8Flw47.css",
@@ -233,8 +234,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "8cda10916258ac64cf74d2081f7c4425c6886419ee357ae10c7e4b431258a449",
-      "gitBlob": "c3723135b07f3bde7f964ba53f4a5a4681024a2b"
+      "sha256": "d4d09a49a254f746de0df7946116afd3cd3fca635e6d63d733397256c35e0f73",
+      "gitBlob": "abeb4257137814848aa1a9f230b87305ae8068d6"
     },
     {
       "path": "robots.txt",
