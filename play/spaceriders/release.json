@@ -1,25 +1,23 @@
 {
-  "release": "mobile-dock-sticky-ore-map-2026-11-20",
-  "sourceCommit": "85b51c68bb4dbe490fa95f3f499d57344186d768",
-  "runtimeImplementationCommit": "85b51c68bb4dbe490fa95f3f499d57344186d768",
+  "release": "dock-guide-example-2026-11-20",
+  "sourceCommit": "08fc87c08f32c52eba4e782db7156563815c8e2b",
+  "runtimeImplementationCommit": "08fc87c08f32c52eba4e782db7156563815c8e2b",
   "sourcePullRequests": [
-    58,
-    60
+    62
   ],
-  "sourcePullRequest": 60,
+  "sourcePullRequest": 62,
   "sourceSnapshotVerifiedFiles": 521,
   "notes": [
-    "Compact station dock: sticky header, Launch and single-row navigation; guest hangar reason visible",
-    "Short desktop (height <= 720 px): collapsible station services with fuel summary",
-    "Guide and station tour restore collapsed station services",
-    "Galaxy map ore deposits: one shared ore choice for map, system card and scanner; paged surveyed-system list",
-    "Game rules, prices, RNG, yields, permissions and saves unchanged"
+    "Collapsed station services open while the voluntary guide politics example is offered and collapse after acknowledgement",
+    "Nested section toggles no longer reset the dock services or the fuel section",
+    "Includes the previous release mobile-dock-sticky-ore-map-2026-11-20 (PR #58, PR #60)",
+    "Game rules, prices, standings, markets, rewards and saves unchanged"
   ],
   "validation": [
-    "Clean shallow snapshot of main 85b51c6, 521 tracked files verified against Git blobs",
+    "Clean shallow snapshot of main 08fc87c, 521 tracked files verified against Git blobs",
     "Lockfile install and TypeScript/minified build without sources or sourcemaps",
     "All 54 smoke suites",
-    "61 CS/EN desktop/touch browser scenarios on the release build; physical iOS/Android not tested"
+    "67 CS/EN desktop/touch browser scenarios on the release build; physical iOS/Android not tested"
   ],
   "files": [
     {
@@ -77,16 +75,16 @@
       "gitBlob": "789ecb0118fb4ac514f871bc770f01b22eb12595"
     },
     {
-      "path": "assets/index-AnuTggwc.js",
-      "bytes": 1241705,
-      "sha256": "6e0920c4d68d62131ded9551d0e2b75eed58f94721d3ef4e2c91363732bac04c",
-      "gitBlob": "4887a5a049c1326ee9746cd2e2bc9d5e93d17b30"
+      "path": "assets/index-8wUJrTNP.js",
+      "bytes": 1242144,
+      "sha256": "a7b00babdcbcccb322fcd119cb2e8fee71986154259be8d7c8e69474681df5fb",
+      "gitBlob": "c925fa9bd56f3543f619381611327b406e188fc2"
     },
     {
-      "path": "assets/index-DgAnKEkm.css",
-      "bytes": 82358,
-      "sha256": "1c6ae360a0037e86e4cdabb8f6a58d4a084ea81dd498ed3a0d8446d4293e74a3",
-      "gitBlob": "e95880869d4542af5e231e3534a01e15e848fd14"
+      "path": "assets/index-DT8Flw47.css",
+      "bytes": 82388,
+      "sha256": "0a827fdc0e637cac3d2578e682b52bad209c4a90b599f290a1a973e7946a06f4",
+      "gitBlob": "41f6dd0d6591a70dd9bf08bf6b093be756a6478e"
     },
     {
       "path": "assets/mothership_accord-EJjtWypP.png",
@@ -235,8 +233,8 @@
     {
       "path": "index.html",
       "bytes": 650,
-      "sha256": "a7bed3ebf1fe34aedcb794304e2116214ffe86a95dfbdda4d010236f3630d559",
-      "gitBlob": "9c4c1cbfe3067cfec04f4a0655d030aed7bfb077"
+      "sha256": "8cda10916258ac64cf74d2081f7c4425c6886419ee357ae10c7e4b431258a449",
+      "gitBlob": "c3723135b07f3bde7f964ba53f4a5a4681024a2b"
     },
     {
       "path": "robots.txt",
