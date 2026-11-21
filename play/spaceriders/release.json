@@ -1,22 +1,23 @@
 {
-  "release": "system-panel-planets-2026-11-21",
-  "sourceCommit": "e804f99f84faaf17e8dbff86b3251d879ca1f0e3",
-  "runtimeImplementationCommit": "3920e12a7e7b9e11672b60bf7bc90d517d36189b",
+  "release": "exhaust-station-owners-2026-11-21",
+  "sourceCommit": "da581d316603410071160ac5967f4aa06898f128",
+  "runtimeImplementationCommit": "da581d316603410071160ac5967f4aa06898f128",
   "sourcePullRequests": [
-    74
+    75,
+    76
   ],
-  "sourcePullRequest": 74,
+  "sourcePullRequest": 76,
   "sourceSnapshotVerifiedFiles": 648,
   "notes": [
-    "System panel lists each planet type once (no more \"rocky, rocky\") and shows full resource names in Produces",
-    "Display-only change in Hud.tsx; no rules, economy, generation or save changes",
-    "Includes release engines-fights-2026-11-21"
+    "Player ship no longer leaves the old orange particle trail; only the per-nozzle plume remains (#75)",
+    "System panel lists who holds the stations in mixed or contested systems (#76)",
+    "Includes release system-panel-planets-2026-11-21"
   ],
   "validation": [
-    "Clean shallow snapshot of main e804f99, 648 tracked files",
+    "Clean shallow snapshot of main da581d3, 648 tracked files",
     "Lockfile install and TypeScript/minified build without sources or sourcemaps",
     "All 56 smoke suites",
-    "Release-build browser check CS start: star row without duplicates, no JS errors; PR CI all green"
+    "Release-build browser checks: CS/EN station owners (home, mixed, pure system), 11 player hull variants idle/moving, no JS errors; PR CI all green"
   ],
   "files": [
     {
@@ -272,10 +273,10 @@
       "gitBlob": "1e636eb404dee77e295de7504318bcb7183a0339"
     },
     {
-      "path": "assets/index-FRrbBsiN.js",
-      "bytes": 1294452,
-      "sha256": "08752fd5247ea5d16dcb605c39104fc0327f7e0e5269e75ee958be1f5c21c3b9",
-      "gitBlob": "22880b6d98fd3b62a7821c824325d2694a2d5f80"
+      "path": "assets/index-CsnRQh6J.js",
+      "bytes": 1294746,
+      "sha256": "9de02962a213886dace8efd96f91f1a1e427365cbb723705f0c5248ef7a7fae2",
+      "gitBlob": "d14a1c8a42772d1a5631acf54c9a4806b54a8989"
     },
     {
       "path": "assets/mask_blue_window@1x-BeSwgWYs.png",
@@ -664,8 +665,8 @@
     {
       "path": "index.html",
       "bytes": 872,
-      "sha256": "77defb92adeac25b9159e5e3af294f27ea1bcd17fe1bf8df303ce6d7146496e4",
-      "gitBlob": "4d2f21e687f63cb485242bcf0eacc0a6ee7e090a"
+      "sha256": "db05199ece0d620d607fb6013ca7dc44345dc610d4c3e06fa0ea96792d496ac2",
+      "gitBlob": "f5b265a5ab273f16a5327bf30a34570b0ff4a9df"
     },
     {
       "path": "robots.txt",
