@@ -1,22 +1,23 @@
 {
- "release": "ships-smooth-2026-11-21",
- "sourceCommit": "31044ea747547ecd0f6e48d67c3596f3e54f1327",
- "runtimeImplementationCommit": "be9dbc0e51c9cc5da1b5a16933810c339849a4f3",
+ "release": "engines-fights-2026-11-21",
+ "sourceCommit": "2dafd5bfd66ed16f8a4e1091a4af81d6d8eec06c",
+ "runtimeImplementationCommit": "59ea8c558c06254f1e343debfba5cd7e4f15a6f8",
  "sourcePullRequests": [
-  71
+  72,
+  73
  ],
- "sourcePullRequest": 71,
- "sourceSnapshotVerifiedFiles": 637,
+ "sourcePullRequest": 72,
+ "sourceSnapshotVerifiedFiles": 648,
  "notes": [
-  "Smooth frames after the new hull art: adaptive canvas density (phones start at 1x, desktops step down from 2x when slow), cheap bilinear rotation, unfiltered station copies, pre-rendered engine plumes, background sprite decoding",
-  "At the user's request non-fighter hulls are 25% smaller and the player's stations about 15% smaller; faction stations and fighters unchanged",
-  "Includes release ships-stations-ambush-2026-11-21 (PR #69); no rule changes"
+  "Player ships use the same per-nozzle engine plumes as NPCs (painted exhaust removed from six approved hulls); batched plume pass; density also steps down on frame judder",
+  "Livelier NPC fights: weakened ships break off into asteroid cover or run, every role manoeuvres, NPC-vs-NPC damage x6, lawful support drops in",
+  "PR #73 makes the fight smoke test deterministic; includes releases ships-smooth-2026-11-21 and ships-stations-ambush-2026-11-21"
  ],
  "validation": [
-  "Clean shallow snapshot of main 31044ea, 637 tracked files verified against Git blobs",
+  "Clean shallow snapshot of main 2dafd5b, 648 tracked files verified against Git blobs",
   "Lockfile install and TypeScript/minified build without sources or sourcemaps",
-  "All 55 smoke suites",
-  "Release-build browser checks: ship art, mobile dock, analytics; frame-time comparison old/#69/#71 in headless Chromium; PR CI all green"
+  "All 56 smoke suites",
+  "Release-build browser checks: ship art, mobile dock, analytics; PR CI all green"
  ],
  "files": [
   {
@@ -266,10 +267,10 @@
    "gitBlob": "1e493e72890ecf98c7ce8896bc71189ef5c1a0a0"
   },
   {
-   "path": "assets/index-BYmVHg0L.js",
-   "bytes": 1295372,
-   "sha256": "c26e95375b46ce0f20c9696d38ca19f4157444e787395ea10653072be25bcacb",
-   "gitBlob": "0b60951a22c122470a34636f8edd7225b5dd9029"
+   "path": "assets/index-Bi_lBva9.js",
+   "bytes": 1294468,
+   "sha256": "b42475f62b474fb08d15c5bc43484ad75eeba9238eb2488b44773d18e33a2c3b",
+   "gitBlob": "d221bdfd0d4371eb52aeef6e00a7453de992c561"
   },
   {
    "path": "assets/index-BzeX4Ca4.css",
@@ -458,34 +459,40 @@
    "gitBlob": "432fd44affe6b7c2221285af60f3d37828871ebd"
   },
   {
-   "path": "assets/ship_armored-CUHi6O8N.png",
-   "bytes": 4901,
-   "sha256": "c51b04b6fada0f102ca47946b7f63ca67c91f6564fd8e447c92328c6b0bdd926",
-   "gitBlob": "66d6bca4f27ce74d6d9a61e0699713515781504f"
+   "path": "assets/ship_armored-B8xY0Fft.png",
+   "bytes": 16626,
+   "sha256": "397a560e59f1edd81b6cfba7b3344f444f77ca8dfb45d85de5c2f43a5778ea37",
+   "gitBlob": "72f9c39a033b76b7aa863bb43d00d3c1964051d3"
   },
   {
-   "path": "assets/ship_hauler-BiClgf_T.png",
-   "bytes": 6033,
-   "sha256": "f0cf53a6b35a917fa40d0deb39e9b35773eb19d0d4cf1bd324affd0222c64836",
-   "gitBlob": "2a22d991275cd3181bd7ba8afe4858e8418f65a5"
+   "path": "assets/ship_courier-CcjNls35.png",
+   "bytes": 10309,
+   "sha256": "f565afe1b1f13af85c4fd494f1d69fa3d0f5e30e0dd402a8a9651506d9b0075e",
+   "gitBlob": "27b18c2ef785c62822d61b13972379bfdcf74a5d"
   },
   {
-   "path": "assets/ship_interceptor-E9LAwUkh.png",
-   "bytes": 10900,
-   "sha256": "33fa63f845580c29ee6b58d9c111ca491beea79000bc7f86fb8489c1ebbe4e66",
-   "gitBlob": "20949d1bbd7358cf73991df2c1b0178cb6138f4d"
+   "path": "assets/ship_hauler-Cn_PKNtF.png",
+   "bytes": 19631,
+   "sha256": "faf6f2bb4b1ab737df8e3ff4ba23b8b3ff35cb9bb7021a7d7af765d2be0989b6",
+   "gitBlob": "ec68019796f919ba0196d208e34f4eed73bd8e8c"
   },
   {
-   "path": "assets/ship_raider-DNSbkG_k.png",
-   "bytes": 14171,
-   "sha256": "0230d3c279ebf2ba9dfee2730959d56ee12a5a8c1e17e245bb2f568dce6f79f4",
-   "gitBlob": "7b8dd16f0b3abb9c76fa25dec1cdf8e2ca39e011"
+   "path": "assets/ship_interceptor-M6lLhWlI.png",
+   "bytes": 24455,
+   "sha256": "7c468ca4c2d5ae060b40d6dd060e468ffc831cfec7a55fac6475eaee07383d36",
+   "gitBlob": "5b62697dc2613f5dc14fbc816b4c7658ccac6e3a"
   },
   {
-   "path": "assets/ship_trader-C9nX8rv8.png",
-   "bytes": 4605,
-   "sha256": "570211d701b50d6ba63cbbd6247087aa83e91865047edd1b5500d8ceb7567434",
-   "gitBlob": "0d0431d887688d2a8f11b964b07fc81f3ea00097"
+   "path": "assets/ship_raider-BbkYLPvV.png",
+   "bytes": 32917,
+   "sha256": "04acdbe813cb36e9143f1cb5a0d5870a39485c834619391550a123a61487b238",
+   "gitBlob": "6003b55ec9eef701e1d9aad924b73eb72992e508"
+  },
+  {
+   "path": "assets/ship_trader-CQZaX-K5.png",
+   "bytes": 13749,
+   "sha256": "5d5d9c32a33fa20ce1f199a341241a70f4d0560a2d0f8448c6571bb18f479ec5",
+   "gitBlob": "2f4c9f9ef75aae214492f249abe5c3999af3f1dc"
   },
   {
    "path": "assets/starter_free_accord_128-BYBVL3Xc.png",
@@ -658,8 +665,8 @@
   {
    "path": "index.html",
    "bytes": 872,
-   "sha256": "52c8315c32d1b060b934a7ad55857e253b461a1be602790a503440d6a501c1f3",
-   "gitBlob": "6f8fa97c1b3f91941dd9867f93b7c01473bb5d02"
+   "sha256": "e4656385efcdd54afe2679e0654b4f362595c1045792b137f4c27964ad8df610",
+   "gitBlob": "bbca05737bab23a8a8cf001c16aafa9df4c83809"
   },
   {
    "path": "robots.txt",
