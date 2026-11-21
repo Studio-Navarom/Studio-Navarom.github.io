@@ -1,22 +1,22 @@
 {
-  "release": "mobile-compact-target-2026-11-21",
-  "sourceCommit": "eb3f8ba008c0b4bbd297c5b8392d30c9c44d71b8",
-  "runtimeImplementationCommit": "eb3f8ba008c0b4bbd297c5b8392d30c9c44d71b8",
+  "release": "frame-pacing-2026-11-21",
+  "sourceCommit": "140114d087888a4d9db285871aa96ed97d59aaee",
+  "runtimeImplementationCommit": "140114d087888a4d9db285871aa96ed97d59aaee",
   "sourcePullRequests": [
-    77
+    79
   ],
-  "sourcePullRequest": 77,
+  "sourcePullRequest": 79,
   "sourceSnapshotVerifiedFiles": 648,
   "notes": [
-    "On touch screens the target panel folds to one row while firing (faction icon, hull, shield; tap to expand); desktop unchanged (#77)",
-    "CS strings PALBA, MIMO DOSAH, SKEN",
-    "Includes release exhaust-station-owners-2026-11-21"
+    "Render pacing counts vsync callbacks instead of a fixed 12 ms gap (no 12/18 ms alternation on 165/240 Hz displays); 60-100 Hz unchanged (#79)",
+    "Less per-frame garbage: star field, minimap, collision grid, power icons",
+    "Includes release mobile-compact-target-2026-11-21"
   ],
   "validation": [
-    "Clean shallow snapshot of main eb3f8ba, 648 tracked files",
+    "Clean shallow snapshot of main 140114d, 648 tracked files",
     "Lockfile install and TypeScript/minified build without sources or sourcemaps",
     "All 56 smoke suites",
-    "Release-build browser check: iPhone 13 emulation fold/expand/refold, desktop full panel, no JS errors; PR CI all green"
+    "Release-build browser check: mobile/desktop target panel, no JS errors; PR CI all green"
   ],
   "files": [
     {
@@ -266,10 +266,10 @@
       "gitBlob": "1e493e72890ecf98c7ce8896bc71189ef5c1a0a0"
     },
     {
-      "path": "assets/index-BetseC-b.js",
-      "bytes": 1296709,
-      "sha256": "012fb111975dd04bee67e4d5da95338537bc50d85997d2174b3fd451ebab188d",
-      "gitBlob": "9e5caf5a8023dec91fe98e0b9987a2ad0556c7d2"
+      "path": "assets/index-CCice2vJ.js",
+      "bytes": 1297176,
+      "sha256": "e2a01c2bc1df16a2ddf7d9288914d067b4002314d6e8c104010130c505836fff",
+      "gitBlob": "78ae2f1223ad6f5ab29b09acfc8f115ee40281b2"
     },
     {
       "path": "assets/index-DADxpGs1.css",
@@ -664,8 +664,8 @@
     {
       "path": "index.html",
       "bytes": 872,
-      "sha256": "64a0412257195649035a037c39ff45d6189c75cf0c7ea73ce5d88810ce95b1ef",
-      "gitBlob": "d3c358788e6a04f096b995931743fdc62483856f"
+      "sha256": "538c5541ef87b90c3c268e126993f026aabfaa6771e0e89a11f5ac1c0cbd2758",
+      "gitBlob": "6a1c9c14676c2ce1876b5eccc95d1a5370de1d64"
     },
     {
       "path": "robots.txt",
