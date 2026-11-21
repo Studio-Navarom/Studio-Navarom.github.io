@@ -1,22 +1,21 @@
 {
-  "release": "frame-pacing-2026-11-21",
-  "sourceCommit": "140114d087888a4d9db285871aa96ed97d59aaee",
-  "runtimeImplementationCommit": "140114d087888a4d9db285871aa96ed97d59aaee",
+  "release": "panels-clear-of-controls-2026-11-21",
+  "sourceCommit": "9cd6369f6956414cfd3fb928747157323c5ff20a",
+  "runtimeImplementationCommit": "9cd6369f6956414cfd3fb928747157323c5ff20a",
   "sourcePullRequests": [
-    79
+    80
   ],
-  "sourcePullRequest": 79,
-  "sourceSnapshotVerifiedFiles": 648,
+  "sourcePullRequest": 80,
+  "sourceSnapshotVerifiedFiles": 678,
   "notes": [
-    "Render pacing counts vsync callbacks instead of a fixed 12 ms gap (no 12/18 ms alternation on 165/240 Hz displays); 60-100 Hz unchanged (#79)",
-    "Less per-frame garbage: star field, minimap, collision grid, power icons",
-    "Includes release mobile-compact-target-2026-11-21"
+    "Moved HUD panels are shown fully on screen and, on phones, above the joystick and action buttons; saved spots kept (#80)",
+    "Includes release frame-pacing-2026-11-21"
   ],
   "validation": [
-    "Clean shallow snapshot of main 140114d, 648 tracked files",
+    "Clean shallow snapshot of main 9cd6369, 678 tracked files",
     "Lockfile install and TypeScript/minified build without sources or sourcemaps",
     "All 56 smoke suites",
-    "Release-build browser check: mobile/desktop target panel, no JS errors; PR CI all green"
+    "Release-build browser check: iPhone 13 portrait/landscape with a bottom-saved target panel (grip reachable, above controls), mobile fold/expand, desktop, no JS errors; PR CI all green"
   ],
   "files": [
     {
@@ -266,16 +265,16 @@
       "gitBlob": "1e493e72890ecf98c7ce8896bc71189ef5c1a0a0"
     },
     {
-      "path": "assets/index-CCice2vJ.js",
-      "bytes": 1297176,
-      "sha256": "e2a01c2bc1df16a2ddf7d9288914d067b4002314d6e8c104010130c505836fff",
-      "gitBlob": "78ae2f1223ad6f5ab29b09acfc8f115ee40281b2"
-    },
-    {
       "path": "assets/index-DADxpGs1.css",
       "bytes": 82504,
       "sha256": "17b52da7e36ebd384673d2aa831631dfa0fab575f6b0dca4fef4e383f15fa1ce",
       "gitBlob": "f1e751d28c9a1d543f85fd33f93d6148a069427f"
+    },
+    {
+      "path": "assets/index-jxZ75w9z.js",
+      "bytes": 1297704,
+      "sha256": "66190eeb34b7684fde634ffa8723b5bf759b2109c7122bdfced194a962d46492",
+      "gitBlob": "e8e57e9c42fd21e4095ad6210d354602ff1a37ed"
     },
     {
       "path": "assets/mask_blue_window@1x-BeSwgWYs.png",
@@ -664,8 +663,8 @@
     {
       "path": "index.html",
       "bytes": 872,
-      "sha256": "538c5541ef87b90c3c268e126993f026aabfaa6771e0e89a11f5ac1c0cbd2758",
-      "gitBlob": "6a1c9c14676c2ce1876b5eccc95d1a5370de1d64"
+      "sha256": "0e38c8c2bbbef859a67324acea48a7d4bae2776980258c79c3ad8b36bbd88ebf",
+      "gitBlob": "6823a6a091b38d936ce17c20029aef2ef5232f57"
     },
     {
       "path": "robots.txt",
