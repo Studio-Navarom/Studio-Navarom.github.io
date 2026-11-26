@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Soukromí a cookies – Studio Navarom a SpaceRiders: Trade & Conquer.">
+  <meta name="description" content="Soukromí a cookies – Studio Navarom, SpaceRiders: Trade & Conquer a Koruna a Krb.">
   <title>Soukromí a cookies — Studio Navarom</title>
   <link rel="stylesheet" href="../styles.css">
 <style>
@@ -20,14 +20,14 @@
     <header><a class="logo" href="../">STUDIO <b>NAVAROM</b></a></header>
     <main class="privacy">
       <h1>Soukromí a cookies</h1>
-      <p class="updated">Platné od 20. 11. 2026 · <a href="#en">English version below</a></p>
+      <p class="updated">Platné od 20. 11. 2026, doplněno 26. 11. 2026 · <a href="#en">English version below</a></p>
 
       <h2>Stručně</h2>
       <ul>
         <li>Web studia nepoužívá reklamní ani sledovací cookies.</li>
         <li>Návštěvnost webu měříme souhrnně a bez cookies (Cloudflare Web Analytics).</li>
-        <li>Hra SpaceRiders posílá anonymní statistiky hraní <strong>jen s tvým souhlasem</strong>. Souhlas můžeš kdykoli odvolat v Nastavení hry.</li>
-        <li>Nikdy neposíláme jméno pilota ani společnosti, uloženou hru, polohu ve hře ani nic, co by tě identifikovalo.</li>
+        <li>Hry SpaceRiders a Koruna a Krb posílají anonymní statistiky hraní <strong>jen s tvým souhlasem</strong>. Souhlas můžeš kdykoli odvolat ve hře.</li>
+        <li>Nikdy neposíláme jméno pilota, společnosti ani postavy, uloženou hru, polohu ve hře ani nic, co by tě identifikovalo.</li>
       </ul>
 
       <h2>Návštěvnost webu – Cloudflare Web Analytics</h2>
@@ -48,6 +48,28 @@
       <p>Neposíláme jméno pilota ani společnosti, obsah uložené hry, chat, polohu ve hře ani kliknutí či záznam obrazovky. Hra do událostí nevkládá IP adresu; při odeslání ji ale jako u každého internetového spojení technicky vidí server PostHog. Statistiky slouží jen ke zlepšování hry (např. kde hráči v průvodci končí) a nejsou používány k reklamě.</p>
       <p><strong>Odvolání souhlasu:</strong> ve hře Nastavení → Anonymní statistiky hraní → Nepovolit. Tím se smaže i anonymní identifikátor a nic dalšího se neodešle. Pokud prohlížeč posílá signál „Do Not Track“, hra se na souhlas neptá a nic neměří.</p>
 
+      <h2>Hra Koruna a Krb – úložiště a anonymní statistiky (jen se souhlasem)</h2>
+      <p>Koruna a Krb si v úložišti prohlížeče (localStorage) ukládá uloženou hru, jazyk a tvoji volbu ohledně statistik; tato data zůstávají v tvém zařízení. Na úvodní obrazovce se hra zeptá, zda smí posílat anonymní statistiky. Bez souhlasu se nic neodesílá. Po souhlasu vytvoří náhodný anonymní identifikátor a posílá službě <strong>PostHog (EU cloud)</strong> tyto události:</p>
+      <ul>
+        <li>spuštění hry, jazyk, dotykové zařízení, nová nebo pokračující hra,</li>
+        <li>délku hraní (signál jednou za minutu aktivní hry) a konec relace,</li>
+        <li>dosažení a přežití zimy (herní den a přibližná doba hraní), smrt postavy (příčina, herní den, příbuzenský vztah) a konec rodu,</li>
+        <li>milníky postupu (kroky úvodního průvodce a stupně jako svatba, statek, svobodník, rychtář, šlechtic) a práci s tipy průvodce (zobrazení, „Rozumím“, zavření, „Víc“, otevření kapitoly z rozhovoru),</li>
+        <li>technické chyby hry (typ a krátký popis).</li>
+      </ul>
+      <p>Neposíláme jméno postavy, semeno světa, obsah uložené hry ani polohu ve hře. <strong>Odvolání souhlasu:</strong> ve hře tlačítko „?“ (Průvodce) → Statistiky → Ne, děkuji. Tím se smaže anonymní identifikátor. Pokud prohlížeč posílá signál „Do Not Track“, hra se na souhlas neptá.</p>
+
+      <h2>Hra Koruna a Krb – společná hra (online místnosti)</h2>
+      <p>Společnou hru si spouštíš sám(a): založením místnosti nebo připojením kódem od přítele. Bez toho se nic neodesílá. Místnosti běží na službě <strong>Cloudflare (Workers a Durable Objects)</strong>; přenos je šifrovaný (HTTPS/WSS).</p>
+      <ul>
+        <li><strong>Ostatním hráčům v místnosti se posílá</strong> (a server si to drží jen po dobu připojení): jméno postavy, vzhled postavy, poloha a směr ve hře, zda spí, náhodný identifikátor hráče (ne tvá identita) a tvé herní akce ve společném světě.</li>
+        <li><strong>Server ukládá</strong> poslední stav společného světa místnosti (trhy, zásoby, pokácené stromy, karavany, pošta mezi hráči, nastavení tempa), úrodu a stavby na statcích hráčů a čas poslední aktivity. Neukládá IP adresy ani nic, co by tě identifikovalo.</li>
+        <li><strong>Jak dlouho:</strong> místnost, do které se 10 dní nikdo nepřipojí, se i se svým stavem automaticky smaže; založená místnost, ve které se nikdy nehrálo, už po 24 hodinách.</li>
+        <li>Kód místnosti je náhodný (6 znaků) a do místnosti se dostane jen ten, kdo kód zná — sdílej ho jen s lidmi, se kterými chceš hrát. V místnosti jsou nejvýš 4 hráči.</li>
+        <li>Tvoje postava, rodina, ranec a uložená hra zůstávají v tvém prohlížeči (localStorage).</li>
+      </ul>
+      <p>Cloudflare jako zpracovatel může pro provoz a ochranu služby krátkodobě zpracovávat technické údaje spojení podle svých zásad. Výmaz místnosti dřív než po 10 dnech si můžeš vyžádat na kontaktu níže (napiš kód místnosti).</p>
+
       <h2>Podpora přes Ko-fi</h2>
       <p>Úvodní stránka nabízí panel služby Ko-fi pro dobrovolnou podporu. Panel se načte až po kliknutí na tlačítko „Load the Ko-fi support panel“; do té doby se ke Ko-fi nic nepřipojuje. Po načtení mohou Ko-fi a jeho platební partneři používat vlastní cookies podle svých zásad.</p>
 
@@ -56,7 +78,7 @@
 
       <hr id="en">
       <h1>Privacy and cookies</h1>
-      <p class="updated">Effective 20 November 2026</p>
+      <p class="updated">Effective 20 November 2026, updated 26 November 2026</p>
       <ul>
         <li>The studio website uses no advertising or tracking cookies.</li>
         <li>Website traffic is measured in aggregate and without cookies (Cloudflare Web Analytics: visits, pages, referrers, country, device type, load speed). Data is processed by Cloudflare, Inc.</li>
@@ -64,6 +86,8 @@
         <li>SpaceRiders sends anonymous gameplay statistics to PostHog (EU cloud) <strong>only with your consent</strong>: game start, language, touch device, new or returning pilot, play time (one signal per active minute), session end, milestones, guide lesson progress, ship loss and technical errors. A random anonymous identifier is stored after consent to recognise returning players.</li>
         <li>We never send your pilot or company name, save contents, chat, in-game position, clicks or screen recordings. The game does not put your IP address into events, although PostHog's server technically sees it when the request arrives. Statistics are used only to improve the game, never for advertising.</li>
         <li>Withdraw consent anytime: in-game Options → Anonymous gameplay statistics → Don't allow. This deletes the identifier. With “Do Not Track” enabled, the game does not ask and measures nothing.</li>
+        <li>Koruna a Krb (Crown &amp; Hearth) stores its save, language and your statistics choice in browser storage. With your consent only, it sends anonymous statistics to PostHog (EU cloud): game start, language, touch device, new or returning game, play time (one signal per active minute), session end, reaching and surviving winter (game day, approximate play time), character death (cause, game day, relation), end of the family line, progress milestones (intro guide steps and ranks such as marriage, estate, freeman, reeve, noble), use of guide tips (shown, understood, closed, more, chapter opened from a conversation) and technical errors. Never the character name, world seed, save contents or position. Withdraw consent in the game: “?” (Guide) → Statistics → No, thanks; this deletes the identifier.</li>
+        <li>Koruna a Krb shared play (online rooms) starts only when you create a room or join one with a friend's code. Rooms run on <strong>Cloudflare (Workers and Durable Objects)</strong> over encrypted connections. Sent to the other players in the room (kept by the server only while connected): character name and look, in-game position and facing, whether you sleep, a random player identifier (not your identity) and your actions in the shared world. The server stores the room's latest shared world state (markets, stores, felled trees, caravans, mail between players, pace setting), players' crops and farm buildings and the time of last activity — no IP addresses or anything identifying you. A room nobody joins for 10 days is deleted automatically with its state (a room that was never played in, after 24 hours). Room codes are random (6 characters); only people who know the code can join (4 players max). Your character, family, pack and save stay in your browser. Cloudflare as a processor may briefly process technical connection data under its own policy. To have a room deleted sooner, write to the contact below with the room code.</li>
         <li>The home page offers a Ko-fi support panel that loads only after you click “Load the Ko-fi support panel”; nothing connects to Ko-fi before that. Once loaded, Ko-fi and its payment partners may set their own cookies under their policies.</li>
         <li>Contact: Studio Navarom, <a href="mailto:studionavarom@gmail.com">studionavarom@gmail.com</a>.</li>
       </ul>
